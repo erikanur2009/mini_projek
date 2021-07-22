@@ -19,16 +19,16 @@ define("main_module.bootstrap", ["web_entrypoint.dart", "dart_sdk"], function(ap
          main();
       });
     }
-    window.$dartAppId = "Oi1Sn43dKmFxTu8F40kNYA==";
+    window.$dartAppId = "a5FSO3+JGUkB6a5ETW9g/Q==";
 window.$dartReloadConfiguration = "ReloadConfiguration.none";
 window.$dartModuleStrategy = "require-js";
 window.$loadModuleConfig = require;
 window.$dwdsVersion = "11.0.2";
-window.$dwdsDevHandlerPath = "http://localhost:55315/$dwdsSseHandler";
+window.$dwdsDevHandlerPath = "http://localhost:59924/$dwdsSseHandler";
 window.$dwdsEnableDevtoolsLaunch = true;
 window.$dartEntrypointPath = "main_module.bootstrap.js";
 window.$requireLoader.forceLoadModule("dwds/src/injected/client");
-window.$dartExtensionUri = "http://127.0.0.1:55317/$debug";
+window.$dartExtensionUri = "http://127.0.0.1:59926/$debug";
 
   } else {
     if(window.$dartMainExecuted){
@@ -83,6 +83,7 @@ var baseUrl = (function () {
 let modulePaths = {
  "web_entrypoint.dart": "web_entrypoint.dart.lib",
  "packages/mini_project/main.dart": "packages/mini_project/main.dart.lib",
+ "packages/mini_project/theme/color.dart": "packages/mini_project/theme/color.dart.lib",
  "packages/flutter/material.dart": "packages/flutter/material.dart.lib",
  "packages/flutter/widgets.dart": "packages/flutter/widgets.dart.lib",
  "packages/flutter/src/widgets/will_pop_scope.dart": "packages/flutter/src/widgets/will_pop_scope.dart.lib",
@@ -438,11 +439,55 @@ let modulePaths = {
  "packages/flutter/src/material/arc.dart": "packages/flutter/src/material/arc.dart.lib",
  "packages/flutter/src/material/app.dart": "packages/flutter/src/material/app.dart.lib",
  "packages/flutter/src/material/animated_icons.dart": "packages/flutter/src/material/animated_icons.dart.lib",
- "packages/flutter/src/material/about.dart": "packages/flutter/src/material/about.dart.lib"
+ "packages/flutter/src/material/about.dart": "packages/flutter/src/material/about.dart.lib",
+ "packages/mini_project/features/dashboard/presentation/pages/dummy.dart": "packages/mini_project/features/dashboard/presentation/pages/dummy.dart.lib",
+ "packages/flutter_form_builder/src/form_builder_validators.dart": "packages/flutter_form_builder/src/form_builder_validators.dart.lib",
+ "packages/flutter_form_builder/src/utils/validators.dart": "packages/flutter_form_builder/src/utils/validators.dart.lib",
+ "packages/flutter_form_builder/src/utils/helpers.dart": "packages/flutter_form_builder/src/utils/helpers.dart.lib",
+ "packages/flutter_form_builder/src/form_builder_field_option.dart": "packages/flutter_form_builder/src/form_builder_field_option.dart.lib",
+ "packages/intl/intl.dart": "packages/intl/intl.dart.lib",
+ "packages/intl/src/intl/text_direction.dart": "packages/intl/src/intl/text_direction.dart.lib",
+ "packages/intl/src/intl/number_parser.dart": "packages/intl/src/intl/number_parser.dart.lib",
+ "packages/intl/src/intl/number_format_parser.dart": "packages/intl/src/intl/number_format_parser.dart.lib",
+ "packages/intl/src/intl/string_iterator.dart": "packages/intl/src/intl/string_iterator.dart.lib",
+ "packages/intl/number_symbols_data.dart": "packages/intl/number_symbols_data.dart.lib",
+ "packages/intl/number_symbols.dart": "packages/intl/number_symbols.dart.lib",
+ "packages/intl/src/intl/intl_stream.dart": "packages/intl/src/intl/intl_stream.dart.lib",
+ "packages/intl/src/intl/regexp.dart": "packages/intl/src/intl/regexp.dart.lib",
+ "packages/intl/src/intl/constants.dart": "packages/intl/src/intl/constants.dart.lib",
+ "packages/intl/src/intl_helpers.dart": "packages/intl/src/intl_helpers.dart.lib",
+ "packages/intl/src/global_state.dart": "packages/intl/src/global_state.dart.lib",
+ "packages/intl/src/intl/micro_money.dart": "packages/intl/src/intl/micro_money.dart.lib",
+ "packages/intl/src/intl/date_format.dart": "packages/intl/src/intl/date_format.dart.lib",
+ "packages/intl/src/intl/date_computation.dart": "packages/intl/src/intl/date_computation.dart.lib",
+ "packages/intl/src/intl/date_builder.dart": "packages/intl/src/intl/date_builder.dart.lib",
+ "packages/clock/src/stopwatch.dart": "packages/clock/src/stopwatch.dart.lib",
+ "packages/clock/src/utils.dart": "packages/clock/src/utils.dart.lib",
+ "packages/intl/src/date_format_internal.dart": "packages/intl/src/date_format_internal.dart.lib",
+ "packages/intl/date_symbols.dart": "packages/intl/date_symbols.dart.lib",
+ "packages/intl/src/intl/bidi_formatter.dart": "packages/intl/src/intl/bidi_formatter.dart.lib",
+ "packages/intl/src/intl/bidi.dart": "packages/intl/src/intl/bidi.dart.lib",
+ "packages/intl/src/plural_rules.dart": "packages/intl/src/plural_rules.dart.lib",
+ "packages/flutter_form_builder/localization/form_builder_localizations.dart": "packages/flutter_form_builder/localization/form_builder_localizations.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_all.dart": "packages/flutter_form_builder/l10n/messages_all.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_sk.dart": "packages/flutter_form_builder/l10n/messages_sk.dart.lib",
+ "packages/intl/message_lookup_by_library.dart": "packages/intl/message_lookup_by_library.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_pt.dart": "packages/flutter_form_builder/l10n/messages_pt.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_pl.dart": "packages/flutter_form_builder/l10n/messages_pl.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_messages.dart": "packages/flutter_form_builder/l10n/messages_messages.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_ja.dart": "packages/flutter_form_builder/l10n/messages_ja.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_it.dart": "packages/flutter_form_builder/l10n/messages_it.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_fr.dart": "packages/flutter_form_builder/l10n/messages_fr.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_es.dart": "packages/flutter_form_builder/l10n/messages_es.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_en.dart": "packages/flutter_form_builder/l10n/messages_en.dart.lib",
+ "packages/flutter_form_builder/l10n/messages_de.dart": "packages/flutter_form_builder/l10n/messages_de.dart.lib",
+ "packages/mini_project/theme/textstyle.dart": "packages/mini_project/theme/textstyle.dart.lib",
+ "packages/mini_project/config/stringresource.dart": "packages/mini_project/config/stringresource.dart.lib"
 };
 let moduleNames = {
  "web_entrypoint.dart.lib": "web_entrypoint.dart",
  "packages/mini_project/main.dart.lib": "packages/mini_project/main.dart",
+ "packages/mini_project/theme/color.dart.lib": "packages/mini_project/theme/color.dart",
  "packages/flutter/material.dart.lib": "packages/flutter/material.dart",
  "packages/flutter/widgets.dart.lib": "packages/flutter/widgets.dart",
  "packages/flutter/src/widgets/will_pop_scope.dart.lib": "packages/flutter/src/widgets/will_pop_scope.dart",
@@ -798,7 +843,50 @@ let moduleNames = {
  "packages/flutter/src/material/arc.dart.lib": "packages/flutter/src/material/arc.dart",
  "packages/flutter/src/material/app.dart.lib": "packages/flutter/src/material/app.dart",
  "packages/flutter/src/material/animated_icons.dart.lib": "packages/flutter/src/material/animated_icons.dart",
- "packages/flutter/src/material/about.dart.lib": "packages/flutter/src/material/about.dart"
+ "packages/flutter/src/material/about.dart.lib": "packages/flutter/src/material/about.dart",
+ "packages/mini_project/features/dashboard/presentation/pages/dummy.dart.lib": "packages/mini_project/features/dashboard/presentation/pages/dummy.dart",
+ "packages/flutter_form_builder/src/form_builder_validators.dart.lib": "packages/flutter_form_builder/src/form_builder_validators.dart",
+ "packages/flutter_form_builder/src/utils/validators.dart.lib": "packages/flutter_form_builder/src/utils/validators.dart",
+ "packages/flutter_form_builder/src/utils/helpers.dart.lib": "packages/flutter_form_builder/src/utils/helpers.dart",
+ "packages/flutter_form_builder/src/form_builder_field_option.dart.lib": "packages/flutter_form_builder/src/form_builder_field_option.dart",
+ "packages/intl/intl.dart.lib": "packages/intl/intl.dart",
+ "packages/intl/src/intl/text_direction.dart.lib": "packages/intl/src/intl/text_direction.dart",
+ "packages/intl/src/intl/number_parser.dart.lib": "packages/intl/src/intl/number_parser.dart",
+ "packages/intl/src/intl/number_format_parser.dart.lib": "packages/intl/src/intl/number_format_parser.dart",
+ "packages/intl/src/intl/string_iterator.dart.lib": "packages/intl/src/intl/string_iterator.dart",
+ "packages/intl/number_symbols_data.dart.lib": "packages/intl/number_symbols_data.dart",
+ "packages/intl/number_symbols.dart.lib": "packages/intl/number_symbols.dart",
+ "packages/intl/src/intl/intl_stream.dart.lib": "packages/intl/src/intl/intl_stream.dart",
+ "packages/intl/src/intl/regexp.dart.lib": "packages/intl/src/intl/regexp.dart",
+ "packages/intl/src/intl/constants.dart.lib": "packages/intl/src/intl/constants.dart",
+ "packages/intl/src/intl_helpers.dart.lib": "packages/intl/src/intl_helpers.dart",
+ "packages/intl/src/global_state.dart.lib": "packages/intl/src/global_state.dart",
+ "packages/intl/src/intl/micro_money.dart.lib": "packages/intl/src/intl/micro_money.dart",
+ "packages/intl/src/intl/date_format.dart.lib": "packages/intl/src/intl/date_format.dart",
+ "packages/intl/src/intl/date_computation.dart.lib": "packages/intl/src/intl/date_computation.dart",
+ "packages/intl/src/intl/date_builder.dart.lib": "packages/intl/src/intl/date_builder.dart",
+ "packages/clock/src/stopwatch.dart.lib": "packages/clock/src/stopwatch.dart",
+ "packages/clock/src/utils.dart.lib": "packages/clock/src/utils.dart",
+ "packages/intl/src/date_format_internal.dart.lib": "packages/intl/src/date_format_internal.dart",
+ "packages/intl/date_symbols.dart.lib": "packages/intl/date_symbols.dart",
+ "packages/intl/src/intl/bidi_formatter.dart.lib": "packages/intl/src/intl/bidi_formatter.dart",
+ "packages/intl/src/intl/bidi.dart.lib": "packages/intl/src/intl/bidi.dart",
+ "packages/intl/src/plural_rules.dart.lib": "packages/intl/src/plural_rules.dart",
+ "packages/flutter_form_builder/localization/form_builder_localizations.dart.lib": "packages/flutter_form_builder/localization/form_builder_localizations.dart",
+ "packages/flutter_form_builder/l10n/messages_all.dart.lib": "packages/flutter_form_builder/l10n/messages_all.dart",
+ "packages/flutter_form_builder/l10n/messages_sk.dart.lib": "packages/flutter_form_builder/l10n/messages_sk.dart",
+ "packages/intl/message_lookup_by_library.dart.lib": "packages/intl/message_lookup_by_library.dart",
+ "packages/flutter_form_builder/l10n/messages_pt.dart.lib": "packages/flutter_form_builder/l10n/messages_pt.dart",
+ "packages/flutter_form_builder/l10n/messages_pl.dart.lib": "packages/flutter_form_builder/l10n/messages_pl.dart",
+ "packages/flutter_form_builder/l10n/messages_messages.dart.lib": "packages/flutter_form_builder/l10n/messages_messages.dart",
+ "packages/flutter_form_builder/l10n/messages_ja.dart.lib": "packages/flutter_form_builder/l10n/messages_ja.dart",
+ "packages/flutter_form_builder/l10n/messages_it.dart.lib": "packages/flutter_form_builder/l10n/messages_it.dart",
+ "packages/flutter_form_builder/l10n/messages_fr.dart.lib": "packages/flutter_form_builder/l10n/messages_fr.dart",
+ "packages/flutter_form_builder/l10n/messages_es.dart.lib": "packages/flutter_form_builder/l10n/messages_es.dart",
+ "packages/flutter_form_builder/l10n/messages_en.dart.lib": "packages/flutter_form_builder/l10n/messages_en.dart",
+ "packages/flutter_form_builder/l10n/messages_de.dart.lib": "packages/flutter_form_builder/l10n/messages_de.dart",
+ "packages/mini_project/theme/textstyle.dart.lib": "packages/mini_project/theme/textstyle.dart",
+ "packages/mini_project/config/stringresource.dart.lib": "packages/mini_project/config/stringresource.dart"
 };
 if(!window.$requireLoader) {
    window.$requireLoader = {

@@ -1,321 +1,1199 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutter/src/foundation/print.dart'], (function load__packages__flutter__src__gestures__arena_dart(dart_sdk, packages__flutter__src__gestures__debug$46dart, packages__flutter__src__foundation__print$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/cupertino/text_theme.dart', 'packages/flutter/src/widgets/icon_theme_data.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/widgets/icon_theme.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/layer.dart'], (function load__packages__flutter__src__cupertino__segmented_control_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__cupertino__text_theme$46dart, packages__flutter__src__widgets__icon_theme_data$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__widgets__icon_theme$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__layer$46dart) {
   'use strict';
   const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
   const _interceptors = dart_sdk._interceptors;
-  const _js_helper = dart_sdk._js_helper;
-  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const debug = packages__flutter__src__gestures__debug$46dart.src__gestures__debug;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  var arena = Object.create(dart.library);
-  var $add = dartx.add;
-  var $isEmpty = dartx.isEmpty;
-  var $_equals = dartx._equals;
-  var $map = dartx.map;
-  var $join = dartx.join;
-  var $putIfAbsent = dartx.putIfAbsent;
-  var $_get = dartx._get;
-  var $remove = dartx.remove;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $first = dartx.first;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const theme = packages__flutter__src__cupertino__text_theme$46dart.src__cupertino__theme;
+  const icon_theme_data = packages__flutter__src__widgets__icon_theme_data$46dart.src__widgets__icon_theme_data;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  const icon_theme = packages__flutter__src__widgets__icon_theme$46dart.src__widgets__icon_theme;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  var segmented_control = Object.create(dart.library);
   var $length = dartx.length;
-  var $contains = dartx.contains;
-  var $containsKey = dartx.containsKey;
-  var $toString = dartx.toString;
-  var $padRight = dartx.padRight;
+  var $keys = dartx.keys;
+  var $_equals = dartx._equals;
+  var $any = dartx.any;
+  var $clear = dartx.clear;
+  var $add = dartx.add;
+  var $_set = dartx._set;
+  var $_get = dartx._get;
   dart._checkModuleNullSafetyMode(true);
-  var T = {
-    JSArrayOfGestureArenaMember: () => (T.JSArrayOfGestureArenaMember = dart.constFn(_interceptors.JSArray$(arena.GestureArenaMember)))(),
-    GestureArenaMemberToString: () => (T.GestureArenaMemberToString = dart.constFn(dart.fnType(core.String, [arena.GestureArenaMember])))(),
-    IdentityMapOfint$_GestureArena: () => (T.IdentityMapOfint$_GestureArena = dart.constFn(_js_helper.IdentityMap$(core.int, arena._GestureArena)))(),
-    VoidTo_GestureArena: () => (T.VoidTo_GestureArena = dart.constFn(dart.fnType(arena._GestureArena, [])))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))()
+  var T$ = {
+    JSArrayOfAnimationController: () => (T$.JSArrayOfAnimationController = dart.constFn(_interceptors.JSArray$(animation_controller.AnimationController)))(),
+    JSArrayOfColorTween: () => (T$.JSArrayOfColorTween = dart.constFn(_interceptors.JSArray$(tween.ColorTween)))(),
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    JSArrayOfWidget: () => (T$.JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(framework.Widget)))(),
+    JSArrayOfColor: () => (T$.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
+    TapDownDetailsTovoid: () => (T$.TapDownDetailsTovoid = dart.constFn(dart.fnType(dart.void, [tap.TapDownDetails])))(),
+    BoxHitTestResultAndOffsetTobool: () => (T$.BoxHitTestResultAndOffsetTobool = dart.constFn(dart.fnType(core.bool, [box.BoxHitTestResult, ui.Offset])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: arena.GestureDisposition.prototype,
-        [_name$]: "GestureDisposition.accepted",
-        index: 0
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 380,
+        [_Location_file]: null
       });
     },
     get C1() {
-      return C[1] = dart.const({
-        __proto__: arena.GestureDisposition.prototype,
-        [_name$]: "GestureDisposition.rejected",
+      return C[1] = dart.constList([C[2] || CT.C2], widget_inspector._Location);
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 379,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "button",
+        [_Location_column]: 15,
+        [_Location_line]: 397,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "inMutuallyExclusiveGroup",
+        [_Location_column]: 15,
+        [_Location_line]: 398,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "selected",
+        [_Location_column]: 15,
+        [_Location_line]: 399,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 400,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], widget_inspector._Location);
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[4] || CT.C4,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 396,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 13,
+        [_Location_line]: 395,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 396,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], widget_inspector._Location);
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 394,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 11,
+        [_Location_line]: 393,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 394,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16], widget_inspector._Location);
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 392,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 9,
+        [_Location_line]: 384,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 9,
+        [_Location_line]: 385,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapCancel",
+        [_Location_column]: 9,
+        [_Location_line]: 388,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 9,
+        [_Location_line]: 389,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 392,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], widget_inspector._Location);
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 383,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 412,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "selectedIndex",
+        [_Location_column]: 7,
+        [_Location_line]: 413,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "pressedIndex",
+        [_Location_column]: 7,
+        [_Location_line]: 414,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "backgroundColors",
+        [_Location_column]: 7,
+        [_Location_line]: 415,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderColor",
+        [_Location_column]: 7,
+        [_Location_line]: 416,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30], widget_inspector._Location);
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 411,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constrainedAxis",
+        [_Location_column]: 9,
+        [_Location_line]: 422,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 423,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34], widget_inspector._Location);
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 421,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 420,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 421,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([C[37] || CT.C37, C[38] || CT.C38], widget_inspector._Location);
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 419,
+        [_Location_file]: "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.constList([], framework.Widget);
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 3,
+        [Radius_x]: 3
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name]: "TextDirection.rtl",
+        index: 0
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name]: "TextDirection.ltr",
         index: 1
       });
     },
-    get C2() {
-      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], arena.GestureDisposition);
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 16,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 16
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 165000
+      });
     }
   }, false);
-  var C = Array(3).fill(void 0);
+  var C = Array(45).fill(void 0);
   var I = [
-    "package:flutter/src/gestures/arena.dart",
-    "file:///C:/lib/flutter/packages/flutter/lib/src/gestures/arena.dart"
+    "file:///C:/lib/flutter/packages/flutter/lib/src/cupertino/segmented_control.dart",
+    "package:flutter/src/cupertino/segmented_control.dart"
   ];
-  var _name$ = dart.privateName(arena, "_name");
-  arena.GestureDisposition = class GestureDisposition extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (arena.GestureDisposition.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = arena.GestureDisposition.prototype;
-  dart.addTypeTests(arena.GestureDisposition);
-  dart.addTypeCaches(arena.GestureDisposition);
-  dart.setLibraryUri(arena.GestureDisposition, I[0]);
-  dart.setFieldSignature(arena.GestureDisposition, () => ({
-    __proto__: dart.getFields(arena.GestureDisposition.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(arena.GestureDisposition, ['toString']);
-  arena.GestureDisposition.accepted = C[0] || CT.C0;
-  arena.GestureDisposition.rejected = C[1] || CT.C1;
-  arena.GestureDisposition.values = C[2] || CT.C2;
-  arena.GestureArenaMember = class GestureArenaMember extends core.Object {};
-  (arena.GestureArenaMember.new = function() {
-    ;
-  }).prototype = arena.GestureArenaMember.prototype;
-  dart.addTypeTests(arena.GestureArenaMember);
-  dart.addTypeCaches(arena.GestureArenaMember);
-  dart.setLibraryUri(arena.GestureArenaMember, I[0]);
-  var _arena$ = dart.privateName(arena, "_arena");
-  var _pointer$ = dart.privateName(arena, "_pointer");
-  var _member$ = dart.privateName(arena, "_member");
-  var _resolve = dart.privateName(arena, "_resolve");
-  arena.GestureArenaEntry = class GestureArenaEntry extends core.Object {
-    resolve(disposition) {
-      this[_arena$][_resolve](this[_pointer$], this[_member$], disposition);
-    }
-  };
-  (arena.GestureArenaEntry.__ = function(_arena, _pointer, _member) {
-    this[_arena$] = _arena;
-    this[_pointer$] = _pointer;
-    this[_member$] = _member;
-    ;
-  }).prototype = arena.GestureArenaEntry.prototype;
-  dart.addTypeTests(arena.GestureArenaEntry);
-  dart.addTypeCaches(arena.GestureArenaEntry);
-  dart.setMethodSignature(arena.GestureArenaEntry, () => ({
-    __proto__: dart.getMethods(arena.GestureArenaEntry.__proto__),
-    resolve: dart.fnType(dart.void, [arena.GestureDisposition])
-  }));
-  dart.setLibraryUri(arena.GestureArenaEntry, I[0]);
-  dart.setFieldSignature(arena.GestureArenaEntry, () => ({
-    __proto__: dart.getFields(arena.GestureArenaEntry.__proto__),
-    [_arena$]: dart.finalFieldType(arena.GestureArenaManager),
-    [_pointer$]: dart.finalFieldType(core.int),
-    [_member$]: dart.finalFieldType(arena.GestureArenaMember)
-  }));
-  arena._GestureArena = class _GestureArena extends core.Object {
-    add(member) {
-      if (!this.isOpen) dart.assertFailed(null, I[1], 70, 12, "isOpen");
-      this.members[$add](member);
-    }
-    toString() {
-      let buffer = new core.StringBuffer.new();
-      if (this.members[$isEmpty]) {
-        buffer.write("<empty>");
-      } else {
-        buffer.write(this.members[$map](core.String, dart.fn(member => {
-          if (member[$_equals](this.eagerWinner)) return dart.str(member) + " (eager winner)";
-          return dart.str(member);
-        }, T.GestureArenaMemberToString()))[$join](", "));
+  var children$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.children");
+  var groupValue$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.groupValue");
+  var onValueChanged$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.onValueChanged");
+  var unselectedColor$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.unselectedColor");
+  var selectedColor$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.selectedColor");
+  var borderColor$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.borderColor");
+  var pressedColor$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.pressedColor");
+  var padding$ = dart.privateName(segmented_control, "CupertinoSegmentedControl.padding");
+  const _is_CupertinoSegmentedControl_default = Symbol('_is_CupertinoSegmentedControl_default');
+  segmented_control.CupertinoSegmentedControl$ = dart.generic(T => {
+    var TTobool = () => (TTobool = dart.constFn(dart.fnType(core.bool, [T])))();
+    var _SegmentedControlStateOfT = () => (_SegmentedControlStateOfT = dart.constFn(segmented_control._SegmentedControlState$(T)))();
+    class CupertinoSegmentedControl extends framework.StatefulWidget {
+      get children() {
+        return this[children$];
       }
-      if (this.isOpen) buffer.write(" [open]");
-      if (this.isHeld) buffer.write(" [held]");
-      if (this.hasPendingSweep) buffer.write(" [hasPendingSweep]");
-      return buffer.toString();
-    }
-  };
-  (arena._GestureArena.new = function() {
-    this.members = T.JSArrayOfGestureArenaMember().of([]);
-    this.isOpen = true;
-    this.isHeld = false;
-    this.hasPendingSweep = false;
-    this.eagerWinner = null;
-    ;
-  }).prototype = arena._GestureArena.prototype;
-  dart.addTypeTests(arena._GestureArena);
-  dart.addTypeCaches(arena._GestureArena);
-  dart.setMethodSignature(arena._GestureArena, () => ({
-    __proto__: dart.getMethods(arena._GestureArena.__proto__),
-    add: dart.fnType(dart.void, [arena.GestureArenaMember])
-  }));
-  dart.setLibraryUri(arena._GestureArena, I[0]);
-  dart.setFieldSignature(arena._GestureArena, () => ({
-    __proto__: dart.getFields(arena._GestureArena.__proto__),
-    members: dart.finalFieldType(core.List$(arena.GestureArenaMember)),
-    isOpen: dart.fieldType(core.bool),
-    isHeld: dart.fieldType(core.bool),
-    hasPendingSweep: dart.fieldType(core.bool),
-    eagerWinner: dart.fieldType(dart.nullable(arena.GestureArenaMember))
-  }));
-  dart.defineExtensionMethods(arena._GestureArena, ['toString']);
-  var _arenas = dart.privateName(arena, "_arenas");
-  var _debugLogDiagnostic = dart.privateName(arena, "_debugLogDiagnostic");
-  var _tryToResolveArena = dart.privateName(arena, "_tryToResolveArena");
-  var _resolveInFavorOf = dart.privateName(arena, "_resolveInFavorOf");
-  var _resolveByDefault = dart.privateName(arena, "_resolveByDefault");
-  arena.GestureArenaManager = class GestureArenaManager extends core.Object {
-    add(pointer, member) {
-      let state = this[_arenas][$putIfAbsent](pointer, dart.fn(() => {
-        if (!this[_debugLogDiagnostic](pointer, "★ Opening new gesture arena.")) dart.assertFailed(null, I[1], 109, 14, "_debugLogDiagnostic(pointer, '★ Opening new gesture arena.')");
-        return new arena._GestureArena.new();
-      }, T.VoidTo_GestureArena()));
-      state.add(member);
-      if (!this[_debugLogDiagnostic](pointer, "Adding: " + dart.str(member))) dart.assertFailed(null, I[1], 113, 12, "_debugLogDiagnostic(pointer, 'Adding: $member')");
-      return new arena.GestureArenaEntry.__(this, pointer, member);
-    }
-    close(pointer) {
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isOpen = false;
-      if (!this[_debugLogDiagnostic](pointer, "Closing", state)) dart.assertFailed(null, I[1], 125, 12, "_debugLogDiagnostic(pointer, 'Closing', state)");
-      this[_tryToResolveArena](pointer, state);
-    }
-    sweep(pointer) {
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      if (!!state.isOpen) dart.assertFailed(null, I[1], 146, 12, "!state.isOpen");
-      if (state.isHeld) {
-        state.hasPendingSweep = true;
-        if (!this[_debugLogDiagnostic](pointer, "Delaying sweep", state)) dart.assertFailed(null, I[1], 149, 14, "_debugLogDiagnostic(pointer, 'Delaying sweep', state)");
-        return;
+      set children(value) {
+        super.children = value;
       }
-      if (!this[_debugLogDiagnostic](pointer, "Sweeping", state)) dart.assertFailed(null, I[1], 152, 12, "_debugLogDiagnostic(pointer, 'Sweeping', state)");
-      this[_arenas][$remove](pointer);
-      if (state.members[$isNotEmpty]) {
-        if (!this[_debugLogDiagnostic](pointer, "Winner: " + dart.str(state.members[$first]))) dart.assertFailed(null, I[1], 156, 14, "_debugLogDiagnostic(pointer, 'Winner: ${state.members.first}')");
-        state.members[$first].acceptGesture(pointer);
-        for (let i = 1; i < state.members[$length]; i = i + 1)
-          state.members[$_get](i).rejectGesture(pointer);
+      get groupValue() {
+        return this[groupValue$];
+      }
+      set groupValue(value) {
+        super.groupValue = value;
+      }
+      get onValueChanged() {
+        return this[onValueChanged$];
+      }
+      set onValueChanged(value) {
+        super.onValueChanged = value;
+      }
+      get unselectedColor() {
+        return this[unselectedColor$];
+      }
+      set unselectedColor(value) {
+        super.unselectedColor = value;
+      }
+      get selectedColor() {
+        return this[selectedColor$];
+      }
+      set selectedColor(value) {
+        super.selectedColor = value;
+      }
+      get borderColor() {
+        return this[borderColor$];
+      }
+      set borderColor(value) {
+        super.borderColor = value;
+      }
+      get pressedColor() {
+        return this[pressedColor$];
+      }
+      set pressedColor(value) {
+        super.pressedColor = value;
+      }
+      get padding() {
+        return this[padding$];
+      }
+      set padding(value) {
+        super.padding = value;
+      }
+      createState() {
+        return new (_SegmentedControlStateOfT()).new();
       }
     }
-    hold(pointer) {
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isHeld = true;
-      if (!this[_debugLogDiagnostic](pointer, "Holding", state)) dart.assertFailed(null, I[1], 181, 12, "_debugLogDiagnostic(pointer, 'Holding', state)");
-    }
-    release(pointer) {
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isHeld = false;
-      if (!this[_debugLogDiagnostic](pointer, "Releasing", state)) dart.assertFailed(null, I[1], 198, 12, "_debugLogDiagnostic(pointer, 'Releasing', state)");
-      if (state.hasPendingSweep) this.sweep(pointer);
-    }
-    [_resolve](pointer, member, disposition) {
-      let t0;
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      if (!this[_debugLogDiagnostic](pointer, (disposition === arena.GestureDisposition.accepted ? "Accepting" : "Rejecting") + ": " + dart.str(member))) dart.assertFailed(null, I[1], 210, 12, "_debugLogDiagnostic(pointer, '${ disposition == GestureDisposition.accepted ? \"Accepting\" : \"Rejecting\" }: $member')");
-      if (!state.members[$contains](member)) dart.assertFailed(null, I[1], 211, 12, "state.members.contains(member)");
-      if (disposition === arena.GestureDisposition.rejected) {
-        state.members[$remove](member);
-        member.rejectGesture(pointer);
-        if (!state.isOpen) this[_tryToResolveArena](pointer, state);
-      } else {
-        if (!(disposition === arena.GestureDisposition.accepted)) dart.assertFailed(null, I[1], 218, 14, "disposition == GestureDisposition.accepted");
-        if (state.isOpen) {
-          t0 = state;
-          t0.eagerWinner == null ? t0.eagerWinner = member : null;
-        } else {
-          if (!this[_debugLogDiagnostic](pointer, "Self-declared winner: " + dart.str(member))) dart.assertFailed(null, I[1], 222, 16, "_debugLogDiagnostic(pointer, 'Self-declared winner: $member')");
-          this[_resolveInFavorOf](pointer, state, member);
-        }
-      }
-    }
-    [_tryToResolveArena](pointer, state) {
-      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, I[1], 229, 12, "_arenas[pointer] == state");
-      if (!!state.isOpen) dart.assertFailed(null, I[1], 230, 12, "!state.isOpen");
-      if (state.members[$length] === 1) {
-        async.scheduleMicrotask(dart.fn(() => this[_resolveByDefault](pointer, state), T.VoidTovoid()));
-      } else if (state.members[$isEmpty]) {
-        this[_arenas][$remove](pointer);
-        if (!this[_debugLogDiagnostic](pointer, "Arena empty.")) dart.assertFailed(null, I[1], 235, 14, "_debugLogDiagnostic(pointer, 'Arena empty.')");
-      } else if (state.eagerWinner != null) {
-        if (!this[_debugLogDiagnostic](pointer, "Eager winner: " + dart.str(state.eagerWinner))) dart.assertFailed(null, I[1], 237, 14, "_debugLogDiagnostic(pointer, 'Eager winner: ${state.eagerWinner}')");
-        this[_resolveInFavorOf](pointer, state, dart.nullCheck(state.eagerWinner));
-      }
-    }
-    [_resolveByDefault](pointer, state) {
-      if (!this[_arenas][$containsKey](pointer)) return;
-      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, I[1], 245, 12, "_arenas[pointer] == state");
-      if (!!state.isOpen) dart.assertFailed(null, I[1], 246, 12, "!state.isOpen");
-      let members = state.members;
-      if (!(members[$length] === 1)) dart.assertFailed(null, I[1], 248, 12, "members.length == 1");
-      this[_arenas][$remove](pointer);
-      if (!this[_debugLogDiagnostic](pointer, "Default winner: " + dart.str(state.members[$first]))) dart.assertFailed(null, I[1], 250, 12, "_debugLogDiagnostic(pointer, 'Default winner: ${state.members.first}')");
-      state.members[$first].acceptGesture(pointer);
-    }
-    [_resolveInFavorOf](pointer, state, member) {
-      if (!state[$_equals](this[_arenas][$_get](pointer))) dart.assertFailed(null, I[1], 255, 12, "state == _arenas[pointer]");
-      if (!(state !== null)) dart.assertFailed(null, I[1], 256, 12, "state != null");
-      if (!(state.eagerWinner == null || dart.equals(state.eagerWinner, member))) dart.assertFailed(null, I[1], 257, 12, "state.eagerWinner == null || state.eagerWinner == member");
-      if (!!state.isOpen) dart.assertFailed(null, I[1], 258, 12, "!state.isOpen");
-      this[_arenas][$remove](pointer);
-      for (let rejectedMember of state.members) {
-        if (!rejectedMember[$_equals](member)) rejectedMember.rejectGesture(pointer);
-      }
-      member.acceptGesture(pointer);
-    }
-    [_debugLogDiagnostic](pointer, message, state = null) {
-      if (!dart.fn(() => {
+    (CupertinoSegmentedControl.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let children = opts && 'children' in opts ? opts.children : null;
+      let onValueChanged = opts && 'onValueChanged' in opts ? opts.onValueChanged : null;
+      let groupValue = opts && 'groupValue' in opts ? opts.groupValue : null;
+      let unselectedColor = opts && 'unselectedColor' in opts ? opts.unselectedColor : null;
+      let selectedColor = opts && 'selectedColor' in opts ? opts.selectedColor : null;
+      let borderColor = opts && 'borderColor' in opts ? opts.borderColor : null;
+      let pressedColor = opts && 'pressedColor' in opts ? opts.pressedColor : null;
+      let padding = opts && 'padding' in opts ? opts.padding : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this[children$] = children;
+      this[onValueChanged$] = onValueChanged;
+      this[groupValue$] = groupValue;
+      this[unselectedColor$] = unselectedColor;
+      this[selectedColor$] = selectedColor;
+      this[borderColor$] = borderColor;
+      this[pressedColor$] = pressedColor;
+      this[padding$] = padding;
+      if (!(children !== null)) dart.assertFailed(null, I[0], 92, 15, "children != null");
+      if (!(children[$length] >= 2)) dart.assertFailed(null, I[0], 93, 15, "children.length >= 2");
+      if (!(onValueChanged !== null)) dart.assertFailed(null, I[0], 94, 15, "onValueChanged != null");
+      if (!(groupValue == null || children[$keys][$any](dart.fn(child => child[$_equals](groupValue), TTobool())))) dart.assertFailed("The groupValue must be either null or one of the keys in the children map.", I[0], 96, 10, "groupValue == null || children.keys.any((T child) => child == groupValue)");
+      CupertinoSegmentedControl.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = CupertinoSegmentedControl.prototype;
+    dart.addTypeTests(CupertinoSegmentedControl);
+    CupertinoSegmentedControl.prototype[_is_CupertinoSegmentedControl_default] = true;
+    dart.addTypeCaches(CupertinoSegmentedControl);
+    dart.setMethodSignature(CupertinoSegmentedControl, () => ({
+      __proto__: dart.getMethods(CupertinoSegmentedControl.__proto__),
+      createState: dart.fnType(segmented_control._SegmentedControlState$(T), [])
+    }));
+    dart.setLibraryUri(CupertinoSegmentedControl, I[1]);
+    dart.setFieldSignature(CupertinoSegmentedControl, () => ({
+      __proto__: dart.getFields(CupertinoSegmentedControl.__proto__),
+      children: dart.finalFieldType(core.Map$(T, framework.Widget)),
+      groupValue: dart.finalFieldType(dart.nullable(T)),
+      onValueChanged: dart.finalFieldType(dart.fnType(dart.void, [T])),
+      unselectedColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      selectedColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      borderColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      pressedColor: dart.finalFieldType(dart.nullable(ui.Color)),
+      padding: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsetsGeometry))
+    }));
+    return CupertinoSegmentedControl;
+  });
+  segmented_control.CupertinoSegmentedControl = segmented_control.CupertinoSegmentedControl$();
+  dart.addTypeTests(segmented_control.CupertinoSegmentedControl, _is_CupertinoSegmentedControl_default);
+  var _pressedKey = dart.privateName(segmented_control, "_pressedKey");
+  var _selectionControllers = dart.privateName(segmented_control, "_selectionControllers");
+  var _childTweens = dart.privateName(segmented_control, "_childTweens");
+  var ___SegmentedControlState__forwardBackgroundColorTween = dart.privateName(segmented_control, "_#_SegmentedControlState#_forwardBackgroundColorTween");
+  var ___SegmentedControlState__reverseBackgroundColorTween = dart.privateName(segmented_control, "_#_SegmentedControlState#_reverseBackgroundColorTween");
+  var ___SegmentedControlState__textColorTween = dart.privateName(segmented_control, "_#_SegmentedControlState#_textColorTween");
+  var _selectedColor = dart.privateName(segmented_control, "_selectedColor");
+  var _unselectedColor = dart.privateName(segmented_control, "_unselectedColor");
+  var _borderColor = dart.privateName(segmented_control, "_borderColor");
+  var _pressedColor = dart.privateName(segmented_control, "_pressedColor");
+  var _forwardBackgroundColorTween = dart.privateName(segmented_control, "_forwardBackgroundColorTween");
+  var _reverseBackgroundColorTween = dart.privateName(segmented_control, "_reverseBackgroundColorTween");
+  var _textColorTween = dart.privateName(segmented_control, "_textColorTween");
+  var _updateColors = dart.privateName(segmented_control, "_updateColors");
+  var _updateAnimationControllers = dart.privateName(segmented_control, "_updateAnimationControllers");
+  var _onTapDown = dart.privateName(segmented_control, "_onTapDown");
+  var _onTapCancel = dart.privateName(segmented_control, "_onTapCancel");
+  var _onTap = dart.privateName(segmented_control, "_onTap");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const _is__SegmentedControlState_default = Symbol('_is__SegmentedControlState_default');
+  segmented_control._SegmentedControlState$ = dart.generic(T => {
+    var CupertinoSegmentedControlOfT = () => (CupertinoSegmentedControlOfT = dart.constFn(segmented_control.CupertinoSegmentedControl$(T)))();
+    var TTovoid = () => (TTovoid = dart.constFn(dart.fnType(dart.void, [T])))();
+    var _SegmentedControlRenderWidgetOfT = () => (_SegmentedControlRenderWidgetOfT = dart.constFn(segmented_control._SegmentedControlRenderWidget$(T)))();
+    const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(segmented_control.CupertinoSegmentedControl$(T)) {};
+    (State_TickerProviderStateMixin$36.new = function() {
+      ticker_provider.TickerProviderStateMixin$(segmented_control.CupertinoSegmentedControl$(T))[dart.mixinNew].call(this);
+      State_TickerProviderStateMixin$36.__proto__.new.call(this);
+    }).prototype = State_TickerProviderStateMixin$36.prototype;
+    dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(segmented_control.CupertinoSegmentedControl$(T)));
+    class _SegmentedControlState extends State_TickerProviderStateMixin$36 {
+      get [_forwardBackgroundColorTween]() {
         let t0;
-        if (debug.debugPrintGestureArenaDiagnostics) {
-          let count = (t0 = state, t0 == null ? null : t0.members[$length]);
-          let s = count !== 1 ? "s" : "";
-          print.debugPrint("Gesture arena " + pointer[$toString]()[$padRight](4) + " ❙ " + message + (count != null ? " with " + dart.str(count) + " member" + s + "." : ""));
+        t0 = this[___SegmentedControlState__forwardBackgroundColorTween];
+        return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_forwardBackgroundColorTween")) : t0;
+      }
+      set [_forwardBackgroundColorTween](t0) {
+        this[___SegmentedControlState__forwardBackgroundColorTween] = t0;
+      }
+      get [_reverseBackgroundColorTween]() {
+        let t1;
+        t1 = this[___SegmentedControlState__reverseBackgroundColorTween];
+        return t1 == null ? dart.throw(new _internal.LateError.fieldNI("_reverseBackgroundColorTween")) : t1;
+      }
+      set [_reverseBackgroundColorTween](t1) {
+        this[___SegmentedControlState__reverseBackgroundColorTween] = t1;
+      }
+      get [_textColorTween]() {
+        let t2;
+        t2 = this[___SegmentedControlState__textColorTween];
+        return t2 == null ? dart.throw(new _internal.LateError.fieldNI("_textColorTween")) : t2;
+      }
+      set [_textColorTween](t2) {
+        this[___SegmentedControlState__textColorTween] = t2;
+      }
+      createAnimationController() {
+        let t3;
+        t3 = new animation_controller.AnimationController.new({duration: segmented_control._kFadeDuration, vsync: this});
+        return (() => {
+          t3.addListener(dart.fn(() => {
+            this.setState(dart.fn(() => {
+            }, T$.VoidTovoid()));
+          }, T$.VoidTovoid()));
+          return t3;
+        })();
+      }
+      [_updateColors]() {
+        let t3, t3$, t3$0, t3$1;
+        if (!this.mounted) dart.assertFailed("This should only be called after didUpdateDependencies", I[0], 221, 12, "mounted");
+        let changed = false;
+        let selectedColor = (t3 = this.widget.selectedColor, t3 == null ? theme.CupertinoTheme.of(this.context).primaryColor : t3);
+        if (!dart.equals(this[_selectedColor], selectedColor)) {
+          changed = true;
+          this[_selectedColor] = selectedColor;
         }
-        return true;
-      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 268, 12, "() {\r\n      if (debugPrintGestureArenaDiagnostics) {\r\n        final int? count = state?.members.length;\r\n        final String s = count != 1 ? 's' : '';\r\n        debugPrint('Gesture arena ${pointer.toString().padRight(4)} ❙ $message${ count != null ? \" with $count member$s.\" : \"\"}');\r\n      }\r\n      return true;\r\n    }()");
-      return true;
+        let unselectedColor = (t3$ = this.widget.unselectedColor, t3$ == null ? theme.CupertinoTheme.of(this.context).primaryContrastingColor : t3$);
+        if (!dart.equals(this[_unselectedColor], unselectedColor)) {
+          changed = true;
+          this[_unselectedColor] = unselectedColor;
+        }
+        let borderColor = (t3$0 = this.widget.borderColor, t3$0 == null ? theme.CupertinoTheme.of(this.context).primaryColor : t3$0);
+        if (!dart.equals(this[_borderColor], borderColor)) {
+          changed = true;
+          this[_borderColor] = borderColor;
+        }
+        let pressedColor = (t3$1 = this.widget.pressedColor, t3$1 == null ? theme.CupertinoTheme.of(this.context).primaryColor.withOpacity(0.2) : t3$1);
+        if (!dart.equals(this[_pressedColor], pressedColor)) {
+          changed = true;
+          this[_pressedColor] = pressedColor;
+        }
+        this[_forwardBackgroundColorTween] = new tween.ColorTween.new({begin: this[_pressedColor], end: this[_selectedColor]});
+        this[_reverseBackgroundColorTween] = new tween.ColorTween.new({begin: this[_unselectedColor], end: this[_selectedColor]});
+        this[_textColorTween] = new tween.ColorTween.new({begin: this[_selectedColor], end: this[_unselectedColor]});
+        return changed;
+      }
+      [_updateAnimationControllers]() {
+        if (!this.mounted) dart.assertFailed("This should only be called after didUpdateDependencies", I[0], 260, 12, "mounted");
+        for (let controller of this[_selectionControllers]) {
+          controller.dispose();
+        }
+        this[_selectionControllers][$clear]();
+        this[_childTweens][$clear]();
+        for (let key of this.widget.children[$keys]) {
+          let animationController = this.createAnimationController();
+          if (dart.equals(this.widget.groupValue, key)) {
+            this[_childTweens][$add](this[_reverseBackgroundColorTween]);
+            animationController.value = 1.0;
+          } else {
+            this[_childTweens][$add](this[_forwardBackgroundColorTween]);
+          }
+          this[_selectionControllers][$add](animationController);
+        }
+      }
+      didChangeDependencies() {
+        super.didChangeDependencies();
+        if (this[_updateColors]()) {
+          this[_updateAnimationControllers]();
+        }
+      }
+      didUpdateWidget(oldWidget) {
+        CupertinoSegmentedControlOfT().as(oldWidget);
+        super.didUpdateWidget(oldWidget);
+        if (this[_updateColors]() || oldWidget.children[$length] !== this.widget.children[$length]) {
+          this[_updateAnimationControllers]();
+        }
+        if (!dart.equals(oldWidget.groupValue, this.widget.groupValue)) {
+          let index = 0;
+          for (let key of this.widget.children[$keys]) {
+            if (dart.equals(this.widget.groupValue, key)) {
+              this[_childTweens][$_set](index, this[_forwardBackgroundColorTween]);
+              this[_selectionControllers][$_get](index).forward();
+            } else {
+              this[_childTweens][$_set](index, this[_reverseBackgroundColorTween]);
+              this[_selectionControllers][$_get](index).reverse();
+            }
+            index = index + 1;
+          }
+        }
+      }
+      dispose() {
+        for (let animationController of this[_selectionControllers]) {
+          animationController.dispose();
+        }
+        super.dispose();
+      }
+      [_onTapDown](currentKey) {
+        if (this[_pressedKey] == null && !currentKey[$_equals](this.widget.groupValue)) {
+          this.setState(dart.fn(() => {
+            this[_pressedKey] = currentKey;
+          }, T$.VoidTovoid()));
+        }
+      }
+      [_onTapCancel]() {
+        this.setState(dart.fn(() => {
+          this[_pressedKey] = null;
+        }, T$.VoidTovoid()));
+      }
+      [_onTap](currentKey) {
+        let t4, t3;
+        if (!currentKey[$_equals](this[_pressedKey])) return;
+        if (!currentKey[$_equals](this.widget.groupValue)) {
+          t3 = this.widget;
+          t4 = currentKey;
+          TTovoid().as(t3.onValueChanged)(t4);
+        }
+        this[_pressedKey] = null;
+      }
+      getTextColor(index, currentKey) {
+        T.as(currentKey);
+        if (this[_selectionControllers][$_get](index).isAnimating) return this[_textColorTween].evaluate(this[_selectionControllers][$_get](index));
+        if (dart.equals(this.widget.groupValue, currentKey)) return this[_unselectedColor];
+        return this[_selectedColor];
+      }
+      getBackgroundColor(index, currentKey) {
+        T.as(currentKey);
+        if (this[_selectionControllers][$_get](index).isAnimating) return this[_childTweens][$_get](index).evaluate(this[_selectionControllers][$_get](index));
+        if (dart.equals(this.widget.groupValue, currentKey)) return this[_selectedColor];
+        if (dart.equals(this[_pressedKey], currentKey)) return this[_pressedColor];
+        return this[_unselectedColor];
+      }
+      build(context) {
+        let t3;
+        let _gestureChildren = T$.JSArrayOfWidget().of([]);
+        let _backgroundColors = T$.JSArrayOfColor().of([]);
+        let index = 0;
+        let selectedIndex = null;
+        let pressedIndex = null;
+        for (let currentKey of this.widget.children[$keys]) {
+          selectedIndex = dart.equals(this.widget.groupValue, currentKey) ? index : selectedIndex;
+          pressedIndex = dart.equals(this[_pressedKey], currentKey) ? index : pressedIndex;
+          let textStyle = text.DefaultTextStyle.of(context).style.copyWith({color: this.getTextColor(index, currentKey)});
+          let iconTheme = new icon_theme_data.IconThemeData.new({color: this.getTextColor(index, currentKey)});
+          let child = new basic.Center.new({child: this.widget.children[$_get](currentKey), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+          child = new gesture_detector.GestureDetector.new({behavior: proxy_box.HitTestBehavior.opaque, onTapDown: dart.fn(event => {
+              this[_onTapDown](currentKey);
+            }, T$.TapDownDetailsTovoid()), onTapCancel: dart.bind(this, _onTapCancel), onTap: dart.fn(() => {
+              this[_onTap](currentKey);
+            }, T$.VoidTovoid()), child: new icon_theme.IconTheme.new({data: iconTheme, child: new text.DefaultTextStyle.new({style: textStyle, child: new basic.Semantics.new({button: true, inMutuallyExclusiveGroup: true, selected: dart.equals(this.widget.groupValue, currentKey), child: child, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+          _backgroundColors[$add](dart.nullCheck(this.getBackgroundColor(index, currentKey)));
+          _gestureChildren[$add](child);
+          index = index + 1;
+        }
+        let box = new (_SegmentedControlRenderWidgetOfT()).new({children: _gestureChildren, selectedIndex: selectedIndex, pressedIndex: pressedIndex, backgroundColors: _backgroundColors, borderColor: dart.nullCheck(this[_borderColor]), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+        return new basic.Padding.new({padding: (t3 = this.widget.padding, t3 == null ? segmented_control._kHorizontalItemPadding : t3), child: new basic.UnconstrainedBox.new({constrainedAxis: basic_types.Axis.horizontal, child: box, $creationLocationd_0dea112b090073317d4: C[31] || CT.C31}), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35});
+      }
     }
-  };
-  (arena.GestureArenaManager.new = function() {
-    this[_arenas] = new (T.IdentityMapOfint$_GestureArena()).new();
+    (_SegmentedControlState.new = function() {
+      this[_pressedKey] = null;
+      this[_selectionControllers] = T$.JSArrayOfAnimationController().of([]);
+      this[_childTweens] = T$.JSArrayOfColorTween().of([]);
+      this[___SegmentedControlState__forwardBackgroundColorTween] = null;
+      this[___SegmentedControlState__reverseBackgroundColorTween] = null;
+      this[___SegmentedControlState__textColorTween] = null;
+      this[_selectedColor] = null;
+      this[_unselectedColor] = null;
+      this[_borderColor] = null;
+      this[_pressedColor] = null;
+      _SegmentedControlState.__proto__.new.call(this);
+      ;
+    }).prototype = _SegmentedControlState.prototype;
+    dart.addTypeTests(_SegmentedControlState);
+    _SegmentedControlState.prototype[_is__SegmentedControlState_default] = true;
+    dart.addTypeCaches(_SegmentedControlState);
+    dart.setMethodSignature(_SegmentedControlState, () => ({
+      __proto__: dart.getMethods(_SegmentedControlState.__proto__),
+      createAnimationController: dart.fnType(animation_controller.AnimationController, []),
+      [_updateColors]: dart.fnType(core.bool, []),
+      [_updateAnimationControllers]: dart.fnType(dart.void, []),
+      [_onTapDown]: dart.fnType(dart.void, [T]),
+      [_onTapCancel]: dart.fnType(dart.void, []),
+      [_onTap]: dart.fnType(dart.void, [T]),
+      getTextColor: dart.fnType(dart.nullable(ui.Color), [core.int, dart.nullable(core.Object)]),
+      getBackgroundColor: dart.fnType(dart.nullable(ui.Color), [core.int, dart.nullable(core.Object)]),
+      build: dart.fnType(framework.Widget, [framework.BuildContext])
+    }));
+    dart.setGetterSignature(_SegmentedControlState, () => ({
+      __proto__: dart.getGetters(_SegmentedControlState.__proto__),
+      [_forwardBackgroundColorTween]: tween.ColorTween,
+      [_reverseBackgroundColorTween]: tween.ColorTween,
+      [_textColorTween]: tween.ColorTween
+    }));
+    dart.setSetterSignature(_SegmentedControlState, () => ({
+      __proto__: dart.getSetters(_SegmentedControlState.__proto__),
+      [_forwardBackgroundColorTween]: tween.ColorTween,
+      [_reverseBackgroundColorTween]: tween.ColorTween,
+      [_textColorTween]: tween.ColorTween
+    }));
+    dart.setLibraryUri(_SegmentedControlState, I[1]);
+    dart.setFieldSignature(_SegmentedControlState, () => ({
+      __proto__: dart.getFields(_SegmentedControlState.__proto__),
+      [_pressedKey]: dart.fieldType(dart.nullable(T)),
+      [_selectionControllers]: dart.finalFieldType(core.List$(animation_controller.AnimationController)),
+      [_childTweens]: dart.finalFieldType(core.List$(tween.ColorTween)),
+      [___SegmentedControlState__forwardBackgroundColorTween]: dart.fieldType(dart.nullable(tween.ColorTween)),
+      [___SegmentedControlState__reverseBackgroundColorTween]: dart.fieldType(dart.nullable(tween.ColorTween)),
+      [___SegmentedControlState__textColorTween]: dart.fieldType(dart.nullable(tween.ColorTween)),
+      [_selectedColor]: dart.fieldType(dart.nullable(ui.Color)),
+      [_unselectedColor]: dart.fieldType(dart.nullable(ui.Color)),
+      [_borderColor]: dart.fieldType(dart.nullable(ui.Color)),
+      [_pressedColor]: dart.fieldType(dart.nullable(ui.Color))
+    }));
+    return _SegmentedControlState;
+  });
+  segmented_control._SegmentedControlState = segmented_control._SegmentedControlState$();
+  dart.addTypeTests(segmented_control._SegmentedControlState, _is__SegmentedControlState_default);
+  const _is__SegmentedControlRenderWidget_default = Symbol('_is__SegmentedControlRenderWidget_default');
+  segmented_control._SegmentedControlRenderWidget$ = dart.generic(T => {
+    var _RenderSegmentedControlOfT = () => (_RenderSegmentedControlOfT = dart.constFn(segmented_control._RenderSegmentedControl$(T)))();
+    class _SegmentedControlRenderWidget extends framework.MultiChildRenderObjectWidget {
+      createRenderObject(context) {
+        return new (_RenderSegmentedControlOfT()).new({textDirection: basic.Directionality.of(context), selectedIndex: this.selectedIndex, pressedIndex: this.pressedIndex, backgroundColors: this.backgroundColors, borderColor: this.borderColor});
+      }
+      updateRenderObject(context, renderObject) {
+        let t3;
+        _RenderSegmentedControlOfT().as(renderObject);
+        t3 = renderObject;
+        (() => {
+          t3.textDirection = basic.Directionality.of(context);
+          t3.selectedIndex = this.selectedIndex;
+          t3.pressedIndex = this.pressedIndex;
+          t3.backgroundColors = this.backgroundColors;
+          t3.borderColor = this.borderColor;
+          return t3;
+        })();
+      }
+    }
+    (_SegmentedControlRenderWidget.new = function(opts) {
+      let key = opts && 'key' in opts ? opts.key : null;
+      let children = opts && 'children' in opts ? opts.children : C[39] || CT.C39;
+      let selectedIndex = opts && 'selectedIndex' in opts ? opts.selectedIndex : null;
+      let pressedIndex = opts && 'pressedIndex' in opts ? opts.pressedIndex : null;
+      let backgroundColors = opts && 'backgroundColors' in opts ? opts.backgroundColors : null;
+      let borderColor = opts && 'borderColor' in opts ? opts.borderColor : null;
+      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+      this.selectedIndex = selectedIndex;
+      this.pressedIndex = pressedIndex;
+      this.backgroundColors = backgroundColors;
+      this.borderColor = borderColor;
+      _SegmentedControlRenderWidget.__proto__.new.call(this, {key: key, children: children, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+      ;
+    }).prototype = _SegmentedControlRenderWidget.prototype;
+    dart.addTypeTests(_SegmentedControlRenderWidget);
+    _SegmentedControlRenderWidget.prototype[_is__SegmentedControlRenderWidget_default] = true;
+    dart.addTypeCaches(_SegmentedControlRenderWidget);
+    dart.setMethodSignature(_SegmentedControlRenderWidget, () => ({
+      __proto__: dart.getMethods(_SegmentedControlRenderWidget.__proto__),
+      createRenderObject: dart.fnType(object.RenderObject, [framework.BuildContext])
+    }));
+    dart.setLibraryUri(_SegmentedControlRenderWidget, I[1]);
+    dart.setFieldSignature(_SegmentedControlRenderWidget, () => ({
+      __proto__: dart.getFields(_SegmentedControlRenderWidget.__proto__),
+      selectedIndex: dart.finalFieldType(dart.nullable(core.int)),
+      pressedIndex: dart.finalFieldType(dart.nullable(core.int)),
+      backgroundColors: dart.finalFieldType(core.List$(ui.Color)),
+      borderColor: dart.finalFieldType(ui.Color)
+    }));
+    return _SegmentedControlRenderWidget;
+  });
+  segmented_control._SegmentedControlRenderWidget = segmented_control._SegmentedControlRenderWidget$();
+  dart.addTypeTests(segmented_control._SegmentedControlRenderWidget, _is__SegmentedControlRenderWidget_default);
+  segmented_control._SegmentedControlContainerBoxParentData = class _SegmentedControlContainerBoxParentData extends box.ContainerBoxParentData$(box.RenderBox) {};
+  (segmented_control._SegmentedControlContainerBoxParentData.new = function() {
+    this.surroundingRect = null;
+    segmented_control._SegmentedControlContainerBoxParentData.__proto__.new.call(this);
     ;
-  }).prototype = arena.GestureArenaManager.prototype;
-  dart.addTypeTests(arena.GestureArenaManager);
-  dart.addTypeCaches(arena.GestureArenaManager);
-  dart.setMethodSignature(arena.GestureArenaManager, () => ({
-    __proto__: dart.getMethods(arena.GestureArenaManager.__proto__),
-    add: dart.fnType(arena.GestureArenaEntry, [core.int, arena.GestureArenaMember]),
-    close: dart.fnType(dart.void, [core.int]),
-    sweep: dart.fnType(dart.void, [core.int]),
-    hold: dart.fnType(dart.void, [core.int]),
-    release: dart.fnType(dart.void, [core.int]),
-    [_resolve]: dart.fnType(dart.void, [core.int, arena.GestureArenaMember, arena.GestureDisposition]),
-    [_tryToResolveArena]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
-    [_resolveByDefault]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
-    [_resolveInFavorOf]: dart.fnType(dart.void, [core.int, arena._GestureArena, arena.GestureArenaMember]),
-    [_debugLogDiagnostic]: dart.fnType(core.bool, [core.int, core.String], [dart.nullable(arena._GestureArena)])
+  }).prototype = segmented_control._SegmentedControlContainerBoxParentData.prototype;
+  dart.addTypeTests(segmented_control._SegmentedControlContainerBoxParentData);
+  dart.addTypeCaches(segmented_control._SegmentedControlContainerBoxParentData);
+  dart.setLibraryUri(segmented_control._SegmentedControlContainerBoxParentData, I[1]);
+  dart.setFieldSignature(segmented_control._SegmentedControlContainerBoxParentData, () => ({
+    __proto__: dart.getFields(segmented_control._SegmentedControlContainerBoxParentData.__proto__),
+    surroundingRect: dart.fieldType(dart.nullable(ui.RRect))
   }));
-  dart.setLibraryUri(arena.GestureArenaManager, I[0]);
-  dart.setFieldSignature(arena.GestureArenaManager, () => ({
-    __proto__: dart.getFields(arena.GestureArenaManager.__proto__),
-    [_arenas]: dart.finalFieldType(core.Map$(core.int, arena._GestureArena))
-  }));
-  dart.trackLibraries("packages/flutter/src/gestures/arena.dart", {
-    "package:flutter/src/gestures/arena.dart": arena
+  var _textDirection = dart.privateName(segmented_control, "_textDirection");
+  var _selectedIndex = dart.privateName(segmented_control, "_selectedIndex");
+  var _pressedIndex = dart.privateName(segmented_control, "_pressedIndex");
+  var _backgroundColors = dart.privateName(segmented_control, "_backgroundColors");
+  var Radius_y = dart.privateName(ui, "Radius.y");
+  var Radius_x = dart.privateName(ui, "Radius.x");
+  var _layoutRects = dart.privateName(segmented_control, "_layoutRects");
+  var _calculateChildSize = dart.privateName(segmented_control, "_calculateChildSize");
+  var _computeOverallSizeFromChildSize = dart.privateName(segmented_control, "_computeOverallSizeFromChildSize");
+  var _name = dart.privateName(ui, "_name");
+  var _paintChild = dart.privateName(segmented_control, "_paintChild");
+  const _is__RenderSegmentedControl_default = Symbol('_is__RenderSegmentedControl_default');
+  segmented_control._RenderSegmentedControl$ = dart.generic(T => {
+    const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
+    (RenderBox_ContainerRenderObjectMixin$36.new = function() {
+      object.ContainerRenderObjectMixin$(box.RenderBox, box.ContainerBoxParentData$(box.RenderBox))[dart.mixinNew].call(this);
+      RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
+    }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
+    dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, box.ContainerBoxParentData$(box.RenderBox)));
+    const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
+    (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
+      RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
+    }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
+    dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, box.ContainerBoxParentData$(box.RenderBox)));
+    class _RenderSegmentedControl extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
+      get selectedIndex() {
+        return this[_selectedIndex];
+      }
+      set selectedIndex(value) {
+        if (this[_selectedIndex] == value) {
+          return;
+        }
+        this[_selectedIndex] = value;
+        this.markNeedsPaint();
+      }
+      get pressedIndex() {
+        return this[_pressedIndex];
+      }
+      set pressedIndex(value) {
+        if (this[_pressedIndex] == value) {
+          return;
+        }
+        this[_pressedIndex] = value;
+        this.markNeedsPaint();
+      }
+      get textDirection() {
+        return this[_textDirection];
+      }
+      set textDirection(value) {
+        if (this[_textDirection] === value) {
+          return;
+        }
+        this[_textDirection] = value;
+        this.markNeedsLayout();
+      }
+      get backgroundColors() {
+        return this[_backgroundColors];
+      }
+      set backgroundColors(value) {
+        if (this[_backgroundColors][$_equals](value)) {
+          return;
+        }
+        this[_backgroundColors] = value;
+        this.markNeedsPaint();
+      }
+      get borderColor() {
+        return this[_borderColor];
+      }
+      set borderColor(value) {
+        if (this[_borderColor]._equals(value)) {
+          return;
+        }
+        this[_borderColor] = value;
+        this.markNeedsPaint();
+      }
+      computeMinIntrinsicWidth(height) {
+        let child = this.firstChild;
+        let minWidth = 0.0;
+        while (child != null) {
+          let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+          let childWidth = child.getMinIntrinsicWidth(height);
+          minWidth = math.max(core.double, minWidth, childWidth);
+          child = childParentData.nextSibling;
+        }
+        return minWidth * this.childCount;
+      }
+      computeMaxIntrinsicWidth(height) {
+        let child = this.firstChild;
+        let maxWidth = 0.0;
+        while (child != null) {
+          let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+          let childWidth = child.getMaxIntrinsicWidth(height);
+          maxWidth = math.max(core.double, maxWidth, childWidth);
+          child = childParentData.nextSibling;
+        }
+        return maxWidth * this.childCount;
+      }
+      computeMinIntrinsicHeight(width) {
+        let child = this.firstChild;
+        let minHeight = 0.0;
+        while (child != null) {
+          let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+          let childHeight = child.getMinIntrinsicHeight(width);
+          minHeight = math.max(core.double, minHeight, childHeight);
+          child = childParentData.nextSibling;
+        }
+        return minHeight;
+      }
+      computeMaxIntrinsicHeight(width) {
+        let child = this.firstChild;
+        let maxHeight = 0.0;
+        while (child != null) {
+          let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+          let childHeight = child.getMaxIntrinsicHeight(width);
+          maxHeight = math.max(core.double, maxHeight, childHeight);
+          child = childParentData.nextSibling;
+        }
+        return maxHeight;
+      }
+      computeDistanceToActualBaseline(baseline) {
+        return this.defaultComputeDistanceToHighestActualBaseline(baseline);
+      }
+      setupParentData(child) {
+        box.RenderBox.as(child);
+        if (!segmented_control._SegmentedControlContainerBoxParentData.is(child.parentData)) {
+          child.parentData = new segmented_control._SegmentedControlContainerBoxParentData.new();
+        }
+      }
+      [_layoutRects](nextChild, leftChild, rightChild) {
+        let child = leftChild;
+        let start = 0.0;
+        while (child != null) {
+          let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+          let childOffset = new ui.Offset.new(start, 0.0);
+          childParentData.offset = childOffset;
+          let childRect = new ui.Rect.fromLTWH(start, 0.0, child.size.width, child.size.height);
+          let rChildRect = null;
+          if (dart.equals(child, leftChild)) {
+            rChildRect = new ui.RRect.fromRectAndCorners(childRect, {topLeft: C[40] || CT.C40, bottomLeft: C[40] || CT.C40});
+          } else if (dart.equals(child, rightChild)) {
+            rChildRect = new ui.RRect.fromRectAndCorners(childRect, {topRight: C[40] || CT.C40, bottomRight: C[40] || CT.C40});
+          } else {
+            rChildRect = new ui.RRect.fromRectAndCorners(childRect);
+          }
+          childParentData.surroundingRect = rChildRect;
+          start = start + child.size.width;
+          child = nextChild(child);
+        }
+      }
+      [_calculateChildSize](constraints) {
+        let maxHeight = 28;
+        let childWidth = constraints.minWidth / this.childCount;
+        let child = this.firstChild;
+        while (child != null) {
+          childWidth = math.max(core.double, childWidth, child.getMaxIntrinsicWidth(1 / 0));
+          child = this.childAfter(child);
+        }
+        childWidth = math.min(core.double, childWidth, constraints.maxWidth / this.childCount);
+        child = this.firstChild;
+        while (child != null) {
+          let boxHeight = child.getMaxIntrinsicHeight(childWidth);
+          maxHeight = math.max(core.double, maxHeight, boxHeight);
+          child = this.childAfter(child);
+        }
+        return new ui.Size.new(childWidth, maxHeight);
+      }
+      [_computeOverallSizeFromChildSize](childSize) {
+        return this.constraints.constrain(new ui.Size.new(childSize.width * this.childCount, childSize.height));
+      }
+      computeDryLayout(constraints) {
+        let childSize = this[_calculateChildSize](constraints);
+        return this[_computeOverallSizeFromChildSize](childSize);
+      }
+      performLayout() {
+        let constraints = this.constraints;
+        let childSize = this[_calculateChildSize](constraints);
+        let childConstraints = new box.BoxConstraints.tightFor({width: childSize.width, height: childSize.height});
+        let child = this.firstChild;
+        while (child != null) {
+          child.layout(childConstraints, {parentUsesSize: true});
+          child = this.childAfter(child);
+        }
+        switch (this.textDirection) {
+          case C[41] || CT.C41:
+          {
+            this[_layoutRects](dart.bind(this, 'childBefore'), this.lastChild, this.firstChild);
+            break;
+          }
+          case C[42] || CT.C42:
+          {
+            this[_layoutRects](dart.bind(this, 'childAfter'), this.firstChild, this.lastChild);
+            break;
+          }
+        }
+        this.size = this[_computeOverallSizeFromChildSize](childSize);
+      }
+      paint(context, offset) {
+        let child = this.firstChild;
+        let index = 0;
+        while (child != null) {
+          this[_paintChild](context, offset, child, index);
+          child = this.childAfter(child);
+          index = index + 1;
+        }
+      }
+      [_paintChild](context, offset, child, childIndex) {
+        let t3, t3$;
+        if (!(child !== null)) dart.assertFailed(null, I[0], 711, 12, "child != null");
+        let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+        context.canvas.drawRRect(dart.nullCheck(childParentData.surroundingRect).shift(offset), (t3 = ui.Paint.new(), (() => {
+          t3.color = this.backgroundColors[$_get](childIndex);
+          t3.style = ui.PaintingStyle.fill;
+          return t3;
+        })()));
+        context.canvas.drawRRect(dart.nullCheck(childParentData.surroundingRect).shift(offset), (t3$ = ui.Paint.new(), (() => {
+          t3$.color = this.borderColor;
+          t3$.strokeWidth = 1.0;
+          t3$.style = ui.PaintingStyle.stroke;
+          return t3$;
+        })()));
+        context.paintChild(child, childParentData.offset['+'](offset));
+      }
+      hitTestChildren(result, opts) {
+        let position = opts && 'position' in opts ? opts.position : null;
+        if (!(position !== null)) dart.assertFailed(null, I[0], 734, 12, "position != null");
+        let child = this.lastChild;
+        while (child != null) {
+          let childParentData = segmented_control._SegmentedControlContainerBoxParentData.as(dart.nullCheck(child.parentData));
+          if (dart.nullCheck(childParentData.surroundingRect).contains(position)) {
+            return result.addWithPaintOffset({offset: childParentData.offset, position: position, hitTest: dart.fn((result, localOffset) => {
+                if (!localOffset._equals(position['-'](childParentData.offset))) dart.assertFailed(null, I[0], 743, 20, "localOffset == position - childParentData.offset");
+                return dart.nullCheck(child).hitTest(result, {position: localOffset});
+              }, T$.BoxHitTestResultAndOffsetTobool())});
+          }
+          child = childParentData.previousSibling;
+        }
+        return false;
+      }
+    }
+    (_RenderSegmentedControl.new = function(opts) {
+      let selectedIndex = opts && 'selectedIndex' in opts ? opts.selectedIndex : null;
+      let pressedIndex = opts && 'pressedIndex' in opts ? opts.pressedIndex : null;
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      let backgroundColors = opts && 'backgroundColors' in opts ? opts.backgroundColors : null;
+      let borderColor = opts && 'borderColor' in opts ? opts.borderColor : null;
+      if (!(textDirection !== null)) dart.assertFailed(null, I[0], 484, 15, "textDirection != null");
+      this[_textDirection] = textDirection;
+      this[_selectedIndex] = selectedIndex;
+      this[_pressedIndex] = pressedIndex;
+      this[_backgroundColors] = backgroundColors;
+      this[_borderColor] = borderColor;
+      _RenderSegmentedControl.__proto__.new.call(this);
+      ;
+    }).prototype = _RenderSegmentedControl.prototype;
+    dart.addTypeTests(_RenderSegmentedControl);
+    _RenderSegmentedControl.prototype[_is__RenderSegmentedControl_default] = true;
+    dart.addTypeCaches(_RenderSegmentedControl);
+    dart.setMethodSignature(_RenderSegmentedControl, () => ({
+      __proto__: dart.getMethods(_RenderSegmentedControl.__proto__),
+      [_layoutRects]: dart.fnType(dart.void, [dart.fnType(dart.nullable(box.RenderBox), [box.RenderBox]), dart.nullable(box.RenderBox), dart.nullable(box.RenderBox)]),
+      [_calculateChildSize]: dart.fnType(ui.Size, [box.BoxConstraints]),
+      [_computeOverallSizeFromChildSize]: dart.fnType(ui.Size, [ui.Size]),
+      [_paintChild]: dart.fnType(dart.void, [object.PaintingContext, ui.Offset, box.RenderBox, core.int])
+    }));
+    dart.setGetterSignature(_RenderSegmentedControl, () => ({
+      __proto__: dart.getGetters(_RenderSegmentedControl.__proto__),
+      selectedIndex: dart.nullable(core.int),
+      pressedIndex: dart.nullable(core.int),
+      textDirection: ui.TextDirection,
+      backgroundColors: core.List$(ui.Color),
+      borderColor: ui.Color
+    }));
+    dart.setSetterSignature(_RenderSegmentedControl, () => ({
+      __proto__: dart.getSetters(_RenderSegmentedControl.__proto__),
+      selectedIndex: dart.nullable(core.int),
+      pressedIndex: dart.nullable(core.int),
+      textDirection: ui.TextDirection,
+      backgroundColors: core.List$(ui.Color),
+      borderColor: ui.Color
+    }));
+    dart.setLibraryUri(_RenderSegmentedControl, I[1]);
+    dart.setFieldSignature(_RenderSegmentedControl, () => ({
+      __proto__: dart.getFields(_RenderSegmentedControl.__proto__),
+      [_selectedIndex]: dart.fieldType(dart.nullable(core.int)),
+      [_pressedIndex]: dart.fieldType(dart.nullable(core.int)),
+      [_textDirection]: dart.fieldType(ui.TextDirection),
+      [_backgroundColors]: dart.fieldType(core.List$(ui.Color)),
+      [_borderColor]: dart.fieldType(ui.Color)
+    }));
+    return _RenderSegmentedControl;
+  });
+  segmented_control._RenderSegmentedControl = segmented_control._RenderSegmentedControl$();
+  dart.addTypeTests(segmented_control._RenderSegmentedControl, _is__RenderSegmentedControl_default);
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  dart.defineLazy(segmented_control, {
+    /*segmented_control._kHorizontalItemPadding*/get _kHorizontalItemPadding() {
+      return C[43] || CT.C43;
+    },
+    /*segmented_control._kMinSegmentedControlHeight*/get _kMinSegmentedControlHeight() {
+      return 28;
+    },
+    /*segmented_control._kFadeDuration*/get _kFadeDuration() {
+      return C[44] || CT.C44;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/cupertino/segmented_control.dart", {
+    "package:flutter/src/cupertino/segmented_control.dart": segmented_control
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["arena.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/gestures/arena.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["segmented_control.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/cupertino/segmented_control.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__arena: arena
+    src__cupertino__segmented_control: segmented_control
   };
 }));
 
-//# sourceMappingURL=arena.dart.lib.js.map
+//# sourceMappingURL=segmented_control.dart.lib.js.map

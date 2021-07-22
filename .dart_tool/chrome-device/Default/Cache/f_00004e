@@ -1,74 +1,69 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/collection/src/priority_queue.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/scheduler/debug.dart', 'packages/flutter/src/foundation/binding.dart', 'packages/flutter/src/scheduler/priority.dart'], (function load__packages__flutter__src__scheduler__binding_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__collection__src__priority_queue$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__scheduler__debug$46dart, packages__flutter__src__foundation__binding$46dart, packages__flutter__src__scheduler__priority$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/painting/decoration.dart', 'packages/flutter/src/rendering/table_border.dart'], (function load__packages__flutter__src__rendering__table_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__painting__decoration$46dart, packages__flutter__src__rendering__table_border$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const async = dart_sdk.async;
-  const _internal = dart_sdk._internal;
-  const developer = dart_sdk.developer;
+  const math = dart_sdk.math;
   const _interceptors = dart_sdk._interceptors;
-  const ui = dart_sdk.ui;
   const _js_helper = dart_sdk._js_helper;
   const collection = dart_sdk.collection;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const object$ = packages__flutter__src__foundation__object$46dart.src__foundation__object;
   const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
-  const priority_queue = packages__collection__src__priority_queue$46dart.src__priority_queue;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  const debug$ = packages__flutter__src__scheduler__debug$46dart.src__scheduler__debug;
-  const binding = packages__flutter__src__foundation__binding$46dart.src__foundation__binding;
-  const priority$ = packages__flutter__src__scheduler__priority$46dart.src__scheduler__priority;
-  var binding$ = Object.create(dart.library);
-  var $add = dartx.add;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const decoration = packages__flutter__src__painting__decoration$46dart.src__painting__decoration;
+  const table_border = packages__flutter__src__rendering__table_border$46dart.src__rendering__table_border;
+  var table = Object.create(dart.library);
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $isFinite = dartx.isFinite;
+  var $isNotEmpty = dartx.isNotEmpty;
   var $length = dartx.length;
-  var $contains = dartx.contains;
-  var $remove = dartx.remove;
-  var $isEmpty = dartx.isEmpty;
-  var $compareTo = dartx.compareTo;
-  var $_set = dartx._set;
-  var $keys = dartx.keys;
-  var $_get = dartx._get;
-  var $trimRight = dartx.trimRight;
-  var $split = dartx.split;
-  var $join = dartx.join;
-  var $round = dartx.round;
-  var $toString = dartx.toString;
-  var $padRight = dartx.padRight;
-  var $padLeft = dartx.padLeft;
+  var $first = dartx.first;
   var $forEach = dartx.forEach;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $_equals = dartx._equals;
+  var $isEmpty = dartx.isEmpty;
   var $clear = dartx.clear;
-  var $times = dartx['*'];
+  var $modulo = dartx['%'];
+  var $truncate = dartx.truncate;
+  var $addAll = dartx.addAll;
+  var $fold = dartx.fold;
+  var $reversed = dartx.reversed;
+  var $last = dartx.last;
+  var $add = dartx.add;
+  var $getRange = dartx.getRange;
+  var $skip = dartx.skip;
+  var $map = dartx.map;
   dart._checkModuleNullSafetyMode(true);
-  var T$ = {
-    VoidTobool: () => (T$.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    VoidToNull: () => (T$.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
-    JSArrayOfDiagnosticsNode: () => (T$.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
-    ListOfFrameTiming: () => (T$.ListOfFrameTiming = dart.constFn(core.List$(ui.FrameTiming)))(),
-    ListOfFrameTimingTovoid: () => (T$.ListOfFrameTimingTovoid = dart.constFn(dart.fnType(dart.void, [T$.ListOfFrameTiming()])))(),
-    JSArrayOfListOfFrameTimingTovoid: () => (T$.JSArrayOfListOfFrameTimingTovoid = dart.constFn(_interceptors.JSArray$(T$.ListOfFrameTimingTovoid())))(),
-    __Tobool: () => (T$.__Tobool = dart.constFn(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})))(),
-    HeapPriorityQueueOf_TaskEntry: () => (T$.HeapPriorityQueueOf_TaskEntry = dart.constFn(priority_queue.HeapPriorityQueue$(binding$._TaskEntry)))(),
-    _TaskEntryAnd_TaskEntryToint: () => (T$._TaskEntryAnd_TaskEntryToint = dart.constFn(dart.fnType(core.int, [binding$._TaskEntry, binding$._TaskEntry])))(),
-    IdentityMapOfint$_FrameCallbackEntry: () => (T$.IdentityMapOfint$_FrameCallbackEntry = dart.constFn(_js_helper.IdentityMap$(core.int, binding$._FrameCallbackEntry)))(),
-    _IdentityHashSetOfint: () => (T$._IdentityHashSetOfint = dart.constFn(collection._IdentityHashSet$(core.int)))(),
-    DurationTovoid: () => (T$.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
-    JSArrayOfDurationTovoid: () => (T$.JSArrayOfDurationTovoid = dart.constFn(_interceptors.JSArray$(T$.DurationTovoid())))(),
-    ListOfListOfFrameTimingTovoid: () => (T$.ListOfListOfFrameTimingTovoid = dart.constFn(core.List$(T$.ListOfFrameTimingTovoid())))(),
-    DiagnosticsPropertyOfListOfFrameTimingTovoid: () => (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid = dart.constFn(diagnostics.DiagnosticsProperty$(T$.ListOfFrameTimingTovoid())))(),
-    SyncIterableOfDiagnosticsNode: () => (T$.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
-    IterableOfDiagnosticsNode: () => (T$.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
-    VoidToIterableOfDiagnosticsNode: () => (T$.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T$.IterableOfDiagnosticsNode(), [])))(),
-    FutureOfdouble: () => (T$.FutureOfdouble = dart.constFn(async.Future$(core.double)))(),
-    VoidToFutureOfdouble: () => (T$.VoidToFutureOfdouble = dart.constFn(dart.fnType(T$.FutureOfdouble(), [])))(),
-    FutureOfvoid: () => (T$.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
-    doubleToFutureOfvoid: () => (T$.doubleToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [core.double])))(),
-    LinkedHashMapOfint$_FrameCallbackEntry: () => (T$.LinkedHashMapOfint$_FrameCallbackEntry = dart.constFn(collection.LinkedHashMap$(core.int, binding$._FrameCallbackEntry)))(),
-    CompleterOfvoid: () => (T$.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
-    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    VoidToFutureOfvoid: () => (T$.VoidToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [])))(),
-    intAnd_FrameCallbackEntryTovoid: () => (T$.intAnd_FrameCallbackEntryTovoid = dart.constFn(dart.fnType(dart.void, [core.int, binding$._FrameCallbackEntry])))(),
-    ListOfDurationTovoid: () => (T$.ListOfDurationTovoid = dart.constFn(core.List$(T$.DurationTovoid())))(),
-    IdentityMapOfString$dynamic: () => (T$.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
+  var T = {
+    RenderBoxN: () => (T.RenderBoxN = dart.constFn(dart.nullable(box.RenderBox)))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    IdentityMapOfint$TableColumnWidth: () => (T.IdentityMapOfint$TableColumnWidth = dart.constFn(_js_helper.IdentityMap$(core.int, table.TableColumnWidth)))(),
+    JSArrayOfRenderBoxN: () => (T.JSArrayOfRenderBoxN = dart.constFn(_interceptors.JSArray$(T.RenderBoxN())))(),
+    ListOfRenderBoxN: () => (T.ListOfRenderBoxN = dart.constFn(core.List$(T.RenderBoxN())))(),
+    MapOfint$TableColumnWidth: () => (T.MapOfint$TableColumnWidth = dart.constFn(core.Map$(core.int, table.TableColumnWidth)))(),
+    ListOfDecoration: () => (T.ListOfDecoration = dart.constFn(core.List$(decoration.Decoration)))(),
+    BoxPainterN: () => (T.BoxPainterN = dart.constFn(dart.nullable(decoration.BoxPainter)))(),
+    ListOfBoxPainterN: () => (T.ListOfBoxPainterN = dart.constFn(core.List$(T.BoxPainterN())))(),
+    _HashSetOfRenderBox: () => (T._HashSetOfRenderBox = dart.constFn(collection._HashSet$(box.RenderBox)))(),
+    SyncIterableOfRenderBox: () => (T.SyncIterableOfRenderBox = dart.constFn(_js_helper.SyncIterable$(box.RenderBox)))(),
+    ListOfdouble: () => (T.ListOfdouble = dart.constFn(core.List$(core.double)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
+    ListOfdoubleN: () => (T.ListOfdoubleN = dart.constFn(core.List$(T.doubleN())))(),
+    doubleAnddoubleTodouble: () => (T.doubleAnddoubleTodouble = dart.constFn(dart.fnType(core.double, [core.double, core.double])))(),
+    OffsetN: () => (T.OffsetN = dart.constFn(dart.nullable(ui.Offset)))(),
+    BoxHitTestResultAndOffsetNTobool: () => (T.BoxHitTestResultAndOffsetNTobool = dart.constFn(dart.fnType(core.bool, [box.BoxHitTestResult, T.OffsetN()])))(),
+    DiagnosticsPropertyOfTableBorder: () => (T.DiagnosticsPropertyOfTableBorder = dart.constFn(diagnostics.DiagnosticsProperty$(table_border.TableBorder)))(),
+    DiagnosticsPropertyOfMapOfint$TableColumnWidth: () => (T.DiagnosticsPropertyOfMapOfint$TableColumnWidth = dart.constFn(diagnostics.DiagnosticsProperty$(T.MapOfint$TableColumnWidth())))(),
+    DiagnosticsPropertyOfTableColumnWidth: () => (T.DiagnosticsPropertyOfTableColumnWidth = dart.constFn(diagnostics.DiagnosticsProperty$(table.TableColumnWidth)))(),
+    IterablePropertyOfString: () => (T.IterablePropertyOfString = dart.constFn(diagnostics.IterableProperty$(core.String)))(),
+    doubleNToString: () => (T.doubleNToString = dart.constFn(dart.fnType(core.String, [T.doubleN()])))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    DiagnosticsPropertyOfObject: () => (T.DiagnosticsPropertyOfObject = dart.constFn(diagnostics.DiagnosticsProperty$(core.Object)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -76,794 +71,1258 @@ define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/coll
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.idle",
+        __proto__: table.TableCellVerticalAlignment.prototype,
+        [_name$]: "TableCellVerticalAlignment.top",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.transientCallbacks",
+        __proto__: table.TableCellVerticalAlignment.prototype,
+        [_name$]: "TableCellVerticalAlignment.middle",
         index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.midFrameMicrotasks",
+        __proto__: table.TableCellVerticalAlignment.prototype,
+        [_name$]: "TableCellVerticalAlignment.bottom",
         index: 2
       });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.persistentCallbacks",
+        __proto__: table.TableCellVerticalAlignment.prototype,
+        [_name$]: "TableCellVerticalAlignment.baseline",
         index: 3
       });
     },
     get C4() {
       return C[4] = dart.const({
-        __proto__: binding$.SchedulerPhase.prototype,
-        [_name$]: "SchedulerPhase.postFrameCallbacks",
+        __proto__: table.TableCellVerticalAlignment.prototype,
+        [_name$]: "TableCellVerticalAlignment.fill",
         index: 4
       });
     },
     get C5() {
-      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], binding$.SchedulerPhase);
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], table.TableCellVerticalAlignment);
     },
     get C6() {
-      return C[6] = dart.fn(binding$.defaultSchedulingStrategy, T$.__Tobool());
+      return C[6] = dart.const({
+        __proto__: table.FlexColumnWidth.prototype,
+        [value$1]: 1
+      });
     },
     get C7() {
-      return C[7] = dart.fn(binding$.SchedulerBinding._taskSorter, T$._TaskEntryAnd_TaskEntryToint());
+      return C[7] = dart.const({
+        __proto__: image_provider.ImageConfiguration.prototype,
+        [ImageConfiguration_platform]: null,
+        [ImageConfiguration_size]: null,
+        [ImageConfiguration_textDirection]: null,
+        [ImageConfiguration_locale]: null,
+        [ImageConfiguration_devicePixelRatio]: null,
+        [ImageConfiguration_bundle]: null
+      });
     },
     get C8() {
-      return C[8] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.resumed",
-        index: 0
-      });
+      return C[8] = dart.constList([], T.RenderBoxN());
     },
     get C9() {
-      return C[9] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.inactive",
-        index: 1
-      });
+      return C[9] = dart.constList([], decoration.Decoration);
     },
     get C10() {
       return C[10] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.paused",
-        index: 2
+        __proto__: ui.TextDirection.prototype,
+        [_name]: "TextDirection.rtl",
+        index: 0
       });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: ui.AppLifecycleState.prototype,
-        [_name]: "AppLifecycleState.detached",
-        index: 3
+        __proto__: ui.TextDirection.prototype,
+        [_name]: "TextDirection.ltr",
+        index: 1
       });
-    }
-  }, false);
-  var C = Array(12).fill(void 0);
-  var I = [
-    "file:///C:/lib/flutter/packages/flutter/lib/src/scheduler/binding.dart",
-    "package:flutter/src/scheduler/binding.dart"
-  ];
-  var ___TaskEntry_debugStack = dart.privateName(binding$, "_#_TaskEntry#debugStack");
-  const _is__TaskEntry_default = Symbol('_is__TaskEntry_default');
-  binding$._TaskEntry$ = dart.generic(T => {
-    var CompleterOfT = () => (CompleterOfT = dart.constFn(async.Completer$(T)))();
-    class _TaskEntry extends core.Object {
-      get debugStack() {
-        let t0;
-        t0 = this[___TaskEntry_debugStack];
-        return t0 == null ? dart.throw(new _internal.LateError.fieldNI("debugStack")) : t0;
-      }
-      set debugStack(t0) {
-        this[___TaskEntry_debugStack] = t0;
-      }
-      run() {
-        let t1;
-        if (!false) {
-          developer.Timeline.timeSync(core.Null, (t1 = this.debugLabel, t1 == null ? "Scheduled Task" : t1), dart.fn(() => {
-            this.completer.complete(this.task());
-          }, T$.VoidToNull()), {flow: this.flow != null ? developer.Flow.step(dart.nullCheck(this.flow).id) : null});
-        } else {
-          this.completer.complete(this.task());
-        }
-      }
-    }
-    (_TaskEntry.new = function(task, priority, debugLabel, flow) {
-      this[___TaskEntry_debugStack] = null;
-      this.completer = CompleterOfT().new();
-      this.task = task;
-      this.priority = priority;
-      this.debugLabel = debugLabel;
-      this.flow = flow;
-      if (!dart.fn(() => {
-        this.debugStack = core.StackTrace.current;
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 62, 12, "() {\r\n      debugStack = StackTrace.current;\r\n      return true;\r\n    }()");
-    }).prototype = _TaskEntry.prototype;
-    dart.addTypeTests(_TaskEntry);
-    _TaskEntry.prototype[_is__TaskEntry_default] = true;
-    dart.addTypeCaches(_TaskEntry);
-    dart.setMethodSignature(_TaskEntry, () => ({
-      __proto__: dart.getMethods(_TaskEntry.__proto__),
-      run: dart.fnType(dart.void, [])
-    }));
-    dart.setGetterSignature(_TaskEntry, () => ({
-      __proto__: dart.getGetters(_TaskEntry.__proto__),
-      debugStack: core.StackTrace
-    }));
-    dart.setSetterSignature(_TaskEntry, () => ({
-      __proto__: dart.getSetters(_TaskEntry.__proto__),
-      debugStack: core.StackTrace
-    }));
-    dart.setLibraryUri(_TaskEntry, I[1]);
-    dart.setFieldSignature(_TaskEntry, () => ({
-      __proto__: dart.getFields(_TaskEntry.__proto__),
-      task: dart.finalFieldType(dart.fnType(T, [])),
-      priority: dart.finalFieldType(core.int),
-      debugLabel: dart.finalFieldType(dart.nullable(core.String)),
-      flow: dart.finalFieldType(dart.nullable(developer.Flow)),
-      [___TaskEntry_debugStack]: dart.fieldType(dart.nullable(core.StackTrace)),
-      completer: dart.finalFieldType(async.Completer$(T))
-    }));
-    return _TaskEntry;
-  });
-  binding$._TaskEntry = binding$._TaskEntry$();
-  dart.addTypeTests(binding$._TaskEntry, _is__TaskEntry_default);
-  binding$._FrameCallbackEntry = class _FrameCallbackEntry extends core.Object {};
-  (binding$._FrameCallbackEntry.new = function(callback, opts) {
-    let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
-    this.debugStack = null;
-    this.callback = callback;
-    if (!dart.fn(() => {
-      if (rescheduling) {
-        if (!dart.fn(() => {
-          if (binding$._FrameCallbackEntry.debugCurrentCallbackStack == null) {
-            dart.throw(new assertions.FlutterError.fromParts(T$.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("scheduleFrameCallback called with rescheduling true, but no callback is in scope."), new assertions.ErrorDescription.new("The \"rescheduling\" argument should only be set to true if the " + "callback is being reregistered from within the callback itself, " + "and only then if the callback itself is entirely synchronous."), new assertions.ErrorHint.new("If this is the initial registration of the callback, or if the " + "callback is asynchronous, then do not use the \"rescheduling\" " + "argument.")])));
-          }
-          return true;
-        }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 94, 16, "() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
-        this.debugStack = binding$._FrameCallbackEntry.debugCurrentCallbackStack;
-      } else {
-        this.debugStack = core.StackTrace.current;
-      }
-      return true;
-    }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 92, 12, "() {\r\n      if (rescheduling) {\r\n        assert(() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }());\r\n        debugStack = debugCurrentCallbackStack;\r\n      } else {\r\n        // TODO(ianh): trim the frames from this library, so that the call to scheduleFrameCallback is the top one\r\n        debugStack = StackTrace.current;\r\n      }\r\n      return true;\r\n    }()");
-  }).prototype = binding$._FrameCallbackEntry.prototype;
-  dart.addTypeTests(binding$._FrameCallbackEntry);
-  dart.addTypeCaches(binding$._FrameCallbackEntry);
-  dart.setLibraryUri(binding$._FrameCallbackEntry, I[1]);
-  dart.setFieldSignature(binding$._FrameCallbackEntry, () => ({
-    __proto__: dart.getFields(binding$._FrameCallbackEntry.__proto__),
-    callback: dart.finalFieldType(dart.fnType(dart.void, [core.Duration])),
-    debugStack: dart.fieldType(dart.nullable(core.StackTrace))
-  }));
-  dart.defineLazy(binding$._FrameCallbackEntry, {
-    /*binding$._FrameCallbackEntry.debugCurrentCallbackStack*/get debugCurrentCallbackStack() {
-      return null;
     },
-    set debugCurrentCallbackStack(_) {}
+    get C12() {
+      return C[12] = dart.constList([], core.double);
+    },
+    get C13() {
+      return C[13] = dart.fn(debug.debugFormatDouble, T.doubleNToString());
+    }
   }, false);
-  var _name$ = dart.privateName(binding$, "_name");
-  binding$.SchedulerPhase = class SchedulerPhase extends core.Object {
+  var C = Array(14).fill(void 0);
+  var I = [
+    "package:flutter/src/rendering/table.dart",
+    "file:///C:/lib/flutter/packages/flutter/lib/src/rendering/table.dart"
+  ];
+  var verticalAlignment = dart.privateName(table, "TableCellParentData.verticalAlignment");
+  var x = dart.privateName(table, "TableCellParentData.x");
+  var y = dart.privateName(table, "TableCellParentData.y");
+  table.TableCellParentData = class TableCellParentData extends box.BoxParentData {
+    get verticalAlignment() {
+      return this[verticalAlignment];
+    }
+    set verticalAlignment(value) {
+      this[verticalAlignment] = value;
+    }
+    get x() {
+      return this[x];
+    }
+    set x(value) {
+      this[x] = value;
+    }
+    get y() {
+      return this[y];
+    }
+    set y(value) {
+      this[y] = value;
+    }
+    toString() {
+      return super.toString() + "; " + (this.verticalAlignment == null ? "default vertical alignment" : dart.str(this.verticalAlignment));
+    }
+  };
+  (table.TableCellParentData.new = function() {
+    this[verticalAlignment] = null;
+    this[x] = null;
+    this[y] = null;
+    table.TableCellParentData.__proto__.new.call(this);
+    ;
+  }).prototype = table.TableCellParentData.prototype;
+  dart.addTypeTests(table.TableCellParentData);
+  dart.addTypeCaches(table.TableCellParentData);
+  dart.setLibraryUri(table.TableCellParentData, I[0]);
+  dart.setFieldSignature(table.TableCellParentData, () => ({
+    __proto__: dart.getFields(table.TableCellParentData.__proto__),
+    verticalAlignment: dart.fieldType(dart.nullable(table.TableCellVerticalAlignment)),
+    x: dart.fieldType(dart.nullable(core.int)),
+    y: dart.fieldType(dart.nullable(core.int))
+  }));
+  dart.defineExtensionMethods(table.TableCellParentData, ['toString']);
+  table.TableColumnWidth = class TableColumnWidth extends core.Object {
+    flex(cells) {
+      return null;
+    }
+    toString() {
+      return object$.objectRuntimeType(this, "TableColumnWidth");
+    }
+  };
+  (table.TableColumnWidth.new = function() {
+    ;
+  }).prototype = table.TableColumnWidth.prototype;
+  dart.addTypeTests(table.TableColumnWidth);
+  dart.addTypeCaches(table.TableColumnWidth);
+  dart.setMethodSignature(table.TableColumnWidth, () => ({
+    __proto__: dart.getMethods(table.TableColumnWidth.__proto__),
+    flex: dart.fnType(dart.nullable(core.double), [core.Iterable$(box.RenderBox)])
+  }));
+  dart.setLibraryUri(table.TableColumnWidth, I[0]);
+  dart.defineExtensionMethods(table.TableColumnWidth, ['toString']);
+  var _flex = dart.privateName(table, "IntrinsicColumnWidth._flex");
+  var _flex$ = dart.privateName(table, "_flex");
+  table.IntrinsicColumnWidth = class IntrinsicColumnWidth extends table.TableColumnWidth {
+    get [_flex$]() {
+      return this[_flex];
+    }
+    set [_flex$](value) {
+      super[_flex$] = value;
+    }
+    minIntrinsicWidth(cells, containerWidth) {
+      let result = 0.0;
+      for (let cell of cells)
+        result = math.max(core.double, result, cell.getMinIntrinsicWidth(1 / 0));
+      return result;
+    }
+    maxIntrinsicWidth(cells, containerWidth) {
+      let result = 0.0;
+      for (let cell of cells)
+        result = math.max(core.double, result, cell.getMaxIntrinsicWidth(1 / 0));
+      return result;
+    }
+    flex(cells) {
+      return this[_flex$];
+    }
+    toString() {
+      let t0;
+      return object$.objectRuntimeType(this, "IntrinsicColumnWidth") + "(flex: " + dart.str((t0 = this[_flex$], t0 == null ? null : t0[$toStringAsFixed](1))) + ")";
+    }
+  };
+  (table.IntrinsicColumnWidth.new = function(opts) {
+    let flex = opts && 'flex' in opts ? opts.flex : null;
+    this[_flex] = flex;
+    table.IntrinsicColumnWidth.__proto__.new.call(this);
+    ;
+  }).prototype = table.IntrinsicColumnWidth.prototype;
+  dart.addTypeTests(table.IntrinsicColumnWidth);
+  dart.addTypeCaches(table.IntrinsicColumnWidth);
+  dart.setMethodSignature(table.IntrinsicColumnWidth, () => ({
+    __proto__: dart.getMethods(table.IntrinsicColumnWidth.__proto__),
+    minIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    maxIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double])
+  }));
+  dart.setLibraryUri(table.IntrinsicColumnWidth, I[0]);
+  dart.setFieldSignature(table.IntrinsicColumnWidth, () => ({
+    __proto__: dart.getFields(table.IntrinsicColumnWidth.__proto__),
+    [_flex$]: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  dart.defineExtensionMethods(table.IntrinsicColumnWidth, ['toString']);
+  var value$ = dart.privateName(table, "FixedColumnWidth.value");
+  table.FixedColumnWidth = class FixedColumnWidth extends table.TableColumnWidth {
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    minIntrinsicWidth(cells, containerWidth) {
+      return this.value;
+    }
+    maxIntrinsicWidth(cells, containerWidth) {
+      return this.value;
+    }
+    toString() {
+      return object$.objectRuntimeType(this, "FixedColumnWidth") + "(" + debug.debugFormatDouble(this.value) + ")";
+    }
+  };
+  (table.FixedColumnWidth.new = function(value) {
+    this[value$] = value;
+    if (!(value !== null)) dart.assertFailed(null, I[1], 135, 47, "value != null");
+    table.FixedColumnWidth.__proto__.new.call(this);
+    ;
+  }).prototype = table.FixedColumnWidth.prototype;
+  dart.addTypeTests(table.FixedColumnWidth);
+  dart.addTypeCaches(table.FixedColumnWidth);
+  dart.setMethodSignature(table.FixedColumnWidth, () => ({
+    __proto__: dart.getMethods(table.FixedColumnWidth.__proto__),
+    minIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    maxIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double])
+  }));
+  dart.setLibraryUri(table.FixedColumnWidth, I[0]);
+  dart.setFieldSignature(table.FixedColumnWidth, () => ({
+    __proto__: dart.getFields(table.FixedColumnWidth.__proto__),
+    value: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(table.FixedColumnWidth, ['toString']);
+  var value$0 = dart.privateName(table, "FractionColumnWidth.value");
+  table.FractionColumnWidth = class FractionColumnWidth extends table.TableColumnWidth {
+    get value() {
+      return this[value$0];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    minIntrinsicWidth(cells, containerWidth) {
+      if (!containerWidth[$isFinite]) return 0.0;
+      return this.value * containerWidth;
+    }
+    maxIntrinsicWidth(cells, containerWidth) {
+      if (!containerWidth[$isFinite]) return 0.0;
+      return this.value * containerWidth;
+    }
+    toString() {
+      return object$.objectRuntimeType(this, "FractionColumnWidth") + "(" + dart.str(this.value) + ")";
+    }
+  };
+  (table.FractionColumnWidth.new = function(value) {
+    this[value$0] = value;
+    if (!(value !== null)) dart.assertFailed(null, I[1], 162, 50, "value != null");
+    table.FractionColumnWidth.__proto__.new.call(this);
+    ;
+  }).prototype = table.FractionColumnWidth.prototype;
+  dart.addTypeTests(table.FractionColumnWidth);
+  dart.addTypeCaches(table.FractionColumnWidth);
+  dart.setMethodSignature(table.FractionColumnWidth, () => ({
+    __proto__: dart.getMethods(table.FractionColumnWidth.__proto__),
+    minIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    maxIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double])
+  }));
+  dart.setLibraryUri(table.FractionColumnWidth, I[0]);
+  dart.setFieldSignature(table.FractionColumnWidth, () => ({
+    __proto__: dart.getFields(table.FractionColumnWidth.__proto__),
+    value: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(table.FractionColumnWidth, ['toString']);
+  var value$1 = dart.privateName(table, "FlexColumnWidth.value");
+  table.FlexColumnWidth = class FlexColumnWidth extends table.TableColumnWidth {
+    get value() {
+      return this[value$1];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    minIntrinsicWidth(cells, containerWidth) {
+      return 0.0;
+    }
+    maxIntrinsicWidth(cells, containerWidth) {
+      return 0.0;
+    }
+    flex(cells) {
+      return this.value;
+    }
+    toString() {
+      return object$.objectRuntimeType(this, "FlexColumnWidth") + "(" + debug.debugFormatDouble(this.value) + ")";
+    }
+  };
+  (table.FlexColumnWidth.new = function(value = 1) {
+    this[value$1] = value;
+    if (!(value !== null)) dart.assertFailed(null, I[1], 198, 54, "value != null");
+    table.FlexColumnWidth.__proto__.new.call(this);
+    ;
+  }).prototype = table.FlexColumnWidth.prototype;
+  dart.addTypeTests(table.FlexColumnWidth);
+  dart.addTypeCaches(table.FlexColumnWidth);
+  dart.setMethodSignature(table.FlexColumnWidth, () => ({
+    __proto__: dart.getMethods(table.FlexColumnWidth.__proto__),
+    minIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    maxIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    flex: dart.fnType(core.double, [core.Iterable$(box.RenderBox)])
+  }));
+  dart.setLibraryUri(table.FlexColumnWidth, I[0]);
+  dart.setFieldSignature(table.FlexColumnWidth, () => ({
+    __proto__: dart.getFields(table.FlexColumnWidth.__proto__),
+    value: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(table.FlexColumnWidth, ['toString']);
+  var a$ = dart.privateName(table, "MaxColumnWidth.a");
+  var b$ = dart.privateName(table, "MaxColumnWidth.b");
+  table.MaxColumnWidth = class MaxColumnWidth extends table.TableColumnWidth {
+    get a() {
+      return this[a$];
+    }
+    set a(value) {
+      super.a = value;
+    }
+    get b() {
+      return this[b$];
+    }
+    set b(value) {
+      super.b = value;
+    }
+    minIntrinsicWidth(cells, containerWidth) {
+      return math.max(core.double, this.a.minIntrinsicWidth(cells, containerWidth), this.b.minIntrinsicWidth(cells, containerWidth));
+    }
+    maxIntrinsicWidth(cells, containerWidth) {
+      return math.max(core.double, this.a.maxIntrinsicWidth(cells, containerWidth), this.b.maxIntrinsicWidth(cells, containerWidth));
+    }
+    flex(cells) {
+      let aFlex = this.a.flex(cells);
+      if (aFlex == null) return this.b.flex(cells);
+      let bFlex = this.b.flex(cells);
+      if (bFlex == null) return null;
+      return math.max(core.double, aFlex, bFlex);
+    }
+    toString() {
+      return object$.objectRuntimeType(this, "MaxColumnWidth") + "(" + dart.str(this.a) + ", " + dart.str(this.b) + ")";
+    }
+  };
+  (table.MaxColumnWidth.new = function(a, b) {
+    this[a$] = a;
+    this[b$] = b;
+    table.MaxColumnWidth.__proto__.new.call(this);
+    ;
+  }).prototype = table.MaxColumnWidth.prototype;
+  dart.addTypeTests(table.MaxColumnWidth);
+  dart.addTypeCaches(table.MaxColumnWidth);
+  dart.setMethodSignature(table.MaxColumnWidth, () => ({
+    __proto__: dart.getMethods(table.MaxColumnWidth.__proto__),
+    minIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    maxIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double])
+  }));
+  dart.setLibraryUri(table.MaxColumnWidth, I[0]);
+  dart.setFieldSignature(table.MaxColumnWidth, () => ({
+    __proto__: dart.getFields(table.MaxColumnWidth.__proto__),
+    a: dart.finalFieldType(table.TableColumnWidth),
+    b: dart.finalFieldType(table.TableColumnWidth)
+  }));
+  dart.defineExtensionMethods(table.MaxColumnWidth, ['toString']);
+  var a$0 = dart.privateName(table, "MinColumnWidth.a");
+  var b$0 = dart.privateName(table, "MinColumnWidth.b");
+  table.MinColumnWidth = class MinColumnWidth extends table.TableColumnWidth {
+    get a() {
+      return this[a$0];
+    }
+    set a(value) {
+      super.a = value;
+    }
+    get b() {
+      return this[b$0];
+    }
+    set b(value) {
+      super.b = value;
+    }
+    minIntrinsicWidth(cells, containerWidth) {
+      return math.min(core.double, this.a.minIntrinsicWidth(cells, containerWidth), this.b.minIntrinsicWidth(cells, containerWidth));
+    }
+    maxIntrinsicWidth(cells, containerWidth) {
+      return math.min(core.double, this.a.maxIntrinsicWidth(cells, containerWidth), this.b.maxIntrinsicWidth(cells, containerWidth));
+    }
+    flex(cells) {
+      let aFlex = this.a.flex(cells);
+      if (aFlex == null) return this.b.flex(cells);
+      let bFlex = this.b.flex(cells);
+      if (bFlex == null) return null;
+      return math.min(core.double, aFlex, bFlex);
+    }
+    toString() {
+      return object$.objectRuntimeType(this, "MinColumnWidth") + "(" + dart.str(this.a) + ", " + dart.str(this.b) + ")";
+    }
+  };
+  (table.MinColumnWidth.new = function(a, b) {
+    this[a$0] = a;
+    this[b$0] = b;
+    table.MinColumnWidth.__proto__.new.call(this);
+    ;
+  }).prototype = table.MinColumnWidth.prototype;
+  dart.addTypeTests(table.MinColumnWidth);
+  dart.addTypeCaches(table.MinColumnWidth);
+  dart.setMethodSignature(table.MinColumnWidth, () => ({
+    __proto__: dart.getMethods(table.MinColumnWidth.__proto__),
+    minIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double]),
+    maxIntrinsicWidth: dart.fnType(core.double, [core.Iterable$(box.RenderBox), core.double])
+  }));
+  dart.setLibraryUri(table.MinColumnWidth, I[0]);
+  dart.setFieldSignature(table.MinColumnWidth, () => ({
+    __proto__: dart.getFields(table.MinColumnWidth.__proto__),
+    a: dart.finalFieldType(table.TableColumnWidth),
+    b: dart.finalFieldType(table.TableColumnWidth)
+  }));
+  dart.defineExtensionMethods(table.MinColumnWidth, ['toString']);
+  var _name$ = dart.privateName(table, "_name");
+  table.TableCellVerticalAlignment = class TableCellVerticalAlignment extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (binding$.SchedulerPhase.new = function(index, _name) {
+  (table.TableCellVerticalAlignment.new = function(index, _name) {
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = binding$.SchedulerPhase.prototype;
-  dart.addTypeTests(binding$.SchedulerPhase);
-  dart.addTypeCaches(binding$.SchedulerPhase);
-  dart.setLibraryUri(binding$.SchedulerPhase, I[1]);
-  dart.setFieldSignature(binding$.SchedulerPhase, () => ({
-    __proto__: dart.getFields(binding$.SchedulerPhase.__proto__),
+  }).prototype = table.TableCellVerticalAlignment.prototype;
+  dart.addTypeTests(table.TableCellVerticalAlignment);
+  dart.addTypeCaches(table.TableCellVerticalAlignment);
+  dart.setLibraryUri(table.TableCellVerticalAlignment, I[0]);
+  dart.setFieldSignature(table.TableCellVerticalAlignment, () => ({
+    __proto__: dart.getFields(table.TableCellVerticalAlignment.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(binding$.SchedulerPhase, ['toString']);
-  binding$.SchedulerPhase.idle = C[0] || CT.C0;
-  binding$.SchedulerPhase.transientCallbacks = C[1] || CT.C1;
-  binding$.SchedulerPhase.midFrameMicrotasks = C[2] || CT.C2;
-  binding$.SchedulerPhase.persistentCallbacks = C[3] || CT.C3;
-  binding$.SchedulerPhase.postFrameCallbacks = C[4] || CT.C4;
-  binding$.SchedulerPhase.values = C[5] || CT.C5;
-  var schedulingStrategy = dart.privateName(binding$, "SchedulerBinding.schedulingStrategy");
-  var _timingsCallbacks = dart.privateName(binding$, "_timingsCallbacks");
-  var _lifecycleState = dart.privateName(binding$, "_lifecycleState");
-  var _taskQueue = dart.privateName(binding$, "_taskQueue");
-  var _hasRequestedAnEventLoopCallback = dart.privateName(binding$, "_hasRequestedAnEventLoopCallback");
-  var _nextFrameCallbackId = dart.privateName(binding$, "_nextFrameCallbackId");
-  var _transientCallbacks = dart.privateName(binding$, "_transientCallbacks");
-  var _removedIds = dart.privateName(binding$, "_removedIds");
-  var _persistentCallbacks = dart.privateName(binding$, "_persistentCallbacks");
-  var _postFrameCallbacks = dart.privateName(binding$, "_postFrameCallbacks");
-  var _nextFrameCompleter = dart.privateName(binding$, "_nextFrameCompleter");
-  var _hasScheduledFrame = dart.privateName(binding$, "_hasScheduledFrame");
-  var _schedulerPhase = dart.privateName(binding$, "_schedulerPhase");
-  var _framesEnabled = dart.privateName(binding$, "_framesEnabled");
-  var _warmUpFrame = dart.privateName(binding$, "_warmUpFrame");
-  var _firstRawTimeStampInEpoch = dart.privateName(binding$, "_firstRawTimeStampInEpoch");
-  var _epochStart = dart.privateName(binding$, "_epochStart");
-  var _lastRawTimeStamp = dart.privateName(binding$, "_lastRawTimeStamp");
-  var _currentFrameTimeStamp = dart.privateName(binding$, "_currentFrameTimeStamp");
-  var _debugFrameNumber = dart.privateName(binding$, "_debugFrameNumber");
-  var _debugBanner = dart.privateName(binding$, "_debugBanner");
-  var _rescheduleAfterWarmUpFrame = dart.privateName(binding$, "_rescheduleAfterWarmUpFrame");
-  var _profileFramePostEvent = dart.privateName(binding$, "_profileFramePostEvent");
-  var _executeTimingsCallbacks = dart.privateName(binding$, "_executeTimingsCallbacks");
-  var _setFramesEnabledState = dart.privateName(binding$, "_setFramesEnabledState");
+  dart.defineExtensionMethods(table.TableCellVerticalAlignment, ['toString']);
+  table.TableCellVerticalAlignment.top = C[0] || CT.C0;
+  table.TableCellVerticalAlignment.middle = C[1] || CT.C1;
+  table.TableCellVerticalAlignment.bottom = C[2] || CT.C2;
+  table.TableCellVerticalAlignment.baseline = C[3] || CT.C3;
+  table.TableCellVerticalAlignment.fill = C[4] || CT.C4;
+  table.TableCellVerticalAlignment.values = C[5] || CT.C5;
+  var ImageConfiguration_platform = dart.privateName(image_provider, "ImageConfiguration.platform");
+  var ImageConfiguration_size = dart.privateName(image_provider, "ImageConfiguration.size");
+  var ImageConfiguration_textDirection = dart.privateName(image_provider, "ImageConfiguration.textDirection");
+  var ImageConfiguration_locale = dart.privateName(image_provider, "ImageConfiguration.locale");
+  var ImageConfiguration_devicePixelRatio = dart.privateName(image_provider, "ImageConfiguration.devicePixelRatio");
+  var ImageConfiguration_bundle = dart.privateName(image_provider, "ImageConfiguration.bundle");
+  var _children = dart.privateName(table, "_children");
+  var _rowDecorations = dart.privateName(table, "_rowDecorations");
+  var _rowDecorationPainters = dart.privateName(table, "_rowDecorationPainters");
+  var _baselineDistance = dart.privateName(table, "_baselineDistance");
+  var _rowTops = dart.privateName(table, "_rowTops");
+  var _columnLefts = dart.privateName(table, "_columnLefts");
+  var _textDirection = dart.privateName(table, "_textDirection");
+  var _columns = dart.privateName(table, "_columns");
+  var _rows = dart.privateName(table, "_rows");
+  var _columnWidths = dart.privateName(table, "_columnWidths");
+  var _defaultColumnWidth = dart.privateName(table, "_defaultColumnWidth");
+  var _border = dart.privateName(table, "_border");
+  var _textBaseline = dart.privateName(table, "_textBaseline");
+  var _defaultVerticalAlignment = dart.privateName(table, "_defaultVerticalAlignment");
+  var _configuration = dart.privateName(table, "_configuration");
+  var _computeColumnWidths = dart.privateName(table, "_computeColumnWidths");
   var _name = dart.privateName(ui, "_name");
-  var _ensureEventLoopCallback = dart.privateName(binding$, "_ensureEventLoopCallback");
-  var _runTasks = dart.privateName(binding$, "_runTasks");
-  var _handleBeginFrame = dart.privateName(binding$, "_handleBeginFrame");
-  var _handleDrawFrame = dart.privateName(binding$, "_handleDrawFrame");
-  var _adjustForEpoch = dart.privateName(binding$, "_adjustForEpoch");
-  var _invokeFrameCallback = dart.privateName(binding$, "_invokeFrameCallback");
-  binding$.SchedulerBinding = class SchedulerBinding extends binding.BindingBase {
-    static get instance() {
-      return binding$.SchedulerBinding._instance;
+  table.RenderTable = class RenderTable extends box.RenderBox {
+    get columns() {
+      return this[_columns];
     }
-    static _taskSorter(e1, e2) {
-      return -e1.priority[$compareTo](e2.priority);
+    set columns(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 414, 12, "value != null");
+      if (!(value >= 0)) dart.assertFailed(null, I[1], 415, 12, "value >= 0");
+      if (value === this.columns) return;
+      let oldColumns = this.columns;
+      let oldChildren = this[_children];
+      this[_columns] = value;
+      this[_children] = T.ListOfRenderBoxN().filled(this.columns * this.rows, null, {growable: false});
+      let columnsToCopy = math.min(core.int, this.columns, oldColumns);
+      for (let y = 0; y < this.rows; y = y + 1) {
+        for (let x = 0; x < columnsToCopy; x = x + 1)
+          this[_children][$_set](x + y * this.columns, oldChildren[$_get](x + y * oldColumns));
+      }
+      if (oldColumns > this.columns) {
+        for (let y = 0; y < this.rows; y = y + 1) {
+          for (let x = this.columns; x < oldColumns; x = x + 1) {
+            let xy = x + y * oldColumns;
+            if (oldChildren[$_get](xy) != null) this.dropChild(dart.nullCheck(oldChildren[$_get](xy)));
+          }
+        }
+      }
+      this.markNeedsLayout();
     }
-    static debugPrintTransientCallbackRegistrationStack() {
-      if (!dart.fn(() => {
-        if (binding$._FrameCallbackEntry.debugCurrentCallbackStack != null) {
-          print.debugPrint("When the current transient callback was registered, this was the stack:");
-          print.debugPrint(assertions.FlutterError.defaultStackFilter(assertions.FlutterError.demangleStackTrace(dart.nullCheck(binding$._FrameCallbackEntry.debugCurrentCallbackStack)).toString()[$trimRight]()[$split]("\n"))[$join]("\n"));
+    get rows() {
+      return this[_rows];
+    }
+    set rows(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 446, 12, "value != null");
+      if (!(value >= 0)) dart.assertFailed(null, I[1], 447, 12, "value >= 0");
+      if (value === this.rows) return;
+      if (this[_rows] > value) {
+        for (let xy = this.columns * value; xy < this[_children][$length]; xy = xy + 1) {
+          if (this[_children][$_get](xy) != null) this.dropChild(dart.nullCheck(this[_children][$_get](xy)));
+        }
+      }
+      this[_rows] = value;
+      this[_children][$length] = this.columns * this.rows;
+      this.markNeedsLayout();
+    }
+    get columnWidths() {
+      return T.MapOfint$TableColumnWidth().unmodifiable(this[_columnWidths]);
+    }
+    set columnWidths(value) {
+      let t0;
+      if (this[_columnWidths][$_equals](value)) return;
+      if (this[_columnWidths][$isEmpty] && value == null) return;
+      this[_columnWidths] = (t0 = value, t0 == null ? new (T.IdentityMapOfint$TableColumnWidth()).new() : t0);
+      this.markNeedsLayout();
+    }
+    setColumnWidth(column, value) {
+      if (dart.equals(this[_columnWidths][$_get](column), value)) return;
+      this[_columnWidths][$_set](column, value);
+      this.markNeedsLayout();
+    }
+    get defaultColumnWidth() {
+      return this[_defaultColumnWidth];
+    }
+    set defaultColumnWidth(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 500, 12, "value != null");
+      if (this.defaultColumnWidth[$_equals](value)) return;
+      this[_defaultColumnWidth] = value;
+      this.markNeedsLayout();
+    }
+    get textDirection() {
+      return this[_textDirection];
+    }
+    set textDirection(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 511, 12, "value != null");
+      if (this[_textDirection] === value) return;
+      this[_textDirection] = value;
+      this.markNeedsLayout();
+    }
+    get border() {
+      return this[_border];
+    }
+    set border(value) {
+      if (dart.equals(this.border, value)) return;
+      this[_border] = value;
+      this.markNeedsPaint();
+    }
+    get rowDecorations() {
+      let t0;
+      return T.ListOfDecoration().unmodifiable((t0 = this[_rowDecorations], t0 == null ? C[9] || CT.C9 : t0));
+    }
+    set rowDecorations(value) {
+      let t0;
+      if (dart.equals(this[_rowDecorations], value)) return;
+      this[_rowDecorations] = value;
+      if (this[_rowDecorationPainters] != null) {
+        for (let painter of dart.nullCheck(this[_rowDecorationPainters])) {
+          t0 = painter;
+          t0 == null ? null : t0.dispose();
+        }
+      }
+      this[_rowDecorationPainters] = this[_rowDecorations] != null ? T.ListOfBoxPainterN().filled(dart.nullCheck(this[_rowDecorations])[$length], null, {growable: false}) : null;
+    }
+    get configuration() {
+      return this[_configuration];
+    }
+    set configuration(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 555, 12, "value != null");
+      if (value._equals(this[_configuration])) return;
+      this[_configuration] = value;
+      this.markNeedsPaint();
+    }
+    get defaultVerticalAlignment() {
+      return this[_defaultVerticalAlignment];
+    }
+    set defaultVerticalAlignment(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 566, 12, "value != null");
+      if (this[_defaultVerticalAlignment] === value) return;
+      this[_defaultVerticalAlignment] = value;
+      this.markNeedsLayout();
+    }
+    get textBaseline() {
+      return this[_textBaseline];
+    }
+    set textBaseline(value) {
+      if (this[_textBaseline] == value) return;
+      this[_textBaseline] = value;
+      this.markNeedsLayout();
+    }
+    setupParentData(child) {
+      object.RenderObject.as(child);
+      if (!table.TableCellParentData.is(child.parentData)) child.parentData = new table.TableCellParentData.new();
+    }
+    setFlatChildren(columns, cells) {
+      if (cells[$_equals](this[_children]) && columns === this[_columns]) return;
+      if (!(columns >= 0)) dart.assertFailed(null, I[1], 600, 12, "columns >= 0");
+      if (columns === 0 || cells[$isEmpty]) {
+        if (!(cells === null || cells[$isEmpty])) dart.assertFailed(null, I[1], 603, 14, "cells == null || cells.isEmpty");
+        this[_columns] = columns;
+        if (this[_children][$isEmpty]) {
+          if (!(this[_rows] === 0)) dart.assertFailed(null, I[1], 606, 16, "_rows == 0");
+          return;
+        }
+        for (let oldChild of this[_children]) {
+          if (oldChild != null) this.dropChild(oldChild);
+        }
+        this[_rows] = 0;
+        this[_children][$clear]();
+        this.markNeedsLayout();
+        return;
+      }
+      if (!(cells !== null)) dart.assertFailed(null, I[1], 618, 12, "cells != null");
+      if (!(cells[$length][$modulo](columns) === 0)) dart.assertFailed(null, I[1], 619, 12, "cells.length % columns == 0");
+      let lostChildren = new (T._HashSetOfRenderBox()).new();
+      for (let y = 0; y < this[_rows]; y = y + 1) {
+        for (let x = 0; x < this[_columns]; x = x + 1) {
+          let xyOld = x + y * this[_columns];
+          let xyNew = x + y * columns;
+          if (this[_children][$_get](xyOld) != null && (x >= columns || xyNew >= cells[$length] || !dart.equals(this[_children][$_get](xyOld), cells[$_get](xyNew)))) lostChildren.add(dart.nullCheck(this[_children][$_get](xyOld)));
+        }
+      }
+      let y = 0;
+      while (y * columns < cells[$length]) {
+        for (let x = 0; x < columns; x = x + 1) {
+          let xyNew = x + y * columns;
+          let xyOld = x + y * this[_columns];
+          if (cells[$_get](xyNew) != null && (x >= this[_columns] || y >= this[_rows] || !dart.equals(this[_children][$_get](xyOld), cells[$_get](xyNew)))) {
+            if (!lostChildren.remove(cells[$_get](xyNew))) this.adoptChild(dart.nullCheck(cells[$_get](xyNew)));
+          }
+        }
+        y = y + 1;
+      }
+      lostChildren[$forEach](dart.bind(this, 'dropChild'));
+      this[_columns] = columns;
+      this[_rows] = (cells[$length] / columns)[$truncate]();
+      this[_children] = T.ListOfRenderBoxN().from(cells);
+      if (!(this[_children][$length] === this.rows * columns)) dart.assertFailed(null, I[1], 651, 12, "_children.length == rows * columns");
+      this.markNeedsLayout();
+    }
+    setChildren(cells) {
+      if (cells == null) {
+        this.setFlatChildren(0, C[8] || CT.C8);
+        return;
+      }
+      for (let oldChild of this[_children]) {
+        if (oldChild != null) this.dropChild(oldChild);
+      }
+      this[_children][$clear]();
+      this[_columns] = cells[$isNotEmpty] ? cells[$first][$length] : 0;
+      this[_rows] = 0;
+      cells[$forEach](dart.bind(this, 'addRow'));
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 670, 12, "_children.length == rows * columns");
+    }
+    addRow(cells) {
+      if (!(cells[$length] === this.columns)) dart.assertFailed(null, I[1], 677, 12, "cells.length == columns");
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 678, 12, "_children.length == rows * columns");
+      this[_rows] = this[_rows] + 1;
+      this[_children][$addAll](cells);
+      for (let cell of cells) {
+        if (cell != null) this.adoptChild(cell);
+      }
+      this.markNeedsLayout();
+    }
+    setChild(x, y, value) {
+      if (!(x !== null)) dart.assertFailed(null, I[1], 694, 12, "x != null");
+      if (!(y !== null)) dart.assertFailed(null, I[1], 695, 12, "y != null");
+      if (!(x >= 0 && x < this.columns && y >= 0 && y < this.rows)) dart.assertFailed(null, I[1], 696, 12, "x >= 0 && x < columns && y >= 0 && y < rows");
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 697, 12, "_children.length == rows * columns");
+      let xy = x + y * this.columns;
+      let oldChild = this[_children][$_get](xy);
+      if (dart.equals(oldChild, value)) return;
+      if (oldChild != null) this.dropChild(oldChild);
+      this[_children][$_set](xy, value);
+      if (value != null) this.adoptChild(value);
+    }
+    attach(owner) {
+      let t0;
+      object.PipelineOwner.as(owner);
+      super.attach(owner);
+      for (let child of this[_children]) {
+        t0 = child;
+        t0 == null ? null : t0.attach(owner);
+      }
+    }
+    detach() {
+      let t0, t0$;
+      super.detach();
+      if (this[_rowDecorationPainters] != null) {
+        for (let painter of dart.nullCheck(this[_rowDecorationPainters])) {
+          t0 = painter;
+          t0 == null ? null : t0.dispose();
+        }
+        this[_rowDecorationPainters] = T.ListOfBoxPainterN().filled(dart.nullCheck(this[_rowDecorations])[$length], null, {growable: false});
+      }
+      for (let child of this[_children]) {
+        t0$ = child;
+        t0$ == null ? null : t0$.detach();
+      }
+    }
+    visitChildren(visitor) {
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 730, 12, "_children.length == rows * columns");
+      for (let child of this[_children]) {
+        if (child != null) visitor(child);
+      }
+    }
+    computeMinIntrinsicWidth(height) {
+      let t0;
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 739, 12, "_children.length == rows * columns");
+      let totalMinWidth = 0.0;
+      for (let x = 0; x < this.columns; x = x + 1) {
+        let columnWidth = (t0 = this[_columnWidths][$_get](x), t0 == null ? this.defaultColumnWidth : t0);
+        let columnCells = this.column(x);
+        totalMinWidth = totalMinWidth + columnWidth.minIntrinsicWidth(columnCells, 1 / 0);
+      }
+      return totalMinWidth;
+    }
+    computeMaxIntrinsicWidth(height) {
+      let t0;
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 751, 12, "_children.length == rows * columns");
+      let totalMaxWidth = 0.0;
+      for (let x = 0; x < this.columns; x = x + 1) {
+        let columnWidth = (t0 = this[_columnWidths][$_get](x), t0 == null ? this.defaultColumnWidth : t0);
+        let columnCells = this.column(x);
+        totalMaxWidth = totalMaxWidth + columnWidth.maxIntrinsicWidth(columnCells, 1 / 0);
+      }
+      return totalMaxWidth;
+    }
+    computeMinIntrinsicHeight(width) {
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 765, 12, "_children.length == rows * columns");
+      let widths = this[_computeColumnWidths](new box.BoxConstraints.tightForFinite({width: width}));
+      let rowTop = 0.0;
+      for (let y = 0; y < this.rows; y = y + 1) {
+        let rowHeight = 0.0;
+        for (let x = 0; x < this.columns; x = x + 1) {
+          let xy = x + y * this.columns;
+          let child = this[_children][$_get](xy);
+          if (child != null) rowHeight = math.max(core.double, rowHeight, child.getMaxIntrinsicHeight(widths[$_get](x)));
+        }
+        rowTop = rowTop + rowHeight;
+      }
+      return rowTop;
+    }
+    computeMaxIntrinsicHeight(width) {
+      return this.computeMinIntrinsicHeight(width);
+    }
+    computeDistanceToActualBaseline(baseline) {
+      if (!!this.debugNeedsLayout) dart.assertFailed(null, I[1], 790, 12, "!debugNeedsLayout");
+      return this[_baselineDistance];
+    }
+    column(x) {
+      return new (T.SyncIterableOfRenderBox()).new((function* column() {
+        for (let y = 0; y < this.rows; y = y + 1) {
+          let xy = x + y * this.columns;
+          let child = this[_children][$_get](xy);
+          if (child != null) yield child;
+        }
+      }).bind(this));
+    }
+    row(y) {
+      return new (T.SyncIterableOfRenderBox()).new((function* row() {
+        let start = y * this.columns;
+        let end = (y + 1) * this.columns;
+        for (let xy = start; xy < end; xy = xy + 1) {
+          let child = this[_children][$_get](xy);
+          if (child != null) yield child;
+        }
+      }).bind(this));
+    }
+    [_computeColumnWidths](constraints) {
+      let t0;
+      if (!(constraints !== null)) dart.assertFailed(null, I[1], 822, 12, "constraints != null");
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 823, 12, "_children.length == rows * columns");
+      let widths = T.ListOfdouble().filled(this.columns, 0.0, {growable: false});
+      let minWidths = T.ListOfdouble().filled(this.columns, 0.0, {growable: false});
+      let flexes = T.ListOfdoubleN().filled(this.columns, null, {growable: false});
+      let tableWidth = 0.0;
+      let unflexedTableWidth = 0.0;
+      let totalFlex = 0.0;
+      for (let x = 0; x < this.columns; x = x + 1) {
+        let columnWidth = (t0 = this[_columnWidths][$_get](x), t0 == null ? this.defaultColumnWidth : t0);
+        let columnCells = this.column(x);
+        let maxIntrinsicWidth = columnWidth.maxIntrinsicWidth(columnCells, constraints.maxWidth);
+        if (!maxIntrinsicWidth[$isFinite]) dart.assertFailed(null, I[1], 846, 14, "maxIntrinsicWidth.isFinite");
+        if (!(maxIntrinsicWidth >= 0.0)) dart.assertFailed(null, I[1], 847, 14, "maxIntrinsicWidth >= 0.0");
+        widths[$_set](x, maxIntrinsicWidth);
+        tableWidth = tableWidth + maxIntrinsicWidth;
+        let minIntrinsicWidth = columnWidth.minIntrinsicWidth(columnCells, constraints.maxWidth);
+        if (!minIntrinsicWidth[$isFinite]) dart.assertFailed(null, I[1], 852, 14, "minIntrinsicWidth.isFinite");
+        if (!(minIntrinsicWidth >= 0.0)) dart.assertFailed(null, I[1], 853, 14, "minIntrinsicWidth >= 0.0");
+        minWidths[$_set](x, minIntrinsicWidth);
+        if (!(maxIntrinsicWidth >= minIntrinsicWidth)) dart.assertFailed(null, I[1], 855, 14, "maxIntrinsicWidth >= minIntrinsicWidth");
+        let flex = columnWidth.flex(columnCells);
+        if (flex != null) {
+          if (!flex[$isFinite]) dart.assertFailed(null, I[1], 859, 16, "flex.isFinite");
+          if (!(dart.notNull(flex) > 0.0)) dart.assertFailed(null, I[1], 860, 16, "flex > 0.0");
+          flexes[$_set](x, flex);
+          totalFlex = totalFlex + dart.notNull(flex);
         } else {
-          print.debugPrint("No transient callback is currently executing.");
-        }
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 616, 12, "() {\r\n      if (_FrameCallbackEntry.debugCurrentCallbackStack != null) {\r\n        debugPrint('When the current transient callback was registered, this was the stack:');\r\n        debugPrint(\r\n          FlutterError.defaultStackFilter(\r\n            FlutterError.demangleStackTrace(\r\n              _FrameCallbackEntry.debugCurrentCallbackStack!,\r\n            ).toString().trimRight().split('\\n'),\r\n          ).join('\\n'),\r\n        );\r\n      } else {\r\n        debugPrint('No transient callback is currently executing.');\r\n      }\r\n      return true;\r\n    }()");
-    }
-    static _debugDescribeTimeStamp(timeStamp, buffer) {
-      if (timeStamp.inDays > 0) buffer.write(dart.str(timeStamp.inDays) + "d ");
-      if (timeStamp.inHours > 0) buffer.write(dart.str(timeStamp.inHours - timeStamp.inDays * 24) + "h ");
-      if (timeStamp.inMinutes > 0) buffer.write(dart.str(timeStamp.inMinutes - timeStamp.inHours * 60) + "m ");
-      if (timeStamp.inSeconds > 0) buffer.write(dart.str(timeStamp.inSeconds - timeStamp.inMinutes * 60) + "s ");
-      buffer.write(dart.str(timeStamp.inMilliseconds - timeStamp.inSeconds * 1000));
-      let microseconds = timeStamp.inMicroseconds - timeStamp.inMilliseconds * 1000;
-      if (microseconds > 0) buffer.write("." + microseconds[$toString]()[$padLeft](3, "0"));
-      buffer.write("ms");
-    }
-  };
-  binding$.SchedulerBinding[dart.mixinOn] = BindingBase => class SchedulerBinding extends BindingBase {
-    get schedulingStrategy() {
-      return this[schedulingStrategy];
-    }
-    set schedulingStrategy(value) {
-      this[schedulingStrategy] = value;
-    }
-    initInstances() {
-      super.initInstances();
-      binding$.SchedulerBinding._instance = this;
-      if (!false) {
-        let frameNumber = 0;
-        this.addTimingsCallback(dart.fn(timings => {
-          for (let frameTiming of timings) {
-            frameNumber = frameNumber + 1;
-            this[_profileFramePostEvent](frameNumber, frameTiming);
-          }
-        }, T$.ListOfFrameTimingTovoid()));
-      }
-    }
-    addTimingsCallback(callback) {
-      this[_timingsCallbacks][$add](callback);
-      if (this[_timingsCallbacks][$length] === 1) {
-        if (!(this.window.onReportTimings == null)) dart.assertFailed(null, I[0], 268, 14, "window.onReportTimings == null");
-        this.window.onReportTimings = dart.bind(this, _executeTimingsCallbacks);
-      }
-      if (!dart.equals(this.window.onReportTimings, dart.bind(this, _executeTimingsCallbacks))) dart.assertFailed(null, I[0], 271, 12, "window.onReportTimings == _executeTimingsCallbacks");
-    }
-    removeTimingsCallback(callback) {
-      if (!this[_timingsCallbacks][$contains](callback)) dart.assertFailed(null, I[0], 276, 12, "_timingsCallbacks.contains(callback)");
-      this[_timingsCallbacks][$remove](callback);
-      if (this[_timingsCallbacks][$isEmpty]) {
-        this.window.onReportTimings = null;
-      }
-    }
-    [_executeTimingsCallbacks](timings) {
-      let clonedCallbacks = T$.ListOfListOfFrameTimingTovoid().from(this[_timingsCallbacks]);
-      for (let callback of clonedCallbacks) {
-        try {
-          if (this[_timingsCallbacks][$contains](callback)) {
-            callback(timings);
-          }
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            let collector = null;
-            if (!dart.fn(() => {
-              collector = dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid()).new("The TimingsCallback that gets executed was", callback, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
-              }), T$.VoidToIterableOfDiagnosticsNode());
-              return true;
-            }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 293, 16, "() {\r\n          collector = () sync* {\r\n            yield DiagnosticsProperty<TimingsCallback>(\r\n              'The TimingsCallback that gets executed was',\r\n              callback,\r\n              style: DiagnosticsTreeStyle.errorProperty,\r\n            );\r\n          };\r\n          return true;\r\n        }()");
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, context: new assertions.ErrorDescription.new("while executing callbacks for FrameTiming"), informationCollector: collector}));
-          } else
-            throw e;
+          unflexedTableWidth = unflexedTableWidth + maxIntrinsicWidth;
         }
       }
-    }
-    initServiceExtensions() {
-      super.initServiceExtensions();
-      if (!false) {
-        this.registerNumericServiceExtension({name: "timeDilation", getter: dart.fn(() => async.async(core.double, function*() {
-            return binding$.timeDilation;
-          }), T$.VoidToFutureOfdouble()), setter: dart.fn(value => async.async(dart.void, function*() {
-            binding$.timeDilation = value;
-          }), T$.doubleToFutureOfvoid())});
+      let maxWidthConstraint = constraints.maxWidth;
+      let minWidthConstraint = constraints.minWidth;
+      if (totalFlex > 0.0) {
+        let targetWidth = null;
+        if (maxWidthConstraint[$isFinite]) {
+          targetWidth = maxWidthConstraint;
+        } else {
+          targetWidth = minWidthConstraint;
+        }
+        if (tableWidth < targetWidth) {
+          let remainingWidth = targetWidth - unflexedTableWidth;
+          if (!remainingWidth[$isFinite]) dart.assertFailed(null, I[1], 883, 16, "remainingWidth.isFinite");
+          if (!(remainingWidth >= 0.0)) dart.assertFailed(null, I[1], 884, 16, "remainingWidth >= 0.0");
+          for (let x = 0; x < this.columns; x = x + 1) {
+            if (flexes[$_get](x) != null) {
+              let flexedWidth = remainingWidth * dart.nullCheck(flexes[$_get](x)) / totalFlex;
+              if (!flexedWidth[$isFinite]) dart.assertFailed(null, I[1], 888, 20, "flexedWidth.isFinite");
+              if (!(flexedWidth >= 0.0)) dart.assertFailed(null, I[1], 889, 20, "flexedWidth >= 0.0");
+              if (widths[$_get](x) < flexedWidth) {
+                let delta = flexedWidth - widths[$_get](x);
+                tableWidth = tableWidth + delta;
+                widths[$_set](x, flexedWidth);
+              }
+            }
+          }
+          if (!(tableWidth + 1e-10 >= targetWidth)) dart.assertFailed(null, I[1], 897, 16, "tableWidth + precisionErrorTolerance >= targetWidth");
+        }
+      } else if (tableWidth < minWidthConstraint) {
+        let delta = (minWidthConstraint - tableWidth) / this.columns;
+        for (let x = 0; x < this.columns; x = x + 1)
+          widths[$_set](x, widths[$_get](x) + delta);
+        tableWidth = minWidthConstraint;
       }
+      if (tableWidth > maxWidthConstraint) {
+        let deficit = tableWidth - maxWidthConstraint;
+        let availableColumns = this.columns;
+        while (deficit > 1e-10 && totalFlex > 1e-10) {
+          let newTotalFlex = 0.0;
+          for (let x = 0; x < this.columns; x = x + 1) {
+            if (flexes[$_get](x) != null) {
+              let newWidth = widths[$_get](x) - deficit * dart.nullCheck(flexes[$_get](x)) / totalFlex;
+              if (!newWidth[$isFinite]) dart.assertFailed(null, I[1], 938, 20, "newWidth.isFinite");
+              if (newWidth <= minWidths[$_get](x)) {
+                deficit = deficit - (widths[$_get](x) - minWidths[$_get](x));
+                widths[$_set](x, minWidths[$_get](x));
+                flexes[$_set](x, null);
+                availableColumns = availableColumns - 1;
+              } else {
+                deficit = deficit - (widths[$_get](x) - newWidth);
+                widths[$_set](x, newWidth);
+                newTotalFlex = newTotalFlex + dart.nullCheck(flexes[$_get](x));
+              }
+              if (!(widths[$_get](x) >= 0.0)) dart.assertFailed(null, I[1], 950, 20, "widths[x] >= 0.0");
+            }
+          }
+          totalFlex = newTotalFlex;
+        }
+        while (deficit > 1e-10 && availableColumns > 0) {
+          let delta = deficit / availableColumns;
+          if (!(delta !== 0)) dart.assertFailed(null, I[1], 962, 16, "delta != 0");
+          let newAvailableColumns = 0;
+          for (let x = 0; x < this.columns; x = x + 1) {
+            let availableDelta = widths[$_get](x) - minWidths[$_get](x);
+            if (availableDelta > 0.0) {
+              if (availableDelta <= delta) {
+                deficit = deficit - (widths[$_get](x) - minWidths[$_get](x));
+                widths[$_set](x, minWidths[$_get](x));
+              } else {
+                deficit = deficit - delta;
+                widths[$_set](x, widths[$_get](x) - delta);
+                newAvailableColumns = newAvailableColumns + 1;
+              }
+            }
+          }
+          availableColumns = newAvailableColumns;
+        }
+      }
+      return widths;
     }
-    get lifecycleState() {
-      return this[_lifecycleState];
+    getRowBox(row) {
+      if (!(row >= 0)) dart.assertFailed(null, I[1], 996, 12, "row >= 0");
+      if (!(row < this.rows)) dart.assertFailed(null, I[1], 997, 12, "row < rows");
+      if (!!this.debugNeedsLayout) dart.assertFailed(null, I[1], 998, 12, "!debugNeedsLayout");
+      return new ui.Rect.fromLTRB(0.0, this[_rowTops][$_get](row), this.size.width, this[_rowTops][$_get](row + 1));
     }
-    handleAppLifecycleStateChanged(state) {
-      if (!(state !== null)) dart.assertFailed(null, I[0], 352, 12, "state != null");
-      this[_lifecycleState] = state;
-      switch (state) {
-        case C[8] || CT.C8:
-        case C[9] || CT.C9:
+    computeDryLayout(constraints) {
+      let t0;
+      if (this.rows * this.columns === 0) {
+        return constraints.constrain(ui.Size.zero);
+      }
+      let widths = this[_computeColumnWidths](constraints);
+      let tableWidth = widths[$fold](core.double, 0.0, dart.fn((a, b) => a + b, T.doubleAnddoubleTodouble()));
+      let rowTop = 0.0;
+      for (let y = 0; y < this.rows; y = y + 1) {
+        let rowHeight = 0.0;
+        for (let x = 0; x < this.columns; x = x + 1) {
+          let xy = x + y * this.columns;
+          let child = this[_children][$_get](xy);
+          if (child != null) {
+            let childParentData = table.TableCellParentData.as(dart.nullCheck(child.parentData));
+            if (!(childParentData !== null)) dart.assertFailed(null, I[1], 1017, 18, "childParentData != null");
+            switch (t0 = childParentData.verticalAlignment, t0 == null ? this.defaultVerticalAlignment : t0) {
+              case C[3] || CT.C3:
+              {
+                if (!this.debugCannotComputeDryLayout({reason: "TableCellVerticalAlignment.baseline requires a full layout for baseline metrics to be available."})) dart.assertFailed(null, I[1], 1020, 22, "debugCannotComputeDryLayout(\r\n                reason: 'TableCellVerticalAlignment.baseline requires a full layout for baseline metrics to be available.',\r\n              )");
+                return ui.Size.zero;
+              }
+              case C[0] || CT.C0:
+              case C[1] || CT.C1:
+              case C[2] || CT.C2:
+              {
+                let childSize = child.getDryLayout(new box.BoxConstraints.tightFor({width: widths[$_get](x)}));
+                rowHeight = math.max(core.double, rowHeight, childSize.height);
+                break;
+              }
+              case C[4] || CT.C4:
+              {
+                break;
+              }
+            }
+          }
+        }
+        rowTop = rowTop + rowHeight;
+      }
+      return constraints.constrain(new ui.Size.new(tableWidth, rowTop));
+    }
+    performLayout() {
+      let t0, t0$;
+      let constraints = this.constraints;
+      let rows = this.rows;
+      let columns = this.columns;
+      if (!(this[_children][$length] === rows * columns)) dart.assertFailed(null, I[1], 1045, 12, "_children.length == rows * columns");
+      if (rows * columns === 0) {
+        this.size = constraints.constrain(ui.Size.zero);
+        return;
+      }
+      let widths = this[_computeColumnWidths](constraints);
+      let positions = T.ListOfdouble().filled(columns, 0.0, {growable: false});
+      let tableWidth = null;
+      switch (this.textDirection) {
+        case C[10] || CT.C10:
         {
-          this[_setFramesEnabledState](true);
+          positions[$_set](columns - 1, 0.0);
+          for (let x = columns - 2; x >= 0; x = x - 1)
+            positions[$_set](x, positions[$_get](x + 1) + widths[$_get](x + 1));
+          this[_columnLefts] = positions[$reversed];
+          tableWidth = positions[$first] + widths[$first];
           break;
         }
-        case C[10] || CT.C10:
         case C[11] || CT.C11:
         {
-          this[_setFramesEnabledState](false);
+          positions[$_set](0, 0.0);
+          for (let x = 1; x < columns; x = x + 1)
+            positions[$_set](x, positions[$_get](x - 1) + widths[$_get](x - 1));
+          this[_columnLefts] = positions;
+          tableWidth = positions[$last] + widths[$last];
           break;
         }
       }
-    }
-    scheduleTask(T, task, priority, opts) {
-      let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-      let flow = opts && 'flow' in opts ? opts.flow : null;
-      let isFirstTask = this[_taskQueue].isEmpty;
-      let entry = new (binding$._TaskEntry$(T)).new(task, priority.value, debugLabel, flow);
-      this[_taskQueue].add(entry);
-      if (isFirstTask && !this.locked) this[_ensureEventLoopCallback]();
-      return entry.completer.future;
-    }
-    unlocked() {
-      super.unlocked();
-      if (this[_taskQueue].isNotEmpty) this[_ensureEventLoopCallback]();
-    }
-    [_ensureEventLoopCallback]() {
-      if (!!this.locked) dart.assertFailed(null, I[0], 427, 12, "!locked");
-      if (!this[_taskQueue].isNotEmpty) dart.assertFailed(null, I[0], 428, 12, "_taskQueue.isNotEmpty");
-      if (this[_hasRequestedAnEventLoopCallback]) return;
-      this[_hasRequestedAnEventLoopCallback] = true;
-      async.Timer.run(dart.bind(this, _runTasks));
-    }
-    [_runTasks]() {
-      this[_hasRequestedAnEventLoopCallback] = false;
-      if (this.handleEventLoopCallback()) this[_ensureEventLoopCallback]();
-    }
-    handleEventLoopCallback() {
-      let t2;
-      if (this[_taskQueue].isEmpty || this.locked) return false;
-      let entry = this[_taskQueue].first;
-      if (t2 = entry.priority, this.schedulingStrategy({priority: t2, scheduler: this})) {
-        try {
-          this[_taskQueue].removeFirst();
-          entry.run();
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let exceptionStack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            let callbackStack = null;
-            if (!dart.fn(() => {
-              callbackStack = entry.debugStack;
-              return true;
-            }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 463, 16, "() {\r\n          callbackStack = entry.debugStack;\r\n          return true;\r\n        }()");
-            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a task callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-                yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
-              }), T$.VoidToIterableOfDiagnosticsNode())}));
-          } else
-            throw e;
+      this[_rowTops][$clear]();
+      this[_baselineDistance] = null;
+      let rowTop = 0.0;
+      for (let y = 0; y < rows; y = y + 1) {
+        this[_rowTops][$add](rowTop);
+        let rowHeight = 0.0;
+        let haveBaseline = false;
+        let beforeBaselineDistance = 0.0;
+        let afterBaselineDistance = 0.0;
+        let baselines = T.ListOfdouble().filled(columns, 0.0, {growable: false});
+        for (let x = 0; x < columns; x = x + 1) {
+          let xy = x + y * columns;
+          let child = this[_children][$_get](xy);
+          if (child != null) {
+            let childParentData = table.TableCellParentData.as(dart.nullCheck(child.parentData));
+            if (!(childParentData !== null)) dart.assertFailed(null, I[1], 1087, 18, "childParentData != null");
+            childParentData.x = x;
+            childParentData.y = y;
+            switch (t0 = childParentData.verticalAlignment, t0 == null ? this.defaultVerticalAlignment : t0) {
+              case C[3] || CT.C3:
+              {
+                if (!(this.textBaseline != null)) dart.assertFailed("An explicit textBaseline is required when using baseline alignment.", I[1], 1092, 22, "textBaseline != null");
+                child.layout(new box.BoxConstraints.tightFor({width: widths[$_get](x)}), {parentUsesSize: true});
+                let childBaseline = child.getDistanceToBaseline(dart.nullCheck(this.textBaseline), {onlyReal: true});
+                if (childBaseline != null) {
+                  beforeBaselineDistance = math.max(core.double, beforeBaselineDistance, childBaseline);
+                  afterBaselineDistance = math.max(core.double, afterBaselineDistance, child.size.height - dart.notNull(childBaseline));
+                  baselines[$_set](x, childBaseline);
+                  haveBaseline = true;
+                } else {
+                  rowHeight = math.max(core.double, rowHeight, child.size.height);
+                  childParentData.offset = new ui.Offset.new(positions[$_get](x), rowTop);
+                }
+                break;
+              }
+              case C[0] || CT.C0:
+              case C[1] || CT.C1:
+              case C[2] || CT.C2:
+              {
+                child.layout(new box.BoxConstraints.tightFor({width: widths[$_get](x)}), {parentUsesSize: true});
+                rowHeight = math.max(core.double, rowHeight, child.size.height);
+                break;
+              }
+              case C[4] || CT.C4:
+              {
+                break;
+              }
+            }
+          }
         }
-        return this[_taskQueue].isNotEmpty;
+        if (haveBaseline) {
+          if (y === 0) this[_baselineDistance] = beforeBaselineDistance;
+          rowHeight = math.max(core.double, rowHeight, beforeBaselineDistance + afterBaselineDistance);
+        }
+        for (let x = 0; x < columns; x = x + 1) {
+          let xy = x + y * columns;
+          let child = this[_children][$_get](xy);
+          if (child != null) {
+            let childParentData = table.TableCellParentData.as(dart.nullCheck(child.parentData));
+            switch (t0$ = childParentData.verticalAlignment, t0$ == null ? this.defaultVerticalAlignment : t0$) {
+              case C[3] || CT.C3:
+              {
+                childParentData.offset = new ui.Offset.new(positions[$_get](x), rowTop + beforeBaselineDistance - baselines[$_get](x));
+                break;
+              }
+              case C[0] || CT.C0:
+              {
+                childParentData.offset = new ui.Offset.new(positions[$_get](x), rowTop);
+                break;
+              }
+              case C[1] || CT.C1:
+              {
+                childParentData.offset = new ui.Offset.new(positions[$_get](x), rowTop + (rowHeight - child.size.height) / 2.0);
+                break;
+              }
+              case C[2] || CT.C2:
+              {
+                childParentData.offset = new ui.Offset.new(positions[$_get](x), rowTop + rowHeight - child.size.height);
+                break;
+              }
+              case C[4] || CT.C4:
+              {
+                child.layout(new box.BoxConstraints.tightFor({width: widths[$_get](x), height: rowHeight}));
+                childParentData.offset = new ui.Offset.new(positions[$_get](x), rowTop);
+                break;
+              }
+            }
+          }
+        }
+        rowTop = rowTop + rowHeight;
+      }
+      this[_rowTops][$add](rowTop);
+      this.size = constraints.constrain(new ui.Size.new(tableWidth, rowTop));
+      if (!(this[_rowTops][$length] === rows + 1)) dart.assertFailed(null, I[1], 1150, 12, "_rowTops.length == rows + 1");
+    }
+    hitTestChildren(result, opts) {
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 1155, 12, "_children.length == rows * columns");
+      for (let index = this[_children][$length] - 1; index >= 0; index = index - 1) {
+        let child = this[_children][$_get](index);
+        if (child != null) {
+          let childParentData = box.BoxParentData.as(dart.nullCheck(child.parentData));
+          let isHit = result.addWithPaintOffset({offset: childParentData.offset, position: position, hitTest: dart.fn((result, transformed) => {
+              if (!dart.equals(transformed, position['-'](childParentData.offset))) dart.assertFailed(null, I[1], 1164, 20, "transformed == position - childParentData.offset");
+              return child.hitTest(result, {position: dart.nullCheck(transformed)});
+            }, T.BoxHitTestResultAndOffsetNTobool())});
+          if (isHit) return true;
+        }
       }
       return false;
     }
-    get transientCallbackCount() {
-      return this[_transientCallbacks][$length];
-    }
-    scheduleFrameCallback(callback, opts) {
-      let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
-      this.scheduleFrame();
-      this[_nextFrameCallbackId] = this[_nextFrameCallbackId] + 1;
-      this[_transientCallbacks][$_set](this[_nextFrameCallbackId], new binding$._FrameCallbackEntry.new(callback, {rescheduling: rescheduling}));
-      return this[_nextFrameCallbackId];
-    }
-    cancelFrameCallbackWithId(id) {
-      if (!(id > 0)) dart.assertFailed(null, I[0], 535, 12, "id > 0");
-      this[_transientCallbacks][$remove](id);
-      this[_removedIds].add(id);
-    }
-    debugAssertNoTransientCallbacks(reason) {
-      if (!dart.fn(() => {
-        if (this.transientCallbackCount > 0) {
-          let count = this.transientCallbackCount;
-          let callbacks = T$.LinkedHashMapOfint$_FrameCallbackEntry().from(this[_transientCallbacks]);
-          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: reason, library: "scheduler library", informationCollector: dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-              if (count === 1) {
-                yield new assertions.ErrorDescription.new("There was one transient callback left. " + "The stack trace for when it was registered is as follows:");
-              } else {
-                yield new assertions.ErrorDescription.new("There were " + dart.str(count) + " transient callbacks left. " + "The stack traces for when they were registered are as follows:");
-              }
-              for (let id of callbacks[$keys]) {
-                let entry = dart.nullCheck(callbacks[$_get](id));
-                yield new assertions.DiagnosticsStackTrace.new("── callback " + dart.str(id) + " ──", entry.debugStack, {showSeparator: false});
-              }
-            }), T$.VoidToIterableOfDiagnosticsNode())}));
+    paint(context, offset) {
+      let t1, t0;
+      if (!(this[_children][$length] === this.rows * this.columns)) dart.assertFailed(null, I[1], 1177, 12, "_children.length == rows * columns");
+      if (this.rows * this.columns === 0) {
+        if (this.border != null) {
+          let borderRect = new ui.Rect.fromLTWH(offset.dx, offset.dy, this.size.width, 0.0);
+          dart.nullCheck(this.border).paint(context.canvas, borderRect, {rows: C[12] || CT.C12, columns: C[12] || CT.C12});
         }
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 561, 12, "() {\r\n      if (transientCallbackCount > 0) {\r\n        // We cache the values so that we can produce them later\r\n        // even if the information collector is called after\r\n        // the problem has been resolved.\r\n        final int count = transientCallbackCount;\r\n        final Map<int, _FrameCallbackEntry> callbacks = Map<int, _FrameCallbackEntry>.from(_transientCallbacks);\r\n        FlutterError.reportError(FlutterErrorDetails(\r\n          exception: reason,\r\n          library: 'scheduler library',\r\n          informationCollector: () sync* {\r\n            if (count == 1) {\r\n              // TODO(jacobr): I have added an extra line break in this case.\r\n              yield ErrorDescription(\r\n                'There was one transient callback left. '\r\n                'The stack trace for when it was registered is as follows:',\r\n              );\r\n            } else {\r\n              yield ErrorDescription(\r\n                'There were $count transient callbacks left. '\r\n                'The stack traces for when they were registered are as follows:',\r\n              );\r\n            }\r\n            for (final int id in callbacks.keys) {\r\n              final _FrameCallbackEntry entry = callbacks[id]!;\r\n              yield DiagnosticsStackTrace('── callback $id ──', entry.debugStack, showSeparator: false);\r\n            }\r\n          },\r\n        ));\r\n      }\r\n      return true;\r\n    }()");
-      return true;
-    }
-    addPersistentFrameCallback(callback) {
-      this[_persistentCallbacks][$add](callback);
-    }
-    addPostFrameCallback(callback) {
-      this[_postFrameCallbacks][$add](callback);
-    }
-    get endOfFrame() {
-      if (this[_nextFrameCompleter] == null) {
-        if (this.schedulerPhase === binding$.SchedulerPhase.idle) this.scheduleFrame();
-        this[_nextFrameCompleter] = T$.CompleterOfvoid().new();
-        this.addPostFrameCallback(dart.fn(timeStamp => {
-          dart.nullCheck(this[_nextFrameCompleter]).complete();
-          this[_nextFrameCompleter] = null;
-        }, T$.DurationTovoid()));
-      }
-      return dart.nullCheck(this[_nextFrameCompleter]).future;
-    }
-    get hasScheduledFrame() {
-      return this[_hasScheduledFrame];
-    }
-    get schedulerPhase() {
-      return this[_schedulerPhase];
-    }
-    get framesEnabled() {
-      return this[_framesEnabled];
-    }
-    [_setFramesEnabledState](enabled) {
-      if (this[_framesEnabled] === enabled) return;
-      this[_framesEnabled] = enabled;
-      if (enabled) this.scheduleFrame();
-    }
-    ensureFrameCallbacksRegistered() {
-      let t3, t3$;
-      t3 = this.window;
-      t3.onBeginFrame == null ? t3.onBeginFrame = dart.bind(this, _handleBeginFrame) : null;
-      t3$ = this.window;
-      t3$.onDrawFrame == null ? t3$.onDrawFrame = dart.bind(this, _handleDrawFrame) : null;
-    }
-    ensureVisualUpdate() {
-      switch (this.schedulerPhase) {
-        case C[0] || CT.C0:
-        case C[4] || CT.C4:
-        {
-          this.scheduleFrame();
-          return;
-        }
-        case C[1] || CT.C1:
-        case C[2] || CT.C2:
-        case C[3] || CT.C3:
-        {
-          return;
-        }
-      }
-    }
-    scheduleFrame() {
-      if (this[_hasScheduledFrame] || !this.framesEnabled) return;
-      if (!dart.fn(() => {
-        if (debug$.debugPrintScheduleFrameStacks) assertions.debugPrintStack({label: "scheduleFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 787, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
-      this.ensureFrameCallbacksRegistered();
-      this.window.scheduleFrame();
-      this[_hasScheduledFrame] = true;
-    }
-    scheduleForcedFrame() {
-      if (!this.framesEnabled) return;
-      if (this[_hasScheduledFrame]) return;
-      if (!dart.fn(() => {
-        if (debug$.debugPrintScheduleFrameStacks) assertions.debugPrintStack({label: "scheduleForcedFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 825, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleForcedFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
-      this.window.scheduleFrame();
-      this[_hasScheduledFrame] = true;
-    }
-    scheduleWarmUpFrame() {
-      if (this[_warmUpFrame] || this.schedulerPhase !== binding$.SchedulerPhase.idle) return;
-      this[_warmUpFrame] = true;
-      developer.Timeline.startSync("Warm-up frame");
-      let hadScheduledFrame = this[_hasScheduledFrame];
-      async.Timer.run(dart.fn(() => {
-        if (!this[_warmUpFrame]) dart.assertFailed(null, I[0], 860, 14, "_warmUpFrame");
-        this.handleBeginFrame(null);
-      }, T$.VoidTovoid()));
-      async.Timer.run(dart.fn(() => {
-        if (!this[_warmUpFrame]) dart.assertFailed(null, I[0], 864, 14, "_warmUpFrame");
-        this.handleDrawFrame();
-        this.resetEpoch();
-        this[_warmUpFrame] = false;
-        if (hadScheduledFrame) this.scheduleFrame();
-      }, T$.VoidTovoid()));
-      this.lockEvents(dart.fn(() => async.async(dart.void, (function*() {
-        yield this.endOfFrame;
-        developer.Timeline.finishSync();
-      }).bind(this)), T$.VoidToFutureOfvoid()));
-    }
-    resetEpoch() {
-      this[_epochStart] = this[_adjustForEpoch](this[_lastRawTimeStamp]);
-      this[_firstRawTimeStampInEpoch] = null;
-    }
-    [_adjustForEpoch](rawTimeStamp) {
-      let rawDurationSinceEpoch = this[_firstRawTimeStampInEpoch] == null ? core.Duration.zero : rawTimeStamp['-'](dart.nullCheck(this[_firstRawTimeStampInEpoch]));
-      return new core.Duration.new({microseconds: (rawDurationSinceEpoch.inMicroseconds / binding$.timeDilation)[$round]() + this[_epochStart].inMicroseconds});
-    }
-    get currentFrameTimeStamp() {
-      if (!(this[_currentFrameTimeStamp] != null)) dart.assertFailed(null, I[0], 933, 12, "_currentFrameTimeStamp != null");
-      return dart.nullCheck(this[_currentFrameTimeStamp]);
-    }
-    get currentSystemFrameTimeStamp() {
-      if (!(this[_lastRawTimeStamp] !== null)) dart.assertFailed(null, I[0], 951, 12, "_lastRawTimeStamp != null");
-      return this[_lastRawTimeStamp];
-    }
-    [_handleBeginFrame](rawTimeStamp) {
-      if (this[_warmUpFrame]) {
-        if (!!this[_rescheduleAfterWarmUpFrame]) dart.assertFailed(null, I[0], 973, 14, "!_rescheduleAfterWarmUpFrame");
-        this[_rescheduleAfterWarmUpFrame] = true;
         return;
       }
-      this.handleBeginFrame(rawTimeStamp);
-    }
-    [_handleDrawFrame]() {
-      if (this[_rescheduleAfterWarmUpFrame]) {
-        this[_rescheduleAfterWarmUpFrame] = false;
-        this.addPostFrameCallback(dart.fn(timeStamp => {
-          this[_hasScheduledFrame] = false;
-          this.scheduleFrame();
-        }, T$.DurationTovoid()));
-        return;
-      }
-      this.handleDrawFrame();
-    }
-    handleBeginFrame(rawTimeStamp) {
-      let t3;
-      developer.Timeline.startSync("Frame", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
-      this[_firstRawTimeStampInEpoch] == null ? this[_firstRawTimeStampInEpoch] = rawTimeStamp : null;
-      this[_currentFrameTimeStamp] = this[_adjustForEpoch]((t3 = rawTimeStamp, t3 == null ? this[_lastRawTimeStamp] : t3));
-      if (rawTimeStamp != null) this[_lastRawTimeStamp] = rawTimeStamp;
-      if (!dart.fn(() => {
-        this[_debugFrameNumber] = this[_debugFrameNumber] + 1;
-        if (debug$.debugPrintBeginFrameBanner || debug$.debugPrintEndFrameBanner) {
-          let frameTimeStampDescription = new core.StringBuffer.new();
-          if (rawTimeStamp != null) {
-            binding$.SchedulerBinding._debugDescribeTimeStamp(dart.nullCheck(this[_currentFrameTimeStamp]), frameTimeStampDescription);
-          } else {
-            frameTimeStampDescription.write("(warm-up frame)");
+      if (!(this[_rowTops][$length] === this.rows + 1)) dart.assertFailed(null, I[1], 1185, 12, "_rowTops.length == rows + 1");
+      if (this[_rowDecorations] != null) {
+        if (!(dart.nullCheck(this[_rowDecorations])[$length] === dart.nullCheck(this[_rowDecorationPainters])[$length])) dart.assertFailed(null, I[1], 1187, 14, "_rowDecorations!.length == _rowDecorationPainters!.length");
+        let canvas = context.canvas;
+        for (let y = 0; y < this.rows; y = y + 1) {
+          if (dart.nullCheck(this[_rowDecorations])[$length] <= y) break;
+          if (dart.nullCheck(this[_rowDecorations])[$_get](y) != null) {
+            t0 = dart.nullCheck(this[_rowDecorationPainters]);
+            t1 = y;
+            t0[$_get](t1) == null ? t0[$_set](t1, dart.nullCheck(dart.nullCheck(this[_rowDecorations])[$_get](y)).createBoxPainter(dart.bind(this, 'markNeedsPaint'))) : null;
+            dart.nullCheck(dart.nullCheck(this[_rowDecorationPainters])[$_get](y)).paint(canvas, new ui.Offset.new(offset.dx, offset.dy + this[_rowTops][$_get](y)), this.configuration.copyWith({size: new ui.Size.new(this.size.width, this[_rowTops][$_get](y + 1) - this[_rowTops][$_get](y))}));
           }
-          this[_debugBanner] = "▄▄▄▄▄▄▄▄ Frame " + this[_debugFrameNumber][$toString]()[$padRight](7) + "   " + frameTimeStampDescription.toString()[$padLeft](18) + " ▄▄▄▄▄▄▄▄";
-          if (debug$.debugPrintBeginFrameBanner) print.debugPrint(this[_debugBanner]);
         }
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1031, 12, "() {\r\n      _debugFrameNumber += 1;\r\n\r\n      if (debugPrintBeginFrameBanner || debugPrintEndFrameBanner) {\r\n        final StringBuffer frameTimeStampDescription = StringBuffer();\r\n        if (rawTimeStamp != null) {\r\n          _debugDescribeTimeStamp(_currentFrameTimeStamp!, frameTimeStampDescription);\r\n        } else {\r\n          frameTimeStampDescription.write('(warm-up frame)');\r\n        }\r\n        _debugBanner = '▄▄▄▄▄▄▄▄ Frame ${_debugFrameNumber.toString().padRight(7)}   ${frameTimeStampDescription.toString().padLeft(18)} ▄▄▄▄▄▄▄▄';\r\n        if (debugPrintBeginFrameBanner)\r\n          debugPrint(_debugBanner);\r\n      }\r\n      return true;\r\n    }()");
-      if (!(this.schedulerPhase === binding$.SchedulerPhase.idle)) dart.assertFailed(null, I[0], 1048, 12, "schedulerPhase == SchedulerPhase.idle");
-      this[_hasScheduledFrame] = false;
-      try {
-        developer.Timeline.startSync("Animate", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
-        this[_schedulerPhase] = binding$.SchedulerPhase.transientCallbacks;
-        let callbacks = this[_transientCallbacks];
-        this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
-        callbacks[$forEach](dart.fn((id, callbackEntry) => {
-          if (!this[_removedIds].contains(id)) this[_invokeFrameCallback](callbackEntry.callback, dart.nullCheck(this[_currentFrameTimeStamp]), callbackEntry.debugStack);
-        }, T$.intAnd_FrameCallbackEntryTovoid()));
-        this[_removedIds].clear();
-      } finally {
-        this[_schedulerPhase] = binding$.SchedulerPhase.midFrameMicrotasks;
+      }
+      for (let index = 0; index < this[_children][$length]; index = index + 1) {
+        let child = this[_children][$_get](index);
+        if (child != null) {
+          let childParentData = box.BoxParentData.as(dart.nullCheck(child.parentData));
+          context.paintChild(child, childParentData.offset['+'](offset));
+        }
+      }
+      if (!(this[_rows] === this[_rowTops][$length] - 1)) dart.assertFailed(null, I[1], 1209, 12, "_rows == _rowTops.length - 1");
+      if (!(this[_columns] === dart.nullCheck(this[_columnLefts])[$length])) dart.assertFailed(null, I[1], 1210, 12, "_columns == _columnLefts!.length");
+      if (this.border != null) {
+        let borderRect = new ui.Rect.fromLTWH(offset.dx, offset.dy, this.size.width, this[_rowTops][$last]);
+        let rows = this[_rowTops][$getRange](1, this[_rowTops][$length] - 1);
+        let columns = dart.nullCheck(this[_columnLefts])[$skip](1);
+        dart.nullCheck(this.border).paint(context.canvas, borderRect, {rows: rows, columns: columns});
       }
     }
-    handleDrawFrame() {
-      if (!(this[_schedulerPhase] === binding$.SchedulerPhase.midFrameMicrotasks)) dart.assertFailed(null, I[0], 1076, 12, "_schedulerPhase == SchedulerPhase.midFrameMicrotasks");
-      developer.Timeline.finishSync();
-      try {
-        this[_schedulerPhase] = binding$.SchedulerPhase.persistentCallbacks;
-        for (let callback of this[_persistentCallbacks])
-          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
-        this[_schedulerPhase] = binding$.SchedulerPhase.postFrameCallbacks;
-        let localPostFrameCallbacks = T$.ListOfDurationTovoid().from(this[_postFrameCallbacks]);
-        this[_postFrameCallbacks][$clear]();
-        for (let callback of localPostFrameCallbacks)
-          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
-      } finally {
-        this[_schedulerPhase] = binding$.SchedulerPhase.idle;
-        developer.Timeline.finishSync();
-        if (!dart.fn(() => {
-          if (debug$.debugPrintEndFrameBanner) print.debugPrint("▀"[$times](dart.nullCheck(this[_debugBanner]).length));
-          this[_debugBanner] = null;
-          return true;
-        }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1094, 14, "() {\r\n        if (debugPrintEndFrameBanner)\r\n          debugPrint('▀' * _debugBanner!.length);\r\n        _debugBanner = null;\r\n        return true;\r\n      }()");
-        this[_currentFrameTimeStamp] = null;
-      }
+    debugFillProperties(properties) {
+      let t0;
+      super.debugFillProperties(properties);
+      properties.add(new (T.DiagnosticsPropertyOfTableBorder()).new("border", this.border, {defaultValue: null}));
+      properties.add(new (T.DiagnosticsPropertyOfMapOfint$TableColumnWidth()).new("specified column widths", this[_columnWidths], {level: this[_columnWidths][$isEmpty] ? diagnostics.DiagnosticLevel.hidden : diagnostics.DiagnosticLevel.info}));
+      properties.add(new (T.DiagnosticsPropertyOfTableColumnWidth()).new("default column width", this.defaultColumnWidth));
+      properties.add(new diagnostics.MessageProperty.new("table size", dart.str(this.columns) + "×" + dart.str(this.rows)));
+      properties.add(new (T.IterablePropertyOfString()).new("column offsets", (t0 = this[_columnLefts], t0 == null ? null : t0[$map](core.String, C[13] || CT.C13)), {ifNull: "unknown"}));
+      properties.add(new (T.IterablePropertyOfString()).new("row offsets", this[_rowTops][$map](core.String, C[13] || CT.C13), {ifNull: "unknown"}));
     }
-    [_profileFramePostEvent](frameNumber, frameTiming) {
-      this.postEvent("Flutter.Frame", new (T$.IdentityMapOfString$dynamic()).from(["number", frameNumber, "startTime", frameTiming.timestampInMicroseconds(ui.FramePhase.buildStart), "elapsed", frameTiming.totalSpan.inMicroseconds, "build", frameTiming.buildDuration.inMicroseconds, "raster", frameTiming.rasterDuration.inMicroseconds, "vsyncOverhead", frameTiming.vsyncOverhead.inMicroseconds]));
-    }
-    [_invokeFrameCallback](callback, timeStamp, callbackStack = null) {
-      if (!(callback !== null)) dart.assertFailed(null, I[0], 1137, 12, "callback != null");
-      if (!(binding$._FrameCallbackEntry.debugCurrentCallbackStack == null)) dart.assertFailed(null, I[0], 1138, 12, "_FrameCallbackEntry.debugCurrentCallbackStack == null");
-      if (!dart.fn(() => {
-        binding$._FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1139, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;\r\n      return true;\r\n    }()");
-      try {
-        callback(timeStamp);
-      } catch (e) {
-        let exception = dart.getThrown(e);
-        let exceptionStack = dart.stackTrace(e);
-        if (core.Object.is(exception)) {
-          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a scheduler callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
-              yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
-            }), T$.VoidToIterableOfDiagnosticsNode())}));
-        } else
-          throw e;
+    debugDescribeChildren() {
+      if (this[_children][$isEmpty]) {
+        return T.JSArrayOfDiagnosticsNode().of([diagnostics.DiagnosticsNode.message("table is empty")]);
       }
-      if (!dart.fn(() => {
-        binding$._FrameCallbackEntry.debugCurrentCallbackStack = null;
-        return true;
-      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1161, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = null;\r\n      return true;\r\n    }()");
+      let children = T.JSArrayOfDiagnosticsNode().of([]);
+      for (let y = 0; y < this.rows; y = y + 1) {
+        for (let x = 0; x < this.columns; x = x + 1) {
+          let xy = x + y * this.columns;
+          let child = this[_children][$_get](xy);
+          let name = "child (" + dart.str(x) + ", " + dart.str(y) + ")";
+          if (child != null)
+            children[$add](child.toDiagnosticsNode({name: name}));
+          else
+            children[$add](new (T.DiagnosticsPropertyOfObject()).new(name, null, {ifNull: "is null", showSeparator: false}));
+        }
+      }
+      return children;
     }
   };
-  (binding$.SchedulerBinding[dart.mixinNew] = function() {
-    this[_timingsCallbacks] = T$.JSArrayOfListOfFrameTimingTovoid().of([]);
-    this[_lifecycleState] = null;
-    this[schedulingStrategy] = C[6] || CT.C6;
-    this[_taskQueue] = new (T$.HeapPriorityQueueOf_TaskEntry()).new(C[7] || CT.C7);
-    this[_hasRequestedAnEventLoopCallback] = false;
-    this[_nextFrameCallbackId] = 0;
-    this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
-    this[_removedIds] = new (T$._IdentityHashSetOfint()).new();
-    this[_persistentCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
-    this[_postFrameCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
-    this[_nextFrameCompleter] = null;
-    this[_hasScheduledFrame] = false;
-    this[_schedulerPhase] = binding$.SchedulerPhase.idle;
-    this[_framesEnabled] = true;
-    this[_warmUpFrame] = false;
-    this[_firstRawTimeStampInEpoch] = null;
-    this[_epochStart] = core.Duration.zero;
-    this[_lastRawTimeStamp] = core.Duration.zero;
-    this[_currentFrameTimeStamp] = null;
-    this[_debugFrameNumber] = 0;
-    this[_debugBanner] = null;
-    this[_rescheduleAfterWarmUpFrame] = false;
-  }).prototype = binding$.SchedulerBinding.prototype;
-  dart.addTypeTests(binding$.SchedulerBinding);
-  dart.addTypeCaches(binding$.SchedulerBinding);
-  binding$.SchedulerBinding[dart.implements] = () => [binding.BindingBase];
-  dart.setMethodSignature(binding$.SchedulerBinding, () => ({
-    __proto__: dart.getMethods(binding$.SchedulerBinding.__proto__),
-    addTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
-    removeTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
-    [_executeTimingsCallbacks]: dart.fnType(dart.void, [core.List$(ui.FrameTiming)]),
-    handleAppLifecycleStateChanged: dart.fnType(dart.void, [ui.AppLifecycleState]),
-    scheduleTask: dart.gFnType(T => [async.Future$(T), [dart.fnType(T, []), priority$.Priority], {debugLabel: dart.nullable(core.String), flow: dart.nullable(developer.Flow)}, {}], T => [dart.nullable(core.Object)]),
-    [_ensureEventLoopCallback]: dart.fnType(dart.void, []),
-    [_runTasks]: dart.fnType(dart.void, []),
-    handleEventLoopCallback: dart.fnType(core.bool, []),
-    scheduleFrameCallback: dart.fnType(core.int, [dart.fnType(dart.void, [core.Duration])], {rescheduling: core.bool}, {}),
-    cancelFrameCallbackWithId: dart.fnType(dart.void, [core.int]),
-    debugAssertNoTransientCallbacks: dart.fnType(core.bool, [core.String]),
-    addPersistentFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
-    addPostFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
-    [_setFramesEnabledState]: dart.fnType(dart.void, [core.bool]),
-    ensureFrameCallbacksRegistered: dart.fnType(dart.void, []),
-    ensureVisualUpdate: dart.fnType(dart.void, []),
-    scheduleFrame: dart.fnType(dart.void, []),
-    scheduleForcedFrame: dart.fnType(dart.void, []),
-    scheduleWarmUpFrame: dart.fnType(dart.void, []),
-    resetEpoch: dart.fnType(dart.void, []),
-    [_adjustForEpoch]: dart.fnType(core.Duration, [core.Duration]),
-    [_handleBeginFrame]: dart.fnType(dart.void, [core.Duration]),
-    [_handleDrawFrame]: dart.fnType(dart.void, []),
-    handleBeginFrame: dart.fnType(dart.void, [dart.nullable(core.Duration)]),
-    handleDrawFrame: dart.fnType(dart.void, []),
-    [_profileFramePostEvent]: dart.fnType(dart.void, [core.int, ui.FrameTiming]),
-    [_invokeFrameCallback]: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration]), core.Duration], [dart.nullable(core.StackTrace)])
+  (table.RenderTable.new = function(opts) {
+    let t0, t0$, t0$0, t0$1, t0$2;
+    let columns = opts && 'columns' in opts ? opts.columns : null;
+    let rows = opts && 'rows' in opts ? opts.rows : null;
+    let columnWidths = opts && 'columnWidths' in opts ? opts.columnWidths : null;
+    let defaultColumnWidth = opts && 'defaultColumnWidth' in opts ? opts.defaultColumnWidth : C[6] || CT.C6;
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let border = opts && 'border' in opts ? opts.border : null;
+    let rowDecorations = opts && 'rowDecorations' in opts ? opts.rowDecorations : null;
+    let configuration = opts && 'configuration' in opts ? opts.configuration : C[7] || CT.C7;
+    let defaultVerticalAlignment = opts && 'defaultVerticalAlignment' in opts ? opts.defaultVerticalAlignment : C[0] || CT.C0;
+    let textBaseline = opts && 'textBaseline' in opts ? opts.textBaseline : null;
+    let children = opts && 'children' in opts ? opts.children : null;
+    this[_children] = C[8] || CT.C8;
+    this[_rowDecorations] = null;
+    this[_rowDecorationPainters] = null;
+    this[_baselineDistance] = null;
+    this[_rowTops] = T.JSArrayOfdouble().of([]);
+    this[_columnLefts] = null;
+    if (!(columns == null || dart.notNull(columns) >= 0)) dart.assertFailed(null, I[1], 380, 15, "columns == null || columns >= 0");
+    if (!(rows == null || dart.notNull(rows) >= 0)) dart.assertFailed(null, I[1], 381, 15, "rows == null || rows >= 0");
+    if (!(rows == null || children == null)) dart.assertFailed(null, I[1], 382, 15, "rows == null || children == null");
+    if (!(defaultColumnWidth !== null)) dart.assertFailed(null, I[1], 383, 15, "defaultColumnWidth != null");
+    if (!(textDirection !== null)) dart.assertFailed(null, I[1], 384, 15, "textDirection != null");
+    if (!(configuration !== null)) dart.assertFailed(null, I[1], 385, 15, "configuration != null");
+    this[_textDirection] = textDirection;
+    this[_columns] = (t0 = columns, t0 == null ? children != null && children[$isNotEmpty] ? children[$first][$length] : 0 : t0);
+    this[_rows] = (t0$ = rows, t0$ == null ? 0 : t0$);
+    this[_columnWidths] = (t0$0 = columnWidths, t0$0 == null ? new (T.IdentityMapOfint$TableColumnWidth()).new() : t0$0);
+    this[_defaultColumnWidth] = defaultColumnWidth;
+    this[_border] = border;
+    this[_textBaseline] = textBaseline;
+    this[_defaultVerticalAlignment] = defaultVerticalAlignment;
+    this[_configuration] = configuration;
+    table.RenderTable.__proto__.new.call(this);
+    this[_children] = (t0$1 = T.JSArrayOfRenderBoxN().of([]), (() => {
+      t0$1[$length] = this[_columns] * this[_rows];
+      return t0$1;
+    })());
+    this.rowDecorations = rowDecorations;
+    t0$2 = children;
+    t0$2 == null ? null : t0$2[$forEach](dart.bind(this, 'addRow'));
+  }).prototype = table.RenderTable.prototype;
+  dart.addTypeTests(table.RenderTable);
+  dart.addTypeCaches(table.RenderTable);
+  dart.setMethodSignature(table.RenderTable, () => ({
+    __proto__: dart.getMethods(table.RenderTable.__proto__),
+    setColumnWidth: dart.fnType(dart.void, [core.int, table.TableColumnWidth]),
+    setFlatChildren: dart.fnType(dart.void, [core.int, core.List$(dart.nullable(box.RenderBox))]),
+    setChildren: dart.fnType(dart.void, [dart.nullable(core.List$(core.List$(box.RenderBox)))]),
+    addRow: dart.fnType(dart.void, [core.List$(dart.nullable(box.RenderBox))]),
+    setChild: dart.fnType(dart.void, [core.int, core.int, dart.nullable(box.RenderBox)]),
+    column: dart.fnType(core.Iterable$(box.RenderBox), [core.int]),
+    row: dart.fnType(core.Iterable$(box.RenderBox), [core.int]),
+    [_computeColumnWidths]: dart.fnType(core.List$(core.double), [box.BoxConstraints]),
+    getRowBox: dart.fnType(ui.Rect, [core.int])
   }));
-  dart.setGetterSignature(binding$.SchedulerBinding, () => ({
-    __proto__: dart.getGetters(binding$.SchedulerBinding.__proto__),
-    lifecycleState: dart.nullable(ui.AppLifecycleState),
-    transientCallbackCount: core.int,
-    endOfFrame: async.Future$(dart.void),
-    hasScheduledFrame: core.bool,
-    schedulerPhase: binding$.SchedulerPhase,
-    framesEnabled: core.bool,
-    currentFrameTimeStamp: core.Duration,
-    currentSystemFrameTimeStamp: core.Duration
+  dart.setGetterSignature(table.RenderTable, () => ({
+    __proto__: dart.getGetters(table.RenderTable.__proto__),
+    columns: core.int,
+    rows: core.int,
+    columnWidths: dart.nullable(core.Map$(core.int, table.TableColumnWidth)),
+    defaultColumnWidth: table.TableColumnWidth,
+    textDirection: ui.TextDirection,
+    border: dart.nullable(table_border.TableBorder),
+    rowDecorations: core.List$(decoration.Decoration),
+    configuration: image_provider.ImageConfiguration,
+    defaultVerticalAlignment: table.TableCellVerticalAlignment,
+    textBaseline: dart.nullable(ui.TextBaseline)
   }));
-  dart.setLibraryUri(binding$.SchedulerBinding, I[1]);
-  dart.setFieldSignature(binding$.SchedulerBinding, () => ({
-    __proto__: dart.getFields(binding$.SchedulerBinding.__proto__),
-    [_timingsCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.List$(ui.FrameTiming)]))),
-    [_lifecycleState]: dart.fieldType(dart.nullable(ui.AppLifecycleState)),
-    schedulingStrategy: dart.fieldType(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})),
-    [_taskQueue]: dart.finalFieldType(priority_queue.PriorityQueue$(binding$._TaskEntry)),
-    [_hasRequestedAnEventLoopCallback]: dart.fieldType(core.bool),
-    [_nextFrameCallbackId]: dart.fieldType(core.int),
-    [_transientCallbacks]: dart.fieldType(core.Map$(core.int, binding$._FrameCallbackEntry)),
-    [_removedIds]: dart.finalFieldType(core.Set$(core.int)),
-    [_persistentCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
-    [_postFrameCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
-    [_nextFrameCompleter]: dart.fieldType(dart.nullable(async.Completer$(dart.void))),
-    [_hasScheduledFrame]: dart.fieldType(core.bool),
-    [_schedulerPhase]: dart.fieldType(binding$.SchedulerPhase),
-    [_framesEnabled]: dart.fieldType(core.bool),
-    [_warmUpFrame]: dart.fieldType(core.bool),
-    [_firstRawTimeStampInEpoch]: dart.fieldType(dart.nullable(core.Duration)),
-    [_epochStart]: dart.fieldType(core.Duration),
-    [_lastRawTimeStamp]: dart.fieldType(core.Duration),
-    [_currentFrameTimeStamp]: dart.fieldType(dart.nullable(core.Duration)),
-    [_debugFrameNumber]: dart.fieldType(core.int),
-    [_debugBanner]: dart.fieldType(dart.nullable(core.String)),
-    [_rescheduleAfterWarmUpFrame]: dart.fieldType(core.bool)
+  dart.setSetterSignature(table.RenderTable, () => ({
+    __proto__: dart.getSetters(table.RenderTable.__proto__),
+    columns: core.int,
+    rows: core.int,
+    columnWidths: dart.nullable(core.Map$(core.int, table.TableColumnWidth)),
+    defaultColumnWidth: table.TableColumnWidth,
+    textDirection: ui.TextDirection,
+    border: dart.nullable(table_border.TableBorder),
+    rowDecorations: dart.nullable(core.List$(dart.nullable(decoration.Decoration))),
+    configuration: image_provider.ImageConfiguration,
+    defaultVerticalAlignment: table.TableCellVerticalAlignment,
+    textBaseline: dart.nullable(ui.TextBaseline)
   }));
-  dart.defineLazy(binding$.SchedulerBinding, {
-    /*binding$.SchedulerBinding._instance*/get _instance() {
-      return null;
-    },
-    set _instance(_) {}
-  }, false);
-  binding$.defaultSchedulingStrategy = function defaultSchedulingStrategy(opts) {
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    let scheduler = opts && 'scheduler' in opts ? opts.scheduler : null;
-    if (scheduler.transientCallbackCount > 0) return priority >= priority$.Priority.animation.value;
-    return true;
-  };
-  dart.copyProperties(binding$, {
-    get timeDilation() {
-      return binding$._timeDilation;
-    },
-    set timeDilation(value) {
-      let t4;
-      if (!(value > 0.0)) dart.assertFailed(null, I[0], 25, 10, "value > 0.0");
-      if (binding$._timeDilation === value) return;
-      t4 = binding$.SchedulerBinding.instance;
-      t4 == null ? null : t4.resetEpoch();
-      binding$._timeDilation = value;
-    }
-  });
-  dart.defineLazy(binding$, {
-    /*binding$._timeDilation*/get _timeDilation() {
-      return 1.0;
-    },
-    set _timeDilation(_) {}
-  }, false);
-  dart.trackLibraries("packages/flutter/src/scheduler/binding.dart", {
-    "package:flutter/src/scheduler/binding.dart": binding$
+  dart.setLibraryUri(table.RenderTable, I[0]);
+  dart.setFieldSignature(table.RenderTable, () => ({
+    __proto__: dart.getFields(table.RenderTable.__proto__),
+    [_children]: dart.fieldType(core.List$(dart.nullable(box.RenderBox))),
+    [_columns]: dart.fieldType(core.int),
+    [_rows]: dart.fieldType(core.int),
+    [_columnWidths]: dart.fieldType(core.Map$(core.int, table.TableColumnWidth)),
+    [_defaultColumnWidth]: dart.fieldType(table.TableColumnWidth),
+    [_textDirection]: dart.fieldType(ui.TextDirection),
+    [_border]: dart.fieldType(dart.nullable(table_border.TableBorder)),
+    [_rowDecorations]: dart.fieldType(dart.nullable(core.List$(dart.nullable(decoration.Decoration)))),
+    [_rowDecorationPainters]: dart.fieldType(dart.nullable(core.List$(dart.nullable(decoration.BoxPainter)))),
+    [_configuration]: dart.fieldType(image_provider.ImageConfiguration),
+    [_defaultVerticalAlignment]: dart.fieldType(table.TableCellVerticalAlignment),
+    [_textBaseline]: dart.fieldType(dart.nullable(ui.TextBaseline)),
+    [_baselineDistance]: dart.fieldType(dart.nullable(core.double)),
+    [_rowTops]: dart.finalFieldType(core.List$(core.double)),
+    [_columnLefts]: dart.fieldType(dart.nullable(core.Iterable$(core.double)))
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/table.dart", {
+    "package:flutter/src/rendering/table.dart": table
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/scheduler/binding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["table.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAkB8B;;;;;;IAGvB;;;;;;IAGA;;;;;;;AAGgB,YAAS,AAAgG,oBAArF,QAAI,AAAkB,iCAAU,+BAAmD,SAAlB;IAAoB;;;IATlG;IAGvB;IAGA;;;EAIP;;;;;;;;;;;;SAiDmC;AAAU;IAAI;;AAG1B,uCAAkB,MAAM;IAAmB;;;;EArCxC;;;;;;;;;;;;IA2EV;;;;;;sBAf+B,OAAc;AAClD,mBAAS;AAChB,eAAqB,OAAQ,MAAK;AACqC,QAArE,SAAS,sBAAS,MAAM,EAAE,AAAK,IAAD;AAChC,YAAO,OAAM;IACf;sBAG6C,OAAc;AAClD,mBAAS;AAChB,eAAqB,OAAQ,MAAK;AACqC,QAArE,SAAS,sBAAS,MAAM,EAAE,AAAK,IAAD;AAChC,YAAO,OAAM;IACf;SAKiC;AAAU;IAAK;;;AAG3B,YAAG,AAAqF,2BAAnE,MAAM,0BAAwB,sDAAS,OAAO,qBAAgB,OAAG;IAAE;;;QAxBxE;IAAgB,cAAE,IAAI;AAArD;;EAAqD;;;;;;;;;;;;;;;;IAqC9C;;;;;;sBAGgC,OAAc;AACzD,YAAO;IACT;sBAG6C,OAAc;AACzD,YAAO;IACT;;AAGqB,YAAG,AAA0E,2BAAxD,MAAM,sBAAoB,MAAG,wBAAkB,cAAO;IAAE;;;IAhBtE;UAAgB,AAAM,KAAD;AAA3C;;EAAoD;;;;;;;;;;;;;;;;IA+B7C;;;;;;sBAGgC,OAAc;AACzD,WAAK,AAAe,cAAD,aACjB,MAAO;AACT,YAAO,AAAM,cAAE,cAAc;IAC/B;sBAG6C,OAAc;AACzD,WAAK,AAAe,cAAD,aACjB,MAAO;AACT,YAAO,AAAM,cAAE,cAAc;IAC/B;;AAGqB,YAAG,AAAwD,2BAAtC,MAAM,yBAAuB,eAAE,cAAK;IAAE;;;IArBjD;UAAgB,AAAM,KAAD;AAA9C;;EAAuD;;;;;;;;;;;;;;;;IAwChD;;;;;;sBAGgC,OAAc;AACzD,YAAO;IACT;sBAG6C,OAAc;AACzD,YAAO;IACT;SAGgC;AAC9B,YAAO;IACT;;AAGqB,YAAG,AAAyE,2BAAvD,MAAM,qBAAmB,MAAG,wBAAkB,cAAO;IAAE;;;IAtBrE;UAAuB,AAAM,KAAD;AAAlD;;EAA2D;;;;;;;;;;;;;;;;;;IAwC1C;;;;;;IAGA;;;;;;sBAGsB,OAAc;AACzD,YAAO,uBACL,AAAE,yBAAkB,KAAK,EAAE,cAAc,GACzC,AAAE,yBAAkB,KAAK,EAAE,cAAc;IAE7C;sBAG6C,OAAc;AACzD,YAAO,uBACL,AAAE,yBAAkB,KAAK,EAAE,cAAc,GACzC,AAAE,yBAAkB,KAAK,EAAE,cAAc;IAE7C;SAGiC;AACjB,kBAAQ,AAAE,YAAK,KAAK;AAClC,UAAI,AAAM,KAAD,UACP,MAAO,AAAE,aAAK,KAAK;AACP,kBAAQ,AAAE,YAAK,KAAK;AAClC,UAAI,AAAM,KAAD,UACP,MAAO;AACT,YAAO,uBAAS,KAAK,EAAE,KAAK;IAC9B;;AAGqB,YAAG,AAAmD,2BAAjC,MAAM,oBAAkB,eAAE,UAAC,gBAAG,UAAC;IAAE;;uCApCjD,GAAQ;IAAR;IAAQ;AAA5B;;EAA8B;;;;;;;;;;;;;;;;;;IAsDb;;;;;;IAGA;;;;;;sBAGsB,OAAc;AACzD,YAAO,uBACL,AAAE,yBAAkB,KAAK,EAAE,cAAc,GACzC,AAAE,yBAAkB,KAAK,EAAE,cAAc;IAE7C;sBAG6C,OAAc;AACzD,YAAO,uBACL,AAAE,yBAAkB,KAAK,EAAE,cAAc,GACzC,AAAE,yBAAkB,KAAK,EAAE,cAAc;IAE7C;SAGiC;AACjB,kBAAQ,AAAE,YAAK,KAAK;AAClC,UAAI,AAAM,KAAD,UACP,MAAO,AAAE,aAAK,KAAK;AACP,kBAAQ,AAAE,YAAK,KAAK;AAClC,UAAI,AAAM,KAAD,UACP,MAAO;AACT,YAAO,uBAAS,KAAK,EAAE,KAAK;IAC9B;;AAGqB,YAAG,AAAmD,2BAAjC,MAAM,oBAAkB,eAAE,UAAC,gBAAG,UAAC;IAAE;;uCApCjD,GAAQ;IAAR;IAAQ;AAA5B;;EAA8B;;;;;;;;;;;;;;;;;;;IAiEtC;;0DAtBK;;;;EAsBL;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA4DqB;IAAQ;gBAEX;AACd,YAAO,AAAM,KAAD;AACZ,YAAO,AAAM,KAAD,IAAI;AAChB,UAAI,AAAM,KAAD,KAAI,cACX;AACQ,uBAAa;AACA,wBAAc;AACrB,MAAhB,iBAAW,KAAK;AAC0D,MAA1E,kBAAY,4BAAwB,AAAQ,eAAE,WAAM,iBAAgB;AAC1D,0BAAgB,mBAAS,cAAS,UAAU;AACtD,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AAC7B,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,aAAa,EAAE,IAAA,AAAE,CAAD,GAAI;AACsB,UAA5D,AAAS,uBAAC,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,cAAW,AAAW,WAAA,QAAC,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,UAAU;;AAE/D,UAAI,AAAW,UAAD,GAAG;AACf,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AAC7B,mBAAS,IAAI,cAAS,AAAE,CAAD,GAAG,UAAU,EAAE,IAAA,AAAE,CAAD,GAAI;AAC/B,qBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,UAAU;AACjC,gBAAI,AAAW,WAAA,QAAC,EAAE,WAChB,AAA2B,eAAF,eAAf,AAAW,WAAA,QAAC,EAAE;;;;AAIf,MAAjB;IACF;;AAMgB;IAAK;aAER;AACX,YAAO,AAAM,KAAD;AACZ,YAAO,AAAM,KAAD,IAAI;AAChB,UAAI,AAAM,KAAD,KAAI,WACX;AACF,UAAI,AAAM,cAAE,KAAK;AACf,iBAAS,KAAK,AAAQ,eAAE,KAAK,EAAE,AAAG,EAAD,GAAG,AAAU,0BAAQ,KAAA,AAAG,EAAD,GAAI;AAC1D,cAAI,AAAS,uBAAC,EAAE,WACd,AAAyB,eAAF,eAAb,AAAS,uBAAC,EAAE;;;AAGf,MAAb,cAAQ,KAAK;AACoB,MAAjC,AAAU,2BAAS,AAAQ,eAAE;AACZ,MAAjB;IACF;;AAegD,wDAAwC;IAAc;qBAEzD;;AAC3C,UAAI,AAAc,8BAAG,KAAK,GACxB;AACF,UAAI,AAAc,iCAAW,AAAM,KAAD,UAChC;AACuD,MAAzD,uBAAsB,KAAN,KAAK,EAAL,aAAS;AACR,MAAjB;IACF;mBAGwB,QAAyB;AAC/C,UAA0B,YAAtB,AAAa,2BAAC,MAAM,GAAK,KAAK,GAChC;AAC2B,MAA7B,AAAa,2BAAC,MAAM,EAAI,KAAK;AACZ,MAAjB;IACF;;AAM2C;IAAmB;2BAEtB;AACtC,YAAO,AAAM,KAAD;AACZ,UAAI,AAAmB,kCAAG,KAAK,GAC7B;AACyB,MAA3B,4BAAsB,KAAK;AACV,MAAjB;IACF;;AAGmC;IAAc;sBAEjB;AAC9B,YAAO,AAAM,KAAD;AACZ,UAAI,AAAe,yBAAG,KAAK,EACzB;AACoB,MAAtB,uBAAiB,KAAK;AACL,MAAjB;IACF;;AAG2B;IAAO;eAEV;AACtB,UAAW,YAAP,aAAU,KAAK,GACjB;AACa,MAAf,gBAAU,KAAK;AACC,MAAhB;IACF;;;AAOuC,gDAA8C,4BAAhB;IAAwC;uBAKvE;;AACpC,UAAoB,YAAhB,uBAAmB,KAAK,GAC1B;AACqB,MAAvB,wBAAkB,KAAK;AACvB,UAAI;AACF,iBAAuB,UAAiC,gBAAtB,+BACd;eAAlB,OAAO;uBAAP,OAAS;;;AAEqH,MAAlI,+BAAyB,AAAgB,gCAAU,6BAAwC,AAAE,eAAjB,iCAAyB,iBAAgB,UAAS;IAChI;;AAKwC;IAAc;sBAEjB;AACnC,YAAO,AAAM,KAAD;AACZ,UAAI,AAAM,KAAD,SAAI,uBACX;AACoB,MAAtB,uBAAiB,KAAK;AACN,MAAhB;IACF;;AAG2D;IAAyB;iCAE5B;AACtD,YAAO,AAAM,KAAD;AACZ,UAAI,AAA0B,oCAAG,KAAK,EACpC;AAC+B,MAAjC,kCAA4B,KAAK;AAChB,MAAjB;IACF;;AAGkC;IAAa;qBAEhB;AAC7B,UAAI,AAAc,uBAAG,KAAK,EACxB;AACmB,MAArB,sBAAgB,KAAK;AACJ,MAAjB;IACF;;6BAGkC;AAChC,WAAqB,6BAAjB,AAAM,KAAD,cACP,AAAM,AAAkC,KAAnC,cAAc;IACvB;oBAUyB,SAA0B;AACjD,UAAI,AAAM,KAAD,WAAI,oBAAa,AAAQ,OAAD,KAAI,gBACnC;AACF,YAAO,AAAQ,OAAD,IAAI;AAElB,UAAI,AAAQ,OAAD,KAAI,KAAK,AAAM,KAAD;AACvB,cAAO,AAAM,AAAQ,KAAT,aAAY,AAAM,KAAD;AACX,QAAlB,iBAAW,OAAO;AAClB,YAAI,AAAU;AACZ,gBAAO,AAAM,gBAAG;AAChB;;AAEF,iBAAsB,WAAY;AAChC,cAAI,QAAQ,UACV,AAAmB,eAAT,QAAQ;;AAEb,QAAT,cAAQ;AACS,QAAjB,AAAU;AACO,QAAjB;AACA;;AAEF,YAAO,AAAM,KAAD;AACZ,YAAO,AAAM,AAAO,AAAU,KAAlB,mBAAU,OAAO,MAAI;AAIZ,yBAAe;AACpC,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,aAAO,IAAA,AAAE,CAAD,GAAI;AAC9B,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,gBAAU,IAAA,AAAE,CAAD,GAAI;AACvB,sBAAQ,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AAChB,sBAAQ,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,OAAO;AACjC,cAAI,AAAS,uBAAC,KAAK,cAAc,AAAE,CAAD,IAAI,OAAO,IAAI,AAAM,KAAD,IAAI,AAAM,KAAD,0BAAW,AAAS,uBAAC,KAAK,GAAK,AAAK,KAAA,QAAC,KAAK,KACvG,AAAa,AAAsB,YAAvB,KAAqB,eAAhB,AAAS,uBAAC,KAAK;;;AAIlC,cAAI;AACR,aAAO,AAAE,AAAU,CAAX,GAAG,OAAO,GAAG,AAAM,KAAD;AACxB,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,OAAO,EAAE,IAAA,AAAE,CAAD,GAAI;AACtB,sBAAQ,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,OAAO;AACvB,sBAAQ,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AAC1B,cAAI,AAAK,KAAA,QAAC,KAAK,cAAc,AAAE,CAAD,IAAI,kBAAY,AAAE,CAAD,IAAI,4BAAS,AAAS,uBAAC,KAAK,GAAK,AAAK,KAAA,QAAC,KAAK;AACzF,iBAAK,AAAa,YAAD,QAAQ,AAAK,KAAA,QAAC,KAAK,IAClC,AAAyB,gBAAF,eAAZ,AAAK,KAAA,QAAC,KAAK;;;AAGtB,QAAN,IAAA,AAAE,CAAD,GAAI;;AAGwB,MAA/B,AAAa,YAAD,qBAAS;AAEH,MAAlB,iBAAW,OAAO;AACa,MAA/B,cAAqB,CAAb,AAAM,KAAD,YAAW,OAAO;AACS,MAAxC,kBAAY,0BAAsB,KAAK;AACvC,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE,OAAO;AACxB,MAAjB;IACF;gBAGwC;AAEtC,UAAI,AAAM,KAAD;AACiC,QAAxC,qBAAgB;AAChB;;AAEF,eAAsB,WAAY;AAChC,YAAI,QAAQ,UACV,AAAmB,eAAT,QAAQ;;AAEL,MAAjB,AAAU;AAC0C,MAApD,iBAAW,AAAM,KAAD,gBAAc,AAAM,AAAM,KAAP,oBAAgB;AAC1C,MAAT,cAAQ;AACa,MAArB,AAAM,KAAD,qBAAS;AACd,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;IACpC;WAK6B;AAC3B,YAAO,AAAM,AAAO,KAAR,cAAW;AACvB,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AACxB,MAAV,cAAA,AAAM,cAAG;AACc,MAAvB,AAAU,yBAAO,KAAK;AACtB,eAAsB,OAAQ,MAAK;AACjC,YAAI,IAAI,UACN,AAAgB,gBAAL,IAAI;;AAEF,MAAjB;IACF;aAOkB,GAAO,GAAc;AACrC,YAAO,AAAE,CAAD;AACR,YAAO,AAAE,CAAD;AACR,YAAO,AAAE,AAA8B,CAA/B,IAAI,KAAK,AAAE,CAAD,GAAG,gBAAW,AAAE,CAAD,IAAI,KAAK,AAAE,CAAD,GAAG;AAC9C,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AACxB,eAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AACN,qBAAW,AAAS,uBAAC,EAAE;AACxC,UAAa,YAAT,QAAQ,EAAI,KAAK,GACnB;AACF,UAAI,QAAQ,UACV,AAAmB,eAAT,QAAQ;AACC,MAArB,AAAS,uBAAC,EAAE,EAAI,KAAK;AACrB,UAAI,KAAK,UACP,AAAiB,gBAAN,KAAK;IACpB;WAG0B;;;AACL,MAAb,aAAO,KAAK;AAClB,eAAsB,QAAS,kBACT;aAApB,KAAK;qBAAL,OAAO,UAAO,KAAK;;IACvB;;;AAIgB,MAAR;AACN,UAAI;AACF,iBAAuB,UAAiC,gBAAtB,+BACd;eAAlB,OAAO;uBAAP,OAAS;;AACsF,QAAjG,+BAAyB,6BAAwC,AAAE,eAAjB,iCAAyB,iBAAgB;;AAE7F,eAAsB,QAAS,kBACd;cAAf,KAAK;sBAAL,OAAO;;IACX;kBAGuC;AACrC,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AAClC,eAAsB,QAAS;AAC7B,YAAI,KAAK,UACP,AAAO,AAAO,OAAP,CAAC,KAAK;;IAEnB;6BAGuC;;AACrC,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AAC3B,0BAAgB;AACvB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACT,2BAA+B,KAAjB,AAAa,2BAAC,CAAC,GAAF,aAAO;AAC/B,0BAAc,YAAO,CAAC;AAC4B,QAA5E,gBAAA,AAAc,aAAD,GAAI,AAAY,WAAD,mBAAmB,WAAW;;AAE5D,YAAO,cAAa;IACtB;6BAGuC;;AACrC,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AAC3B,0BAAgB;AACvB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACT,2BAA+B,KAAjB,AAAa,2BAAC,CAAC,GAAF,aAAO;AAC/B,0BAAc,YAAO,CAAC;AAC4B,QAA5E,gBAAA,AAAc,aAAD,GAAI,AAAY,WAAD,mBAAmB,WAAW;;AAE5D,YAAO,cAAa;IACtB;8BAGwC;AAGtC,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AACf,mBAAS,2BAAoC,8CAAsB,KAAK;AACpF,mBAAS;AAChB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AACtB,wBAAY;AACnB,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACtB,mBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AACN,sBAAQ,AAAS,uBAAC,EAAE;AACrC,cAAI,KAAK,UACP,AAAuE,YAA3D,sBAAS,SAAS,EAAE,AAAM,KAAD,uBAAuB,AAAM,MAAA,QAAC,CAAC;;AAErD,QAAnB,SAAA,AAAO,MAAD,GAAI,SAAS;;AAErB,YAAO,OAAM;IACf;8BAGwC;AACtC,YAAO,gCAA0B,KAAK;IACxC;oCAIqD;AAEnD,WAAO,CAAC;AACR,YAAO;IACT;WAM+B;AAAL;AACxB,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AACnB,mBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AACN,sBAAQ,AAAS,uBAAC,EAAE;AACrC,cAAI,KAAK,UACP,MAAM,KAAK;;MAEjB;;QAM4B;AAAL;AACX,oBAAQ,AAAE,CAAD,GAAG;AACZ,kBAAc,CAAP,AAAE,CAAD,GAAG,KAAK;AAC1B,iBAAS,KAAK,KAAK,EAAE,AAAG,EAAD,GAAG,GAAG,EAAE,KAAA,AAAG,EAAD,GAAI;AAClB,sBAAQ,AAAS,uBAAC,EAAE;AACrC,cAAI,KAAK,UACP,MAAM,KAAK;;MAEjB;;2BAEiD;;AAC/C,YAAO,AAAY,WAAD;AAClB,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AAYf,mBAAS,wBAAoB,cAAS,gBAAe;AACrD,sBAAY,wBAAoB,cAAS,gBAAe;AACvD,mBAAS,yBAAqB,cAAS,iBAAgB;AACpE,uBAAa;AACb,+BAAqB;AACrB,sBAAY;AACnB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACT,2BAA+B,KAAjB,AAAa,2BAAC,CAAC,GAAF,aAAO;AAC/B,0BAAc,YAAO,CAAC;AAEnC,gCAAoB,AAAY,WAAD,mBAAmB,WAAW,EAAE,AAAY,WAAD;AACvF,aAAO,AAAkB,iBAAD;AACxB,cAAO,AAAkB,iBAAD,IAAI;AACC,QAA7B,AAAM,MAAA,QAAC,CAAC,EAAI,iBAAiB;AACE,QAA/B,aAAA,AAAW,UAAD,GAAI,iBAAiB;AAElB,gCAAoB,AAAY,WAAD,mBAAmB,WAAW,EAAE,AAAY,WAAD;AACvF,aAAO,AAAkB,iBAAD;AACxB,cAAO,AAAkB,iBAAD,IAAI;AACI,QAAhC,AAAS,SAAA,QAAC,CAAC,EAAI,iBAAiB;AAChC,cAAO,AAAkB,iBAAD,IAAI,iBAAiB;AAE/B,mBAAO,AAAY,WAAD,MAAM,WAAW;AACjD,YAAI,IAAI;AACN,eAAO,AAAK,IAAD;AACX,gBAAY,aAAL,IAAI,IAAG;AACE,UAAhB,AAAM,MAAA,QAAC,CAAC,EAAI,IAAI;AACC,UAAjB,YAAA,AAAU,SAAD,gBAAI,IAAI;;AAE0C,UAA3D,qBAAqB,AAAmB,kBAAD,GAAG,iBAAiB;;;AAGlD,+BAAqB,AAAY,WAAD;AAChC,+BAAqB,AAAY,WAAD;AAI7C,UAAI,AAAU,SAAD,GAAG;AAGD;AACb,YAAI,AAAmB,kBAAD;AACY,UAAhC,cAAc,kBAAkB;;AAEA,UAAhC,cAAc,kBAAkB;;AAElC,YAAI,AAAW,UAAD,GAAG,WAAW;AACb,+BAAiB,AAAY,WAAD,GAAG,kBAAkB;AAC9D,eAAO,AAAe,cAAD;AACrB,gBAAO,AAAe,cAAD,IAAI;AACzB,mBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AAChC,gBAAI,AAAM,MAAA,QAAC,CAAC;AACG,gCAAc,AAAe,AAAa,cAAd,GAAY,eAAT,AAAM,MAAA,QAAC,CAAC,KAAK,SAAS;AAClE,mBAAO,AAAY,WAAD;AAClB,oBAAO,AAAY,WAAD,IAAI;AACtB,kBAAI,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,WAAW;AACZ,4BAAQ,AAAY,WAAD,GAAG,AAAM,MAAA,QAAC,CAAC;AACxB,gBAAnB,aAAA,AAAW,UAAD,GAAI,KAAK;AACI,gBAAvB,AAAM,MAAA,QAAC,CAAC,EAAI,WAAW;;;;AAI7B,gBAAO,AAAW,AAA0B,UAA3B,YAA8B,WAAW;;YAMzD,KAAI,AAAW,UAAD,GAAG,kBAAkB;AACzB,oBAA0C,CAAjC,AAAmB,kBAAD,GAAG,UAAU,IAAI;AACzD,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACH,UAA7B,AAAM,MAAA,QAAC,CAAC,EAAI,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,KAAK;AACA,QAA/B,aAAa,kBAAkB;;AAOjC,UAAI,AAAW,UAAD,GAAG,kBAAkB;AAC1B,sBAAU,AAAW,UAAD,GAAG,kBAAkB;AAiB5C,+BAAmB;AACvB,eAAO,AAAQ,OAAD,YAA8B,AAAU,SAAD;AAC5C,6BAAe;AACtB,mBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AAChC,gBAAI,AAAM,MAAA,QAAC,CAAC;AACG,6BAAW,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,AAAQ,AAAa,OAAd,GAAY,eAAT,AAAM,MAAA,QAAC,CAAC,KAAK,SAAS;AACpE,mBAAO,AAAS,QAAD;AACf,kBAAI,AAAS,QAAD,IAAI,AAAS,SAAA,QAAC,CAAC;AAEU,gBAAnC,UAAA,AAAQ,OAAD,IAAI,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,AAAS,SAAA,QAAC,CAAC;AACV,gBAAxB,AAAM,MAAA,QAAC,CAAC,EAAI,AAAS,SAAA,QAAC,CAAC;AACP,gBAAhB,AAAM,MAAA,QAAC,CAAC,EAAI;AACS,gBAArB,mBAAA,AAAiB,gBAAD,GAAI;;AAEW,gBAA/B,UAAA,AAAQ,OAAD,IAAI,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,QAAQ;AACX,gBAApB,AAAM,MAAA,QAAC,CAAC,EAAI,QAAQ;AACM,gBAA1B,eAAA,AAAa,YAAD,GAAa,eAAT,AAAM,MAAA,QAAC,CAAC;;AAE1B,oBAAO,AAAM,AAAI,MAAJ,QAAC,CAAC,KAAK;;;AAGA,UAAxB,YAAY,YAAY;;AAE1B,eAAO,AAAQ,OAAD,YAA8B,AAAiB,gBAAD,GAAG;AAMhD,sBAAQ,AAAQ,OAAD,GAAG,gBAAgB;AAC/C,gBAAO,AAAM,KAAD,KAAI;AACZ,oCAAsB;AAC1B,mBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACnB,iCAAiB,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,AAAS,SAAA,QAAC,CAAC;AACrD,gBAAI,AAAe,cAAD,GAAG;AACnB,kBAAI,AAAe,cAAD,IAAI,KAAK;AAEU,gBAAnC,UAAA,AAAQ,OAAD,IAAI,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,AAAS,SAAA,QAAC,CAAC;AACV,gBAAxB,AAAM,MAAA,QAAC,CAAC,EAAI,AAAS,SAAA,QAAC,CAAC;;AAEP,gBAAhB,UAAA,AAAQ,OAAD,GAAI,KAAK;AACa,gBAA7B,AAAM,MAAA,QAAC,CAAC,EAAI,AAAM,AAAI,MAAJ,QAAC,CAAC,IAAI,KAAK;AACL,gBAAxB,sBAAA,AAAoB,mBAAD,GAAI;;;;AAIS,UAAtC,mBAAmB,mBAAmB;;;AAG1C,YAAO,OAAM;IACf;cAamB;AACjB,YAAO,AAAI,GAAD,IAAI;AACd,YAAO,AAAI,GAAD,GAAG;AACb,WAAO,CAAC;AACR,YAAY,sBAAS,KAAK,AAAQ,sBAAC,GAAG,GAAG,AAAK,iBAAO,AAAQ,sBAAC,AAAI,GAAD,GAAG;IACtE;qBAGqC;;AACnC,UAAI,AAAK,AAAU,YAAR,iBAAW;AACpB,cAAO,AAAY,YAAD,WAAgB;;AAEjB,mBAAS,2BAAqB,WAAW;AAC/C,uBAAa,AAAO,MAAD,qBAAM,KAAK,SAAQ,GAAU,MAAM,AAAE,CAAD,GAAG,CAAC;AACjE,mBAAS;AAChB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AACtB,wBAAY;AACnB,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACtB,mBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AACN,sBAAQ,AAAS,uBAAC,EAAE;AACrC,cAAI,KAAK;AACmB,kCAAoC,6BAAF,eAAhB,AAAM,KAAD;AACjD,kBAAO,AAAgB,eAAD;AACtB,oBAA0C,KAAlC,AAAgB,eAAD,oBAAC,aAAqB;;;AAEzC,qBAAO,0CACG;AAEV,sBAAY;;;;;;AAID,gCAAY,AAAM,KAAD,cAA6B,wCAAgB,AAAM,MAAA,QAAC,CAAC;AAChC,gBAAjD,YAAY,sBAAS,SAAS,EAAE,AAAU,SAAD;AACzC;;;;AAEA;;;;;AAIW,QAAnB,SAAA,AAAO,MAAD,GAAI,SAAS;;AAErB,YAAO,AAAY,YAAD,WAAW,gBAAK,UAAU,EAAE,MAAM;IACtD;;;AAIuB,wBAAmB;AAC9B,iBAAY;AACZ,oBAAe;AACzB,YAAO,AAAU,AAAO,6BAAG,AAAK,IAAD,GAAG,OAAO;AACzC,UAAI,AAAK,AAAU,IAAX,GAAG,OAAO,KAAI;AAGmB,QAAvC,YAAO,AAAY,WAAD,WAAgB;AAClC;;AAEiB,mBAAS,2BAAqB,WAAW;AACzC,sBAAY,wBAAoB,OAAO,EAAE,gBAAe;AAC9D;AACb,cAAQ;;;AAEwB,UAA5B,AAAS,SAAA,QAAC,AAAQ,OAAD,GAAG,GAAK;AACzB,mBAAS,IAAI,AAAQ,OAAD,GAAG,GAAG,AAAE,CAAD,IAAI,GAAG,IAAA,AAAE,CAAD,GAAI;AACM,YAA3C,AAAS,SAAA,QAAC,CAAC,EAAI,AAAS,AAAM,SAAN,QAAC,AAAC,CAAA,GAAC,KAAK,AAAM,MAAA,QAAC,AAAC,CAAA,GAAC;AACV,UAAjC,qBAAe,AAAU,SAAD;AACmB,UAA3C,aAAa,AAAU,AAAM,SAAP,WAAS,AAAO,MAAD;AACrC;;;;AAEkB,UAAlB,AAAS,SAAA,QAAC,GAAK;AACf,mBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,OAAO,EAAE,IAAA,AAAE,CAAD,GAAI;AACW,YAA3C,AAAS,SAAA,QAAC,CAAC,EAAI,AAAS,AAAM,SAAN,QAAC,AAAC,CAAA,GAAC,KAAK,AAAM,MAAA,QAAC,AAAC,CAAA,GAAC;AACnB,UAAxB,qBAAe,SAAS;AACiB,UAAzC,aAAa,AAAU,AAAK,SAAN,UAAQ,AAAO,MAAD;AACpC;;;AAEY,MAAhB,AAAS;AACe,MAAxB,0BAAoB;AAEb,mBAAS;AAChB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,IAAI,EAAE,IAAA,AAAE,CAAD,GAAI;AACT,QAApB,AAAS,qBAAI,MAAM;AACZ,wBAAY;AACd,2BAAe;AACb,qCAAyB;AACzB,oCAAwB;AACZ,wBAAY,wBAAoB,OAAO,EAAE,gBAAe;AAC3E,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,OAAO,EAAE,IAAA,AAAE,CAAD,GAAI;AACtB,mBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,OAAO;AACb,sBAAQ,AAAS,uBAAC,EAAE;AACrC,cAAI,KAAK;AACmB,kCAAoC,6BAAF,eAAhB,AAAM,KAAD;AACjD,kBAAO,AAAgB,eAAD;AACD,YAArB,AAAgB,eAAD,KAAK,CAAC;AACA,YAArB,AAAgB,eAAD,KAAK,CAAC;AACrB,oBAA0C,KAAlC,AAAgB,eAAD,oBAAC,aAAqB;;;AAEzC,sBAAO,AAAa,8CAAS;AACgD,gBAA7E,AAAM,KAAD,QAAuB,wCAAgB,AAAM,MAAA,QAAC,CAAC,sBAAoB;AAC1D,oCAAgB,AAAM,KAAD,uBAAmC,eAAZ,+BAAyB;AACnF,oBAAI,aAAa;AACyD,kBAAxE,yBAAyB,sBAAS,sBAAsB,EAAE,aAAa;AACmB,kBAA1F,wBAAwB,sBAAS,qBAAqB,EAAE,AAAM,AAAK,AAAO,KAAb,4BAAe,aAAa;AAC7D,kBAA5B,AAAS,SAAA,QAAC,CAAC,EAAI,aAAa;AACT,kBAAnB,eAAe;;AAEmC,kBAAlD,YAAY,sBAAS,SAAS,EAAE,AAAM,AAAK,KAAN;AACgB,kBAArD,AAAgB,eAAD,UAAU,kBAAO,AAAS,SAAA,QAAC,CAAC,GAAG,MAAM;;AAEtD;;;;;;AAI6E,gBAA7E,AAAM,KAAD,QAAuB,wCAAgB,AAAM,MAAA,QAAC,CAAC,sBAAoB;AACtB,gBAAlD,YAAY,sBAAS,SAAS,EAAE,AAAM,AAAK,KAAN;AACrC;;;;AAEA;;;;;AAIR,YAAI,YAAY;AACd,cAAI,AAAE,CAAD,KAAI,GACP,AAA0C,0BAAtB,sBAAsB;AACmC,UAA/E,YAAY,sBAAS,SAAS,EAAE,AAAuB,sBAAD,GAAG,qBAAqB;;AAEhF,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,OAAO,EAAE,IAAA,AAAE,CAAD,GAAI;AACtB,mBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG,OAAO;AACb,sBAAQ,AAAS,uBAAC,EAAE;AACrC,cAAI,KAAK;AACmB,kCAAoC,6BAAF,eAAhB,AAAM,KAAD;AACjD,oBAA0C,MAAlC,AAAgB,eAAD,oBAAC,cAAqB;;;AAEoD,gBAA7F,AAAgB,eAAD,UAAU,kBAAO,AAAS,SAAA,QAAC,CAAC,GAAG,AAAO,AAAyB,MAA1B,GAAG,sBAAsB,GAAG,AAAS,SAAA,QAAC,CAAC;AAC3F;;;;AAEqD,gBAArD,AAAgB,eAAD,UAAU,kBAAO,AAAS,SAAA,QAAC,CAAC,GAAG,MAAM;AACpD;;;;AAE6F,gBAA7F,AAAgB,eAAD,UAAU,kBAAO,AAAS,SAAA,QAAC,CAAC,GAAG,AAAO,MAAD,GAAmC,CAA/B,AAAU,SAAD,GAAG,AAAM,AAAK,KAAN,gBAAgB;AACzF;;;;AAEqF,gBAArF,AAAgB,eAAD,UAAU,kBAAO,AAAS,SAAA,QAAC,CAAC,GAAG,AAAO,AAAY,MAAb,GAAG,SAAS,GAAG,AAAM,AAAK,KAAN;AACxE;;;;AAE0E,gBAA1E,AAAM,KAAD,QAAuB,wCAAgB,AAAM,MAAA,QAAC,CAAC,WAAW,SAAS;AACnB,gBAArD,AAAgB,eAAD,UAAU,kBAAO,AAAS,SAAA,QAAC,CAAC,GAAG,MAAM;AACpD;;;;;AAIW,QAAnB,SAAA,AAAO,MAAD,GAAI,SAAS;;AAED,MAApB,AAAS,qBAAI,MAAM;AACmC,MAAtD,YAAO,AAAY,WAAD,WAAW,gBAAK,UAAU,EAAE,MAAM;AACpD,YAAO,AAAS,AAAO,4BAAG,AAAK,IAAD,GAAG;IACnC;oBAGsC;UAA0B;AAC9D,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AAClC,eAAS,QAAQ,AAAU,AAAO,2BAAE,GAAG,AAAM,KAAD,IAAI,GAAG,QAAA,AAAM,KAAD,GAAI;AACzC,oBAAQ,AAAS,uBAAC,KAAK;AACxC,YAAI,KAAK;AACa,gCAAoC,qBAAF,eAAhB,AAAM,KAAD;AAChC,sBAAQ,AAAO,MAAD,6BACf,AAAgB,eAAD,mBACb,QAAQ,WACT,SAAkB,QAAgB;AACzC,mBAAmB,YAAZ,WAAW,EAAI,AAAS,QAAD,MAAG,AAAgB,eAAD;AAChD,oBAAO,AAAM,MAAD,SAAS,MAAM,aAAuB,eAAX,WAAW;;AAGtD,cAAI,KAAK,EACP,MAAO;;;AAGb,YAAO;IACT;UAG2B,SAAgB;;AACzC,YAAO,AAAU,AAAO,6BAAG,AAAK,YAAE;AAClC,UAAI,AAAK,AAAU,YAAR,iBAAW;AACpB,YAAI;AACS,2BAAkB,qBAAS,AAAO,MAAD,KAAK,AAAO,MAAD,KAAK,AAAK,iBAAO;AACoB,UAAtF,AAAE,eAAR,mBAAc,AAAQ,OAAD,SAAS,UAAU;;AAE1C;;AAEF,YAAO,AAAS,AAAO,4BAAG,AAAK,YAAE;AACjC,UAAI;AACF,cAAsB,AAAE,AAAO,eAAxB,oCAAiD,AAAE,eAAxB;AACrB,qBAAS,AAAQ,OAAD;AAC7B,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AAC7B,cAAmB,AAAE,AAAO,eAAxB,mCAA2B,CAAC,EAC9B;AACF,cAAmB,AAAC,eAAhB,8BAAiB,CAAC;AACgE,iBAA9D,eAAtB;iBAAwB,CAAC;YAAE,wBAAJ,cAA2B,AAAE,eAAN,AAAC,eAAhB,8BAAiB,CAAC,8BAAoB,4BAA1C;AAK1B,YAJyB,AAAE,eAAN,AAAC,eAAvB,qCAAwB,CAAC,SACvB,MAAM,EACN,kBAAO,AAAO,MAAD,KAAK,AAAO,AAAG,MAAJ,MAAM,AAAQ,sBAAC,CAAC,IACxC,AAAc,mCAAe,gBAAK,AAAK,iBAAO,AAAQ,AAAM,sBAAL,AAAC,CAAA,GAAC,KAAK,AAAQ,sBAAC,CAAC;;;;AAKhF,eAAS,QAAQ,GAAG,AAAM,KAAD,GAAG,AAAU,0BAAQ,QAAA,AAAM,KAAD,GAAI;AACpC,oBAAQ,AAAS,uBAAC,KAAK;AACxC,YAAI,KAAK;AACa,gCAAoC,qBAAF,eAAhB,AAAM,KAAD;AACe,UAA1D,AAAQ,OAAD,YAAY,KAAK,EAAE,AAAgB,AAAO,eAAR,aAAU,MAAM;;;AAG7D,YAAO,AAAM,gBAAG,AAAS,AAAO,0BAAE;AAClC,YAAO,AAAS,mBAAe,AAAE,eAAd;AACnB,UAAI;AAIS,yBAAkB,qBAAS,AAAO,MAAD,KAAK,AAAO,MAAD,KAAK,AAAK,iBAAO,AAAS;AAC1D,mBAAO,AAAS,0BAAS,GAAG,AAAS,AAAO,0BAAE;AAC9C,sBAAsB,AAAE,eAAd,2BAAmB;AACmB,QAAjE,AAAE,eAAR,mBAAc,AAAQ,OAAD,SAAS,UAAU,SAAQ,IAAI,WAAW,OAAO;;IAE1E;wBAGqD;;AACd,MAA/B,0BAAoB,UAAU;AACkD,MAAtF,AAAW,UAAD,KAAK,+CAAiC,UAAU,4BAAsB;AACuG,MAAvL,AAAW,UAAD,KAAK,6DAAgD,2BAA2B,6BAAsB,AAAc,gCAA0B,qCAAyB;AAChF,MAAjG,AAAW,UAAD,KAAK,oDAAsC,wBAAwB;AACT,MAApE,AAAW,UAAD,KAAK,oCAAgB,cAAmC,SAAnB,gBAAO,eAAO;AACsD,MAAnH,AAAW,UAAD,KAAK,uCAAyB,yDAAkB,OAAc,kDAAgC;AACG,MAA3G,AAAW,UAAD,KAAK,uCAAyB,eAAe,AAAS,6DAAgC;IAClG;;AAIE,UAAI,AAAU;AACZ,cAAwB,kCAAiB,oCAAQ;;AAGvB,qBAA4B;AACxD,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,WAAM,IAAA,AAAE,CAAD,GAAI;AAC7B,iBAAS,IAAI,GAAG,AAAE,CAAD,GAAG,cAAS,IAAA,AAAE,CAAD,GAAI;AACtB,mBAAK,AAAE,CAAD,GAAG,AAAE,CAAD,GAAG;AACN,sBAAQ,AAAS,uBAAC,EAAE;AACxB,qBAAO,AAAgB,qBAAP,CAAC,oBAAG,CAAC;AAClC,cAAI,KAAK;AAC0C,YAAjD,AAAS,QAAD,OAAK,AAAM,KAAD,0BAAyB,IAAI;;AAE+C,YAA9F,AAAS,QAAD,OAAK,0CAA4B,IAAI,EAAE,eAAc,0BAA0B;;;AAG7F,YAAO,SAAQ;IACjB;;;;QAn3BO;QACA;QACuB;QACX;QACM;QACV;QACM;QACA;QACQ;QACb;QACS;IAuBR;IAsIE;IACA;IAyPX;IAuMW,iBAAmB;IACpB;UA9lBN,AAAQ,AAAQ,OAAT,YAAoB,aAAR,OAAO,KAAI;UAC9B,AAAK,AAAQ,IAAT,YAAiB,aAAL,IAAI,KAAI;UACxB,AAAK,AAAQ,IAAT,YAAY,AAAS,QAAD;UACxB,AAAmB,kBAAD;UAClB,AAAc,aAAD;UACb,AAAc,aAAD;IACL,uBAAE,aAAa;IACrB,kBAAU,KAAR,OAAO,EAAP,aAAY,AAAiB,QAAT,YAAY,AAAS,QAAD,gBAAc,AAAS,AAAM,QAAP,oBAAgB;IACnF,eAAO,MAAL,IAAI,EAAJ,cAAQ;IACF,uBAAe,OAAb,YAAY,EAAZ,eAAgB;IACZ,4BAAE,kBAAkB;IAChC,gBAAE,MAAM;IACF,sBAAE,YAAY;IACF,kCAAE,wBAAwB;IACrC,uBAAE,aAAa;AA1BnC;AA2BuD,IAArD,0DAAwB;AAAI,sBAAS,AAAS,iBAAE;;;AACZ,IAA/B,sBAAiB,cAAc;AACX,WAAzB,QAAQ;mBAAR,OAAU,yBAAQ;EACpB","file":"../../../../../../../packages/flutter/src/rendering/table.dart.lib.js"}');
   // Exports:
   return {
-    src__scheduler__binding: binding$
+    src__rendering__table: table
   };
 }));
 
-//# sourceMappingURL=binding.dart.lib.js.map
+//# sourceMappingURL=table.dart.lib.js.map

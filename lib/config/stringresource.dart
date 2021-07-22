@@ -13,4 +13,5 @@ class StringResources {
   static const String COM_ICON_LIST = 'home';
   static const String COM_ICON_ROADSHOW_LIST = 'fistRaised';
   static const String TEXT_APP_VERSION = "App Version";
+  static const String TEXT_APP_TITLE = "Skip";
 }

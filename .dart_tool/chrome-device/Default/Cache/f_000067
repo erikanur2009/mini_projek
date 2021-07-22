@@ -1,23 +1,46 @@
-define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart'], (function load__packages__flutter__src__rendering__sliver_padding_dart(dart_sdk, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/stack.dart', 'packages/flutter/src/painting/strut_style.dart'], (function load__packages__flutter__src__rendering__debug_overflow_indicator_dart(dart_sdk, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__stack$46dart, packages__flutter__src__painting__strut_style$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const math = dart_sdk.math;
   const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const debug = packages__flutter__src__rendering__layer$46dart.src__rendering__debug;
+  const text_painter = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_painter;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  var sliver_padding = Object.create(dart.library);
-  var $_equals = dartx._equals;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const stack = packages__flutter__src__rendering__stack$46dart.src__rendering__stack;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  var debug_overflow_indicator = Object.create(dart.library);
+  var $length = dartx.length;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $toStringAsPrecision = dartx.toStringAsPrecision;
+  var $add = dartx.add;
+  var $isEmpty = dartx.isEmpty;
+  var $runtimeType = dartx.runtimeType;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $first = dartx.first;
+  var $last = dartx.last;
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $join = dartx.join;
+  var $times = dartx['*'];
+  var $truncate = dartx.truncate;
   dart._checkModuleNullSafetyMode(true);
   var T = {
+    ListOfTextPainter: () => (T.ListOfTextPainter = dart.constFn(core.List$(text_painter.TextPainter)))(),
+    JSArrayOf_OverflowRegionData: () => (T.JSArrayOf_OverflowRegionData = dart.constFn(_interceptors.JSArray$(debug_overflow_indicator._OverflowRegionData)))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    SyncIterableOfDiagnosticsNode: () => (T.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
+    IterableOfDiagnosticsNode: () => (T.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
+    VoidToIterableOfDiagnosticsNode: () => (T.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T.IterableOfDiagnosticsNode(), [])))(),
+    TextSpanN: () => (T.TextSpanN = dart.constFn(dart.nullable(text_span.TextSpan)))(),
     VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    DiagnosticsPropertyOfEdgeInsetsGeometry: () => (T.DiagnosticsPropertyOfEdgeInsetsGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(edge_insets.EdgeInsetsGeometry)))(),
-    EnumPropertyOfTextDirection: () => (T.EnumPropertyOfTextDirection = dart.constFn(diagnostics.EnumProperty$(ui.TextDirection)))()
+    JSArrayOfColor: () => (T.JSArrayOfColor = dart.constFn(_interceptors.JSArray$(ui.Color)))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -25,378 +48,428 @@ define(['dart_sdk', 'packages/flutter/src/painting/basic_types.dart', 'packages/
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.up",
+        __proto__: debug_overflow_indicator._OverflowSide.prototype,
+        [_name$]: "_OverflowSide.left",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.right",
+        __proto__: debug_overflow_indicator._OverflowSide.prototype,
+        [_name$]: "_OverflowSide.top",
         index: 1
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.down",
+        __proto__: debug_overflow_indicator._OverflowSide.prototype,
+        [_name$]: "_OverflowSide.bottom",
         index: 2
       });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.left",
+        __proto__: debug_overflow_indicator._OverflowSide.prototype,
+        [_name$]: "_OverflowSide.right",
         index: 3
       });
     },
     get C4() {
-      return C[4] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.horizontal",
-        index: 0
-      });
+      return C[4] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], debug_overflow_indicator._OverflowSide);
     },
     get C5() {
       return C[5] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.vertical",
-        index: 1
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 8.5
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 1,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 8.5,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 3204448256.0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 3221225216.0
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 7
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4287627264.0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_leadingDistribution]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[12] || CT.C12,
+        [TextStyle_fontSize]: 7.5,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[13] || CT.C13,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 10,
+        [OffsetBase__dx]: 10
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
       });
     }
   }, false);
-  var C = Array(6).fill(void 0);
+  var C = Array(16).fill(void 0);
   var I = [
-    "file:///C:/lib/flutter/packages/flutter/lib/src/rendering/sliver_padding.dart",
-    "package:flutter/src/rendering/sliver_padding.dart"
+    "package:flutter/src/rendering/debug_overflow_indicator.dart",
+    "file:///C:/lib/flutter/packages/flutter/lib/src/rendering/debug_overflow_indicator.dart"
   ];
-  var _name = dart.privateName(basic_types, "_name");
-  const RenderSliver_RenderObjectWithChildMixin$36 = class RenderSliver_RenderObjectWithChildMixin extends sliver.RenderSliver {};
-  (RenderSliver_RenderObjectWithChildMixin$36.new = function() {
-    object.RenderObjectWithChildMixin$(sliver.RenderSliver)[dart.mixinNew].call(this);
-    RenderSliver_RenderObjectWithChildMixin$36.__proto__.new.call(this);
-  }).prototype = RenderSliver_RenderObjectWithChildMixin$36.prototype;
-  dart.applyMixin(RenderSliver_RenderObjectWithChildMixin$36, object.RenderObjectWithChildMixin$(sliver.RenderSliver));
-  sliver_padding.RenderSliverEdgeInsetsPadding = class RenderSliverEdgeInsetsPadding extends RenderSliver_RenderObjectWithChildMixin$36 {
-    get beforePadding() {
-      if (!(this.constraints !== null)) dart.assertFailed(null, I[0], 38, 12, "constraints != null");
-      if (!(this.constraints.axisDirection !== null)) dart.assertFailed(null, I[0], 39, 12, "constraints.axisDirection != null");
-      if (!(this.constraints.growthDirection !== null)) dart.assertFailed(null, I[0], 40, 12, "constraints.growthDirection != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 41, 12, "resolvedPadding != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        {
-          return dart.nullCheck(this.resolvedPadding).bottom;
-        }
-        case C[1] || CT.C1:
-        {
-          return dart.nullCheck(this.resolvedPadding).left;
-        }
-        case C[2] || CT.C2:
-        {
-          return dart.nullCheck(this.resolvedPadding).top;
-        }
-        case C[3] || CT.C3:
-        {
-          return dart.nullCheck(this.resolvedPadding).right;
-        }
-      }
-    }
-    get afterPadding() {
-      if (!(this.constraints !== null)) dart.assertFailed(null, I[0], 59, 12, "constraints != null");
-      if (!(this.constraints.axisDirection !== null)) dart.assertFailed(null, I[0], 60, 12, "constraints.axisDirection != null");
-      if (!(this.constraints.growthDirection !== null)) dart.assertFailed(null, I[0], 61, 12, "constraints.growthDirection != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 62, 12, "resolvedPadding != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        {
-          return dart.nullCheck(this.resolvedPadding).top;
-        }
-        case C[1] || CT.C1:
-        {
-          return dart.nullCheck(this.resolvedPadding).right;
-        }
-        case C[2] || CT.C2:
-        {
-          return dart.nullCheck(this.resolvedPadding).bottom;
-        }
-        case C[3] || CT.C3:
-        {
-          return dart.nullCheck(this.resolvedPadding).left;
-        }
-      }
-    }
-    get mainAxisPadding() {
-      if (!(this.constraints !== null)) dart.assertFailed(null, I[0], 82, 12, "constraints != null");
-      if (!(this.constraints.axis !== null)) dart.assertFailed(null, I[0], 83, 12, "constraints.axis != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 84, 12, "resolvedPadding != null");
-      return dart.nullCheck(this.resolvedPadding).along(this.constraints.axis);
-    }
-    get crossAxisPadding() {
-      if (!(this.constraints !== null)) dart.assertFailed(null, I[0], 95, 12, "constraints != null");
-      if (!(this.constraints.axis !== null)) dart.assertFailed(null, I[0], 96, 12, "constraints.axis != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 97, 12, "resolvedPadding != null");
-      switch (this.constraints.axis) {
-        case C[4] || CT.C4:
-        {
-          return dart.nullCheck(this.resolvedPadding).vertical;
-        }
-        case C[5] || CT.C5:
-        {
-          return dart.nullCheck(this.resolvedPadding).horizontal;
-        }
-      }
-    }
-    setupParentData(child) {
-      object.RenderObject.as(child);
-      if (!sliver.SliverPhysicalParentData.is(child.parentData)) child.parentData = new sliver.SliverPhysicalParentData.new();
-    }
-    performLayout() {
-      let constraints = this.constraints;
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 115, 12, "resolvedPadding != null");
-      let beforePadding = this.beforePadding;
-      let afterPadding = this.afterPadding;
-      let mainAxisPadding = this.mainAxisPadding;
-      let crossAxisPadding = this.crossAxisPadding;
-      if (this.child == null) {
-        this.geometry = new sliver.SliverGeometry.new({scrollExtent: mainAxisPadding, paintExtent: math.min(core.double, mainAxisPadding, constraints.remainingPaintExtent), maxPaintExtent: mainAxisPadding});
-        return;
-      }
-      let beforePaddingPaintExtent = this.calculatePaintOffset(constraints, {from: 0.0, to: beforePadding});
-      let overlap = constraints.overlap;
-      if (overlap > 0) {
-        overlap = math.max(core.double, 0.0, constraints.overlap - beforePaddingPaintExtent);
-      }
-      dart.nullCheck(this.child).layout(constraints.copyWith({scrollOffset: math.max(core.double, 0.0, constraints.scrollOffset - beforePadding), cacheOrigin: math.min(core.double, 0.0, constraints.cacheOrigin + beforePadding), overlap: overlap, remainingPaintExtent: constraints.remainingPaintExtent - this.calculatePaintOffset(constraints, {from: 0.0, to: beforePadding}), remainingCacheExtent: constraints.remainingCacheExtent - this.calculateCacheOffset(constraints, {from: 0.0, to: beforePadding}), crossAxisExtent: math.max(core.double, 0.0, constraints.crossAxisExtent - crossAxisPadding), precedingScrollExtent: beforePadding + constraints.precedingScrollExtent}), {parentUsesSize: true});
-      let childLayoutGeometry = dart.nullCheck(dart.nullCheck(this.child).geometry);
-      if (childLayoutGeometry.scrollOffsetCorrection != null) {
-        this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: childLayoutGeometry.scrollOffsetCorrection});
-        return;
-      }
-      let afterPaddingPaintExtent = this.calculatePaintOffset(constraints, {from: beforePadding + childLayoutGeometry.scrollExtent, to: mainAxisPadding + childLayoutGeometry.scrollExtent});
-      let mainAxisPaddingPaintExtent = beforePaddingPaintExtent + afterPaddingPaintExtent;
-      let beforePaddingCacheExtent = this.calculateCacheOffset(constraints, {from: 0.0, to: beforePadding});
-      let afterPaddingCacheExtent = this.calculateCacheOffset(constraints, {from: beforePadding + childLayoutGeometry.scrollExtent, to: mainAxisPadding + childLayoutGeometry.scrollExtent});
-      let mainAxisPaddingCacheExtent = afterPaddingCacheExtent + beforePaddingCacheExtent;
-      let paintExtent = math.min(core.double, beforePaddingPaintExtent + math.max(core.num, childLayoutGeometry.paintExtent, childLayoutGeometry.layoutExtent + afterPaddingPaintExtent), constraints.remainingPaintExtent);
-      this.geometry = new sliver.SliverGeometry.new({paintOrigin: childLayoutGeometry.paintOrigin, scrollExtent: mainAxisPadding + childLayoutGeometry.scrollExtent, paintExtent: paintExtent, layoutExtent: math.min(core.double, mainAxisPaddingPaintExtent + childLayoutGeometry.layoutExtent, paintExtent), cacheExtent: math.min(core.double, mainAxisPaddingCacheExtent + childLayoutGeometry.cacheExtent, constraints.remainingCacheExtent), maxPaintExtent: mainAxisPadding + childLayoutGeometry.maxPaintExtent, hitTestExtent: math.max(core.double, mainAxisPaddingPaintExtent + childLayoutGeometry.paintExtent, beforePaddingPaintExtent + childLayoutGeometry.hitTestExtent), hasVisualOverflow: childLayoutGeometry.hasVisualOverflow});
-      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-      if (!(constraints.axisDirection !== null)) dart.assertFailed(null, I[0], 192, 12, "constraints.axisDirection != null");
-      if (!(constraints.growthDirection !== null)) dart.assertFailed(null, I[0], 193, 12, "constraints.growthDirection != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(constraints.axisDirection, constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        {
-          childParentData.paintOffset = new ui.Offset.new(dart.nullCheck(this.resolvedPadding).left, this.calculatePaintOffset(constraints, {from: dart.nullCheck(this.resolvedPadding).bottom + childLayoutGeometry.scrollExtent, to: dart.nullCheck(this.resolvedPadding).bottom + childLayoutGeometry.scrollExtent + dart.nullCheck(this.resolvedPadding).top}));
-          break;
-        }
-        case C[1] || CT.C1:
-        {
-          childParentData.paintOffset = new ui.Offset.new(this.calculatePaintOffset(constraints, {from: 0.0, to: dart.nullCheck(this.resolvedPadding).left}), dart.nullCheck(this.resolvedPadding).top);
-          break;
-        }
-        case C[2] || CT.C2:
-        {
-          childParentData.paintOffset = new ui.Offset.new(dart.nullCheck(this.resolvedPadding).left, this.calculatePaintOffset(constraints, {from: 0.0, to: dart.nullCheck(this.resolvedPadding).top}));
-          break;
-        }
-        case C[3] || CT.C3:
-        {
-          childParentData.paintOffset = new ui.Offset.new(this.calculatePaintOffset(constraints, {from: dart.nullCheck(this.resolvedPadding).right + childLayoutGeometry.scrollExtent, to: dart.nullCheck(this.resolvedPadding).right + childLayoutGeometry.scrollExtent + dart.nullCheck(this.resolvedPadding).left}), dart.nullCheck(this.resolvedPadding).top);
-          break;
-        }
-      }
-      if (!(childParentData.paintOffset !== null)) dart.assertFailed(null, I[0], 208, 12, "childParentData.paintOffset != null");
-      if (!(beforePadding === this.beforePadding)) dart.assertFailed(null, I[0], 209, 12, "beforePadding == this.beforePadding");
-      if (!(afterPadding === this.afterPadding)) dart.assertFailed(null, I[0], 210, 12, "afterPadding == this.afterPadding");
-      if (!(mainAxisPadding === this.mainAxisPadding)) dart.assertFailed(null, I[0], 211, 12, "mainAxisPadding == this.mainAxisPadding");
-      if (!(crossAxisPadding === this.crossAxisPadding)) dart.assertFailed(null, I[0], 212, 12, "crossAxisPadding == this.crossAxisPadding");
-    }
-    hitTestChildren(result, opts) {
-      let mainAxisPosition = opts && 'mainAxisPosition' in opts ? opts.mainAxisPosition : null;
-      let crossAxisPosition = opts && 'crossAxisPosition' in opts ? opts.crossAxisPosition : null;
-      if (this.child != null && dart.nullCheck(dart.nullCheck(this.child).geometry).hitTestExtent > 0.0) {
-        let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-        result.addWithAxisOffset({mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition, mainAxisOffset: this.childMainAxisPosition(dart.nullCheck(this.child)), crossAxisOffset: this.childCrossAxisPosition(dart.nullCheck(this.child)), paintOffset: childParentData.paintOffset, hitTest: dart.bind(dart.nullCheck(this.child), 'hitTest')});
-      }
-      return false;
-    }
-    childMainAxisPosition(child) {
-      sliver.RenderSliver.as(child);
-      if (!(child !== null)) dart.assertFailed(null, I[0], 233, 12, "child != null");
-      if (!child[$_equals](this.child)) dart.assertFailed(null, I[0], 234, 12, "child == this.child");
-      return this.calculatePaintOffset(this.constraints, {from: 0.0, to: this.beforePadding});
-    }
-    childCrossAxisPosition(child) {
-      sliver.RenderSliver.as(child);
-      if (!(child !== null)) dart.assertFailed(null, I[0], 240, 12, "child != null");
-      if (!child[$_equals](this.child)) dart.assertFailed(null, I[0], 241, 12, "child == this.child");
-      if (!(this.constraints !== null)) dart.assertFailed(null, I[0], 242, 12, "constraints != null");
-      if (!(this.constraints.axisDirection !== null)) dart.assertFailed(null, I[0], 243, 12, "constraints.axisDirection != null");
-      if (!(this.constraints.growthDirection !== null)) dart.assertFailed(null, I[0], 244, 12, "constraints.growthDirection != null");
-      if (!(this.resolvedPadding != null)) dart.assertFailed(null, I[0], 245, 12, "resolvedPadding != null");
-      switch (sliver.applyGrowthDirectionToAxisDirection(this.constraints.axisDirection, this.constraints.growthDirection)) {
-        case C[0] || CT.C0:
-        case C[2] || CT.C2:
-        {
-          return dart.nullCheck(this.resolvedPadding).left;
-        }
-        case C[3] || CT.C3:
-        case C[1] || CT.C1:
-        {
-          return dart.nullCheck(this.resolvedPadding).top;
-        }
-      }
-    }
-    childScrollOffset(child) {
-      object.RenderObject.as(child);
-      if (!dart.equals(child.parent, this)) dart.assertFailed(null, I[0], 258, 12, "child.parent == this");
-      return this.beforePadding;
-    }
-    applyPaintTransform(child, transform) {
-      object.RenderObject.as(child);
-      if (!(child !== null)) dart.assertFailed(null, I[0], 264, 12, "child != null");
-      if (!child[$_equals](this.child)) dart.assertFailed(null, I[0], 265, 12, "child == this.child");
-      let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(child.parentData));
-      childParentData.applyPaintTransform(transform);
-    }
-    paint(context, offset) {
-      if (this.child != null && dart.nullCheck(dart.nullCheck(this.child).geometry).visible) {
-        let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-        context.paintChild(dart.nullCheck(this.child), offset['+'](childParentData.paintOffset));
-      }
-    }
-    debugPaint(context, offset) {
-      super.debugPaint(context, offset);
-      if (!dart.fn(() => {
-        if (debug.debugPaintSizeEnabled) {
-          let parentSize = this.getAbsoluteSize();
-          let outerRect = offset['&'](parentSize);
-          let innerRect = null;
-          if (this.child != null) {
-            let childSize = dart.nullCheck(this.child).getAbsoluteSize();
-            let childParentData = sliver.SliverPhysicalParentData.as(dart.nullCheck(dart.nullCheck(this.child).parentData));
-            innerRect = offset['+'](childParentData.paintOffset)['&'](childSize);
-            if (!(innerRect.top >= outerRect.top)) dart.assertFailed(null, I[0], 290, 18, "innerRect.top >= outerRect.top");
-            if (!(innerRect.left >= outerRect.left)) dart.assertFailed(null, I[0], 291, 18, "innerRect.left >= outerRect.left");
-            if (!(innerRect.right <= outerRect.right)) dart.assertFailed(null, I[0], 292, 18, "innerRect.right <= outerRect.right");
-            if (!(innerRect.bottom <= outerRect.bottom)) dart.assertFailed(null, I[0], 293, 18, "innerRect.bottom <= outerRect.bottom");
-          }
-          debug.debugPaintPadding(context.canvas, outerRect, innerRect);
-        }
-        return true;
-      }, T.VoidTobool())()) dart.assertFailed(null, I[0], 281, 12, "() {\r\n      if (debugPaintSizeEnabled) {\r\n        final Size parentSize = getAbsoluteSize();\r\n        final Rect outerRect = offset & parentSize;\r\n        Rect? innerRect;\r\n        if (child != null) {\r\n          final Size childSize = child!.getAbsoluteSize();\r\n          final SliverPhysicalParentData childParentData = child!.parentData! as SliverPhysicalParentData;\r\n          innerRect = (offset + childParentData.paintOffset) & childSize;\r\n          assert(innerRect.top >= outerRect.top);\r\n          assert(innerRect.left >= outerRect.left);\r\n          assert(innerRect.right <= outerRect.right);\r\n          assert(innerRect.bottom <= outerRect.bottom);\r\n        }\r\n        debugPaintPadding(context.canvas, outerRect, innerRect);\r\n      }\r\n      return true;\r\n    }()");
+  var _name$ = dart.privateName(debug_overflow_indicator, "_name");
+  debug_overflow_indicator._OverflowSide = class _OverflowSide extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (sliver_padding.RenderSliverEdgeInsetsPadding.new = function() {
-    sliver_padding.RenderSliverEdgeInsetsPadding.__proto__.new.call(this);
+  (debug_overflow_indicator._OverflowSide.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = sliver_padding.RenderSliverEdgeInsetsPadding.prototype;
-  dart.addTypeTests(sliver_padding.RenderSliverEdgeInsetsPadding);
-  dart.addTypeCaches(sliver_padding.RenderSliverEdgeInsetsPadding);
-  dart.setMethodSignature(sliver_padding.RenderSliverEdgeInsetsPadding, () => ({
-    __proto__: dart.getMethods(sliver_padding.RenderSliverEdgeInsetsPadding.__proto__),
-    performLayout: dart.fnType(dart.void, [])
+  }).prototype = debug_overflow_indicator._OverflowSide.prototype;
+  dart.addTypeTests(debug_overflow_indicator._OverflowSide);
+  dart.addTypeCaches(debug_overflow_indicator._OverflowSide);
+  dart.setLibraryUri(debug_overflow_indicator._OverflowSide, I[0]);
+  dart.setFieldSignature(debug_overflow_indicator._OverflowSide, () => ({
+    __proto__: dart.getFields(debug_overflow_indicator._OverflowSide.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setGetterSignature(sliver_padding.RenderSliverEdgeInsetsPadding, () => ({
-    __proto__: dart.getGetters(sliver_padding.RenderSliverEdgeInsetsPadding.__proto__),
-    beforePadding: core.double,
-    afterPadding: core.double,
-    mainAxisPadding: core.double,
-    crossAxisPadding: core.double
-  }));
-  dart.setLibraryUri(sliver_padding.RenderSliverEdgeInsetsPadding, I[1]);
-  var _resolvedPadding = dart.privateName(sliver_padding, "_resolvedPadding");
-  var _padding = dart.privateName(sliver_padding, "_padding");
-  var _textDirection = dart.privateName(sliver_padding, "_textDirection");
-  var _resolve = dart.privateName(sliver_padding, "_resolve");
-  var _markNeedsResolution = dart.privateName(sliver_padding, "_markNeedsResolution");
-  sliver_padding.RenderSliverPadding = class RenderSliverPadding extends sliver_padding.RenderSliverEdgeInsetsPadding {
-    get resolvedPadding() {
-      return this[_resolvedPadding];
+  dart.defineExtensionMethods(debug_overflow_indicator._OverflowSide, ['toString']);
+  debug_overflow_indicator._OverflowSide.left = C[0] || CT.C0;
+  debug_overflow_indicator._OverflowSide.top = C[1] || CT.C1;
+  debug_overflow_indicator._OverflowSide.bottom = C[2] || CT.C2;
+  debug_overflow_indicator._OverflowSide.right = C[3] || CT.C3;
+  debug_overflow_indicator._OverflowSide.values = C[4] || CT.C4;
+  var rect$ = dart.privateName(debug_overflow_indicator, "_OverflowRegionData.rect");
+  var label$ = dart.privateName(debug_overflow_indicator, "_OverflowRegionData.label");
+  var labelOffset$ = dart.privateName(debug_overflow_indicator, "_OverflowRegionData.labelOffset");
+  var rotation$ = dart.privateName(debug_overflow_indicator, "_OverflowRegionData.rotation");
+  var side$ = dart.privateName(debug_overflow_indicator, "_OverflowRegionData.side");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  debug_overflow_indicator._OverflowRegionData = class _OverflowRegionData extends core.Object {
+    get rect() {
+      return this[rect$];
     }
-    [_resolve]() {
-      if (this.resolvedPadding != null) return;
-      this[_resolvedPadding] = this.padding.resolve(this.textDirection);
-      if (!dart.nullCheck(this.resolvedPadding).isNonNegative) dart.assertFailed(null, I[0], 332, 12, "resolvedPadding!.isNonNegative");
+    set rect(value) {
+      super.rect = value;
     }
-    [_markNeedsResolution]() {
-      this[_resolvedPadding] = null;
-      this.markNeedsLayout();
+    get label() {
+      return this[label$];
     }
-    get padding() {
-      return this[_padding];
+    set label(value) {
+      super.label = value;
     }
-    set padding(value) {
-      if (!(value !== null)) dart.assertFailed(null, I[0], 347, 12, "value != null");
-      if (!this.padding.isNonNegative) dart.assertFailed(null, I[0], 348, 12, "padding.isNonNegative");
-      if (this[_padding]._equals(value)) return;
-      this[_padding] = value;
-      this[_markNeedsResolution]();
+    get labelOffset() {
+      return this[labelOffset$];
     }
-    get textDirection() {
-      return this[_textDirection];
+    set labelOffset(value) {
+      super.labelOffset = value;
     }
-    set textDirection(value) {
-      if (this[_textDirection] == value) return;
-      this[_textDirection] = value;
-      this[_markNeedsResolution]();
+    get rotation() {
+      return this[rotation$];
     }
-    performLayout() {
-      this[_resolve]();
-      super.performLayout();
+    set rotation(value) {
+      super.rotation = value;
     }
-    debugFillProperties(properties) {
-      super.debugFillProperties(properties);
-      properties.add(new (T.DiagnosticsPropertyOfEdgeInsetsGeometry()).new("padding", this.padding));
-      properties.add(new (T.EnumPropertyOfTextDirection()).new("textDirection", this.textDirection, {defaultValue: null}));
+    get side() {
+      return this[side$];
+    }
+    set side(value) {
+      super.side = value;
     }
   };
-  (sliver_padding.RenderSliverPadding.new = function(opts) {
-    let padding = opts && 'padding' in opts ? opts.padding : null;
-    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-    let child = opts && 'child' in opts ? opts.child : null;
-    this[_resolvedPadding] = null;
-    if (!(padding !== null)) dart.assertFailed(null, I[0], 317, 15, "padding != null");
-    if (!padding.isNonNegative) dart.assertFailed(null, I[0], 318, 15, "padding.isNonNegative");
-    this[_padding] = padding;
-    this[_textDirection] = textDirection;
-    sliver_padding.RenderSliverPadding.__proto__.new.call(this);
-    this.child = child;
-  }).prototype = sliver_padding.RenderSliverPadding.prototype;
-  dart.addTypeTests(sliver_padding.RenderSliverPadding);
-  dart.addTypeCaches(sliver_padding.RenderSliverPadding);
-  dart.setMethodSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getMethods(sliver_padding.RenderSliverPadding.__proto__),
-    [_resolve]: dart.fnType(dart.void, []),
-    [_markNeedsResolution]: dart.fnType(dart.void, [])
+  (debug_overflow_indicator._OverflowRegionData.new = function(opts) {
+    let rect = opts && 'rect' in opts ? opts.rect : null;
+    let label = opts && 'label' in opts ? opts.label : "";
+    let labelOffset = opts && 'labelOffset' in opts ? opts.labelOffset : C[5] || CT.C5;
+    let rotation = opts && 'rotation' in opts ? opts.rotation : 0;
+    let side = opts && 'side' in opts ? opts.side : null;
+    this[rect$] = rect;
+    this[label$] = label;
+    this[labelOffset$] = labelOffset;
+    this[rotation$] = rotation;
+    this[side$] = side;
+    ;
+  }).prototype = debug_overflow_indicator._OverflowRegionData.prototype;
+  dart.addTypeTests(debug_overflow_indicator._OverflowRegionData);
+  dart.addTypeCaches(debug_overflow_indicator._OverflowRegionData);
+  dart.setLibraryUri(debug_overflow_indicator._OverflowRegionData, I[0]);
+  dart.setFieldSignature(debug_overflow_indicator._OverflowRegionData, () => ({
+    __proto__: dart.getFields(debug_overflow_indicator._OverflowRegionData.__proto__),
+    rect: dart.finalFieldType(ui.Rect),
+    label: dart.finalFieldType(core.String),
+    labelOffset: dart.finalFieldType(ui.Offset),
+    rotation: dart.finalFieldType(core.double),
+    side: dart.finalFieldType(debug_overflow_indicator._OverflowSide)
   }));
-  dart.setGetterSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getGetters(sliver_padding.RenderSliverPadding.__proto__),
-    resolvedPadding: dart.nullable(edge_insets.EdgeInsets),
-    padding: edge_insets.EdgeInsetsGeometry,
-    textDirection: dart.nullable(ui.TextDirection)
+  var _indicatorLabel = dart.privateName(debug_overflow_indicator, "_indicatorLabel");
+  var _overflowReportNeeded = dart.privateName(debug_overflow_indicator, "_overflowReportNeeded");
+  var _formatPixels = dart.privateName(debug_overflow_indicator, "_formatPixels");
+  var _calculateOverflowRegions = dart.privateName(debug_overflow_indicator, "_calculateOverflowRegions");
+  var _reportOverflow = dart.privateName(debug_overflow_indicator, "_reportOverflow");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_leadingDistribution = dart.privateName(text_style, "TextStyle.leadingDistribution");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  debug_overflow_indicator.DebugOverflowIndicatorMixin = class DebugOverflowIndicatorMixin extends object.RenderObject {};
+  debug_overflow_indicator.DebugOverflowIndicatorMixin[dart.mixinOn] = RenderObject => class DebugOverflowIndicatorMixin extends RenderObject {
+    [_formatPixels](value) {
+      if (!(value > 0.0)) dart.assertFailed(null, I[1], 122, 12, "value > 0.0");
+      let pixels = null;
+      if (value > 10.0) {
+        pixels = value[$toStringAsFixed](0);
+      } else if (value > 1.0) {
+        pixels = value[$toStringAsFixed](1);
+      } else {
+        pixels = value[$toStringAsPrecision](3);
+      }
+      return pixels;
+    }
+    [_calculateOverflowRegions](overflow, containerRect) {
+      let regions = T.JSArrayOf_OverflowRegionData().of([]);
+      if (overflow.left > 0.0) {
+        let markerRect = new ui.Rect.fromLTWH(0.0, 0.0, containerRect.width * 0.1, containerRect.height);
+        regions[$add](new debug_overflow_indicator._OverflowRegionData.new({rect: markerRect, label: "LEFT OVERFLOWED BY " + this[_formatPixels](overflow.left) + " PIXELS", labelOffset: markerRect.centerLeft['+'](C[6] || CT.C6), rotation: 3.141592653589793 / 2.0, side: debug_overflow_indicator._OverflowSide.left}));
+      }
+      if (overflow.right > 0.0) {
+        let markerRect = new ui.Rect.fromLTWH(containerRect.width * (1.0 - 0.1), 0.0, containerRect.width * 0.1, containerRect.height);
+        regions[$add](new debug_overflow_indicator._OverflowRegionData.new({rect: markerRect, label: "RIGHT OVERFLOWED BY " + this[_formatPixels](overflow.right) + " PIXELS", labelOffset: markerRect.centerRight['-'](C[6] || CT.C6), rotation: -3.141592653589793 / 2.0, side: debug_overflow_indicator._OverflowSide.right}));
+      }
+      if (overflow.top > 0.0) {
+        let markerRect = new ui.Rect.fromLTWH(0.0, 0.0, containerRect.width, containerRect.height * 0.1);
+        regions[$add](new debug_overflow_indicator._OverflowRegionData.new({rect: markerRect, label: "TOP OVERFLOWED BY " + this[_formatPixels](overflow.top) + " PIXELS", labelOffset: markerRect.topCenter['+'](C[7] || CT.C7), rotation: 0.0, side: debug_overflow_indicator._OverflowSide.top}));
+      }
+      if (overflow.bottom > 0.0) {
+        let markerRect = new ui.Rect.fromLTWH(0.0, containerRect.height * (1.0 - 0.1), containerRect.width, containerRect.height * 0.1);
+        regions[$add](new debug_overflow_indicator._OverflowRegionData.new({rect: markerRect, label: "BOTTOM OVERFLOWED BY " + this[_formatPixels](overflow.bottom) + " PIXELS", labelOffset: markerRect.bottomCenter['-'](C[8] || CT.C8), rotation: 0.0, side: debug_overflow_indicator._OverflowSide.bottom}));
+      }
+      return regions;
+    }
+    [_reportOverflow](overflow, overflowHints) {
+      overflowHints == null ? overflowHints = T.JSArrayOfDiagnosticsNode().of([]) : null;
+      if (overflowHints[$isEmpty]) {
+        overflowHints[$add](new assertions.ErrorDescription.new("The edge of the " + dart.str(this[$runtimeType]) + " that is " + "overflowing has been marked in the rendering with a yellow and black " + "striped pattern. This is usually caused by the contents being too big " + "for the " + dart.str(this[$runtimeType]) + "."));
+        overflowHints[$add](new assertions.ErrorHint.new("This is considered an error condition because it indicates that there " + "is content that cannot be seen. If the content is legitimately bigger " + "than the available space, consider clipping it with a ClipRect widget " + "before putting it in the " + dart.str(this[$runtimeType]) + ", or using a scrollable " + "container, like a ListView."));
+      }
+      let overflows = (() => {
+        let t0 = T.JSArrayOfString().of([]);
+        if (overflow.left > 0.0) t0[$add](this[_formatPixels](overflow.left) + " pixels on the left");
+        if (overflow.top > 0.0) t0[$add](this[_formatPixels](overflow.top) + " pixels on the top");
+        if (overflow.bottom > 0.0) t0[$add](this[_formatPixels](overflow.bottom) + " pixels on the bottom");
+        if (overflow.right > 0.0) t0[$add](this[_formatPixels](overflow.right) + " pixels on the right");
+        return t0;
+      })();
+      let overflowText = "";
+      if (!overflows[$isNotEmpty]) dart.assertFailed("Somehow " + dart.str(this[$runtimeType]) + " didn't actually overflow like it thought it did.", I[1], 227, 12, "overflows.isNotEmpty");
+      switch (overflows[$length]) {
+        case 1:
+        {
+          overflowText = overflows[$first];
+          break;
+        }
+        case 2:
+        {
+          overflowText = overflows[$first] + " and " + overflows[$last];
+          break;
+        }
+        default:
+        {
+          overflows[$_set](overflows[$length] - 1, "and " + overflows[$_get](overflows[$length] - 1));
+          overflowText = overflows[$join](", ");
+        }
+      }
+      assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: assertions.FlutterError.new("A " + dart.str(this[$runtimeType]) + " overflowed by " + overflowText + "."), library: "rendering library", context: new assertions.ErrorDescription.new("during layout"), informationCollector: dart.fn(() => new (T.SyncIterableOfDiagnosticsNode()).new((function*() {
+          if (this.debugCreator != null) yield new object.DiagnosticsDebugCreator.new(dart.nullCheck(this.debugCreator));
+          yield* dart.nullCheck(overflowHints);
+          yield this.describeForError("The specific " + dart.str(this[$runtimeType]) + " in question is");
+          yield diagnostics.DiagnosticsNode.message("◢◤"[$times]((100 / 2)[$truncate]()), {allowWrap: false});
+        }).bind(this)), T.VoidToIterableOfDiagnosticsNode())}));
+    }
+    paintOverflowIndicator(context, offset, containerRect, childRect, opts) {
+      let t1;
+      let overflowHints = opts && 'overflowHints' in opts ? opts.overflowHints : null;
+      let overflow = stack.RelativeRect.fromRect(containerRect, childRect);
+      if (overflow.left <= 0.0 && overflow.right <= 0.0 && overflow.top <= 0.0 && overflow.bottom <= 0.0) {
+        return;
+      }
+      let overflowRegions = this[_calculateOverflowRegions](overflow, containerRect);
+      for (let region of overflowRegions) {
+        context.canvas.drawRect(region.rect.shift(offset), debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorPaint);
+        let textSpan = T.TextSpanN().as(this[_indicatorLabel][$_get](region.side.index).text);
+        if ((t1 = textSpan, t1 == null ? null : t1.text) !== region.label) {
+          this[_indicatorLabel][$_get](region.side.index).text = new text_span.TextSpan.new({text: region.label, style: debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorTextStyle});
+          this[_indicatorLabel][$_get](region.side.index).layout();
+        }
+        let labelOffset = region.labelOffset['+'](offset);
+        let centerOffset = new ui.Offset.new(-this[_indicatorLabel][$_get](region.side.index).width / 2.0, 0.0);
+        let textBackgroundRect = centerOffset['&'](this[_indicatorLabel][$_get](region.side.index).size);
+        context.canvas.save();
+        context.canvas.translate(labelOffset.dx, labelOffset.dy);
+        context.canvas.rotate(region.rotation);
+        context.canvas.drawRect(textBackgroundRect, debug_overflow_indicator.DebugOverflowIndicatorMixin._labelBackgroundPaint);
+        this[_indicatorLabel][$_get](region.side.index).paint(context.canvas, centerOffset);
+        context.canvas.restore();
+      }
+      if (this[_overflowReportNeeded]) {
+        this[_overflowReportNeeded] = false;
+        this[_reportOverflow](overflow, overflowHints);
+      }
+    }
+    reassemble() {
+      super.reassemble();
+      if (!dart.fn(() => {
+        this[_overflowReportNeeded] = true;
+        return true;
+      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 315, 12, "() {\r\n      _overflowReportNeeded = true;\r\n      return true;\r\n    }()");
+    }
+  };
+  (debug_overflow_indicator.DebugOverflowIndicatorMixin[dart.mixinNew] = function() {
+    this[_indicatorLabel] = T.ListOfTextPainter().filled(debug_overflow_indicator._OverflowSide.values[$length], new text_painter.TextPainter.new({textDirection: ui.TextDirection.ltr}));
+    this[_overflowReportNeeded] = true;
+  }).prototype = debug_overflow_indicator.DebugOverflowIndicatorMixin.prototype;
+  dart.addTypeTests(debug_overflow_indicator.DebugOverflowIndicatorMixin);
+  dart.addTypeCaches(debug_overflow_indicator.DebugOverflowIndicatorMixin);
+  debug_overflow_indicator.DebugOverflowIndicatorMixin[dart.implements] = () => [object.RenderObject];
+  dart.setMethodSignature(debug_overflow_indicator.DebugOverflowIndicatorMixin, () => ({
+    __proto__: dart.getMethods(debug_overflow_indicator.DebugOverflowIndicatorMixin.__proto__),
+    [_formatPixels]: dart.fnType(core.String, [core.double]),
+    [_calculateOverflowRegions]: dart.fnType(core.List$(debug_overflow_indicator._OverflowRegionData), [stack.RelativeRect, ui.Rect]),
+    [_reportOverflow]: dart.fnType(dart.void, [stack.RelativeRect, dart.nullable(core.List$(diagnostics.DiagnosticsNode))]),
+    paintOverflowIndicator: dart.fnType(dart.void, [object.PaintingContext, ui.Offset, ui.Rect, ui.Rect], {overflowHints: dart.nullable(core.List$(diagnostics.DiagnosticsNode))}, {})
   }));
-  dart.setSetterSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getSetters(sliver_padding.RenderSliverPadding.__proto__),
-    padding: edge_insets.EdgeInsetsGeometry,
-    textDirection: dart.nullable(ui.TextDirection)
+  dart.setLibraryUri(debug_overflow_indicator.DebugOverflowIndicatorMixin, I[0]);
+  dart.setFieldSignature(debug_overflow_indicator.DebugOverflowIndicatorMixin, () => ({
+    __proto__: dart.getFields(debug_overflow_indicator.DebugOverflowIndicatorMixin.__proto__),
+    [_indicatorLabel]: dart.finalFieldType(core.List$(text_painter.TextPainter)),
+    [_overflowReportNeeded]: dart.fieldType(core.bool)
   }));
-  dart.setLibraryUri(sliver_padding.RenderSliverPadding, I[1]);
-  dart.setFieldSignature(sliver_padding.RenderSliverPadding, () => ({
-    __proto__: dart.getFields(sliver_padding.RenderSliverPadding.__proto__),
-    [_resolvedPadding]: dart.fieldType(dart.nullable(edge_insets.EdgeInsets)),
-    [_padding]: dart.fieldType(edge_insets.EdgeInsetsGeometry),
-    [_textDirection]: dart.fieldType(dart.nullable(ui.TextDirection))
-  }));
-  dart.trackLibraries("packages/flutter/src/rendering/sliver_padding.dart", {
-    "package:flutter/src/rendering/sliver_padding.dart": sliver_padding
+  dart.defineLazy(debug_overflow_indicator.DebugOverflowIndicatorMixin, {
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._black*/get _black() {
+      return C[9] || CT.C9;
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._yellow*/get _yellow() {
+      return C[10] || CT.C10;
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorFraction*/get _indicatorFraction() {
+      return 0.1;
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorFontSizePixels*/get _indicatorFontSizePixels() {
+      return 7.5;
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorLabelPaddingPixels*/get _indicatorLabelPaddingPixels() {
+      return 1;
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorTextStyle*/get _indicatorTextStyle() {
+      return C[11] || CT.C11;
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._indicatorPaint*/get _indicatorPaint() {
+      let t1;
+      return t1 = ui.Paint.new(), (() => {
+        t1.shader = ui.Gradient.linear(ui.Offset.zero, C[14] || CT.C14, T.JSArrayOfColor().of([debug_overflow_indicator.DebugOverflowIndicatorMixin._black, debug_overflow_indicator.DebugOverflowIndicatorMixin._yellow, debug_overflow_indicator.DebugOverflowIndicatorMixin._yellow, debug_overflow_indicator.DebugOverflowIndicatorMixin._black]), T.JSArrayOfdouble().of([0.25, 0.25, 0.75, 0.75]), ui.TileMode.repeated);
+        return t1;
+      })();
+    },
+    /*debug_overflow_indicator.DebugOverflowIndicatorMixin._labelBackgroundPaint*/get _labelBackgroundPaint() {
+      let t1;
+      return t1 = ui.Paint.new(), (() => {
+        t1.color = C[15] || CT.C15;
+        return t1;
+      })();
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/rendering/debug_overflow_indicator.dart", {
+    "package:flutter/src/rendering/debug_overflow_indicator.dart": debug_overflow_indicator
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["sliver_padding.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/sliver_padding.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["debug_overflow_indicator.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/debug_overflow_indicator.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__sliver_padding: sliver_padding
+    src__rendering__debug_overflow_indicator: debug_overflow_indicator
   };
 }));
 
-//# sourceMappingURL=sliver_padding.dart.lib.js.map
+//# sourceMappingURL=debug_overflow_indicator.dart.lib.js.map

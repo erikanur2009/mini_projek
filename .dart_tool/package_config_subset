@@ -1,7 +1,7 @@
 mini_project
 2.12
-file:///C:/Users/User/Documents/New%20folder/mini_project/
-file:///C:/Users/User/Documents/New%20folder/mini_project/lib/
+file:///C:/Users/User/Documents/Minii-Project-1-master/
+file:///C:/Users/User/Documents/Minii-Project-1-master/lib/
 async
 2.12
 file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.6.1/
@@ -34,6 +34,14 @@ fake_async
 2.12
 file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/
 file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/lib/
+flutter_form_builder
+2.12
+file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_form_builder-6.0.1/
+file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_form_builder-6.0.1/lib/
+intl
+2.12
+file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/
+file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib/
 matcher
 2.12
 file:///C:/lib/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10/
@@ -86,6 +94,10 @@ flutter
 2.12
 file:///C:/lib/flutter/packages/flutter/
 file:///C:/lib/flutter/packages/flutter/lib/
+flutter_localizations
+2.12
+file:///C:/lib/flutter/packages/flutter_localizations/
+file:///C:/lib/flutter/packages/flutter_localizations/lib/
 flutter_test
 2.12
 file:///C:/lib/flutter/packages/flutter_test/

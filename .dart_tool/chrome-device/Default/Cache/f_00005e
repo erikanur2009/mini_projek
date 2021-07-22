@@ -1,579 +1,577 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/binding.dart', 'packages/flutter/src/gestures/events.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/gestures/constants.dart', 'packages/flutter/src/gestures/recognizer.dart'], (function load__packages__flutter__src__gestures__multitap_dart(dart_sdk, packages__flutter__src__gestures__binding$46dart, packages__flutter__src__gestures__events$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__gestures__constants$46dart, packages__flutter__src__gestures__recognizer$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/sliver_multi_box_adaptor.dart'], (function load__packages__flutter__src__rendering__sliver_grid_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const async = dart_sdk.async;
-  const ui = dart_sdk.ui;
-  const _js_helper = dart_sdk._js_helper;
+  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const binding = packages__flutter__src__gestures__binding$46dart.src__gestures__binding;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
-  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
-  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
-  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
-  const constants = packages__flutter__src__gestures__constants$46dart.src__gestures__constants;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  var multitap = Object.create(dart.library);
-  var $_set = dartx._set;
-  var $_get = dartx._get;
-  var $remove = dartx.remove;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const sliver_multi_box_adaptor = packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart.src__rendering__sliver_multi_box_adaptor;
+  var sliver_grid = Object.create(dart.library);
+  var $join = dartx.join;
+  var $truncate = dartx.truncate;
+  var $ceil = dartx.ceil;
+  var $modulo = dartx['%'];
   var $_equals = dartx._equals;
-  var $isEmpty = dartx.isEmpty;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $values = dartx.values;
-  var $toList = dartx.toList;
-  var $forEach = dartx.forEach;
-  var $containsKey = dartx.containsKey;
+  var $runtimeType = dartx.runtimeType;
+  var $isFinite = dartx.isFinite;
+  var $clamp = dartx.clamp;
   dart._checkModuleNullSafetyMode(true);
   var T = {
-    IdentityMapOfint$_TapTracker: () => (T.IdentityMapOfint$_TapTracker = dart.constFn(_js_helper.IdentityMap$(core.int, multitap._TapTracker)))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    IdentityMapOfint$_TapGesture: () => (T.IdentityMapOfint$_TapGesture = dart.constFn(_js_helper.IdentityMap$(core.int, multitap._TapGesture)))(),
-    ListOf_TapGesture: () => (T.ListOf_TapGesture = dart.constFn(core.List$(multitap._TapGesture)))()
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 0
-      });
-    }
-  }, false);
-  var C = [void 0];
   var I = [
-    "file:///C:/lib/flutter/packages/flutter/lib/src/gestures/multitap.dart",
-    "package:flutter/src/gestures/multitap.dart"
+    "package:flutter/src/rendering/sliver_grid.dart",
+    "file:///C:/lib/flutter/packages/flutter/lib/src/rendering/sliver_grid.dart"
   ];
-  var _timeout = dart.privateName(multitap, "_timeout");
-  var _onTimeout = dart.privateName(multitap, "_onTimeout");
-  multitap._CountdownZoned = class _CountdownZoned extends core.Object {
-    get timeout() {
-      return this[_timeout];
+  var scrollOffset$ = dart.privateName(sliver_grid, "SliverGridGeometry.scrollOffset");
+  var crossAxisOffset$ = dart.privateName(sliver_grid, "SliverGridGeometry.crossAxisOffset");
+  var mainAxisExtent$ = dart.privateName(sliver_grid, "SliverGridGeometry.mainAxisExtent");
+  var crossAxisExtent$ = dart.privateName(sliver_grid, "SliverGridGeometry.crossAxisExtent");
+  sliver_grid.SliverGridGeometry = class SliverGridGeometry extends core.Object {
+    get scrollOffset() {
+      return this[scrollOffset$];
     }
-    [_onTimeout]() {
-      this[_timeout] = true;
+    set scrollOffset(value) {
+      super.scrollOffset = value;
     }
-  };
-  (multitap._CountdownZoned.new = function(opts) {
-    let duration = opts && 'duration' in opts ? opts.duration : null;
-    this[_timeout] = false;
-    if (!(duration !== null)) dart.assertFailed(null, I[0], 43, 17, "duration != null");
-    async.Timer.new(duration, dart.bind(this, _onTimeout));
-  }).prototype = multitap._CountdownZoned.prototype;
-  dart.addTypeTests(multitap._CountdownZoned);
-  dart.addTypeCaches(multitap._CountdownZoned);
-  dart.setMethodSignature(multitap._CountdownZoned, () => ({
-    __proto__: dart.getMethods(multitap._CountdownZoned.__proto__),
-    [_onTimeout]: dart.fnType(dart.void, [])
-  }));
-  dart.setGetterSignature(multitap._CountdownZoned, () => ({
-    __proto__: dart.getGetters(multitap._CountdownZoned.__proto__),
-    timeout: core.bool
-  }));
-  dart.setLibraryUri(multitap._CountdownZoned, I[1]);
-  dart.setFieldSignature(multitap._CountdownZoned, () => ({
-    __proto__: dart.getFields(multitap._CountdownZoned.__proto__),
-    [_timeout]: dart.fieldType(core.bool)
-  }));
-  var _isTrackingPointer = dart.privateName(multitap, "_isTrackingPointer");
-  var _initialGlobalPosition = dart.privateName(multitap, "_initialGlobalPosition");
-  var _doubleTapMinTimeCountdown = dart.privateName(multitap, "_doubleTapMinTimeCountdown");
-  multitap._TapTracker = class _TapTracker extends core.Object {
-    startTrackingPointer(route, transform) {
-      if (!this[_isTrackingPointer]) {
-        this[_isTrackingPointer] = true;
-        dart.nullCheck(binding.GestureBinding.instance).pointerRouter.addRoute(this.pointer, route, transform);
-      }
+    get crossAxisOffset() {
+      return this[crossAxisOffset$];
     }
-    stopTrackingPointer(route) {
-      if (this[_isTrackingPointer]) {
-        this[_isTrackingPointer] = false;
-        dart.nullCheck(binding.GestureBinding.instance).pointerRouter.removeRoute(this.pointer, route);
-      }
+    set crossAxisOffset(value) {
+      super.crossAxisOffset = value;
     }
-    isWithinGlobalTolerance(event, tolerance) {
-      let offset = event.position['-'](this[_initialGlobalPosition]);
-      return offset.distance <= tolerance;
+    get mainAxisExtent() {
+      return this[mainAxisExtent$];
     }
-    hasElapsedMinTime() {
-      return this[_doubleTapMinTimeCountdown].timeout;
+    set mainAxisExtent(value) {
+      super.mainAxisExtent = value;
     }
-    hasSameButton(event) {
-      return event.buttons === this.initialButtons;
+    get crossAxisExtent() {
+      return this[crossAxisExtent$];
+    }
+    set crossAxisExtent(value) {
+      super.crossAxisExtent = value;
+    }
+    get trailingScrollOffset() {
+      return this.scrollOffset + this.mainAxisExtent;
+    }
+    getBoxConstraints(constraints) {
+      return constraints.asBoxConstraints({minExtent: this.mainAxisExtent, maxExtent: this.mainAxisExtent, crossAxisExtent: this.crossAxisExtent});
+    }
+    toString() {
+      let properties = T.JSArrayOfString().of(["scrollOffset: " + dart.str(this.scrollOffset), "crossAxisOffset: " + dart.str(this.crossAxisOffset), "mainAxisExtent: " + dart.str(this.mainAxisExtent), "crossAxisExtent: " + dart.str(this.crossAxisExtent)]);
+      return "SliverGridGeometry(" + properties[$join](", ") + ")";
     }
   };
-  (multitap._TapTracker.new = function(opts) {
-    let event = opts && 'event' in opts ? opts.event : null;
-    let entry = opts && 'entry' in opts ? opts.entry : null;
-    let doubleTapMinTime = opts && 'doubleTapMinTime' in opts ? opts.doubleTapMinTime : null;
-    this[_isTrackingPointer] = false;
-    this.entry = entry;
-    if (!(doubleTapMinTime !== null)) dart.assertFailed(null, I[0], 63, 15, "doubleTapMinTime != null");
-    if (!(event !== null)) dart.assertFailed(null, I[0], 64, 15, "event != null");
-    if (!(event.buttons !== null)) dart.assertFailed(null, I[0], 65, 15, "event.buttons != null");
-    this.pointer = event.pointer;
-    this[_initialGlobalPosition] = event.position;
-    this.initialButtons = event.buttons;
-    this[_doubleTapMinTimeCountdown] = new multitap._CountdownZoned.new({duration: doubleTapMinTime});
+  (sliver_grid.SliverGridGeometry.new = function(opts) {
+    let scrollOffset = opts && 'scrollOffset' in opts ? opts.scrollOffset : null;
+    let crossAxisOffset = opts && 'crossAxisOffset' in opts ? opts.crossAxisOffset : null;
+    let mainAxisExtent = opts && 'mainAxisExtent' in opts ? opts.mainAxisExtent : null;
+    let crossAxisExtent = opts && 'crossAxisExtent' in opts ? opts.crossAxisExtent : null;
+    this[scrollOffset$] = scrollOffset;
+    this[crossAxisOffset$] = crossAxisOffset;
+    this[mainAxisExtent$] = mainAxisExtent;
+    this[crossAxisExtent$] = crossAxisExtent;
     ;
-  }).prototype = multitap._TapTracker.prototype;
-  dart.addTypeTests(multitap._TapTracker);
-  dart.addTypeCaches(multitap._TapTracker);
-  dart.setMethodSignature(multitap._TapTracker, () => ({
-    __proto__: dart.getMethods(multitap._TapTracker.__proto__),
-    startTrackingPointer: dart.fnType(dart.void, [dart.fnType(dart.void, [events.PointerEvent]), dart.nullable(vector_math_64.Matrix4)]),
-    stopTrackingPointer: dart.fnType(dart.void, [dart.fnType(dart.void, [events.PointerEvent])]),
-    isWithinGlobalTolerance: dart.fnType(core.bool, [events.PointerEvent, core.double]),
-    hasElapsedMinTime: dart.fnType(core.bool, []),
-    hasSameButton: dart.fnType(core.bool, [events.PointerDownEvent])
+  }).prototype = sliver_grid.SliverGridGeometry.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridGeometry);
+  dart.addTypeCaches(sliver_grid.SliverGridGeometry);
+  dart.setMethodSignature(sliver_grid.SliverGridGeometry, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridGeometry.__proto__),
+    getBoxConstraints: dart.fnType(box.BoxConstraints, [sliver.SliverConstraints])
   }));
-  dart.setLibraryUri(multitap._TapTracker, I[1]);
-  dart.setFieldSignature(multitap._TapTracker, () => ({
-    __proto__: dart.getFields(multitap._TapTracker.__proto__),
-    pointer: dart.finalFieldType(core.int),
-    entry: dart.finalFieldType(arena.GestureArenaEntry),
-    [_initialGlobalPosition]: dart.finalFieldType(ui.Offset),
-    initialButtons: dart.finalFieldType(core.int),
-    [_doubleTapMinTimeCountdown]: dart.finalFieldType(multitap._CountdownZoned),
-    [_isTrackingPointer]: dart.fieldType(core.bool)
+  dart.setGetterSignature(sliver_grid.SliverGridGeometry, () => ({
+    __proto__: dart.getGetters(sliver_grid.SliverGridGeometry.__proto__),
+    trailingScrollOffset: core.double
   }));
-  var onDoubleTapDown = dart.privateName(multitap, "DoubleTapGestureRecognizer.onDoubleTapDown");
-  var onDoubleTap = dart.privateName(multitap, "DoubleTapGestureRecognizer.onDoubleTap");
-  var onDoubleTapCancel = dart.privateName(multitap, "DoubleTapGestureRecognizer.onDoubleTapCancel");
-  var _doubleTapTimer = dart.privateName(multitap, "_doubleTapTimer");
-  var _firstTap = dart.privateName(multitap, "_firstTap");
-  var _trackers = dart.privateName(multitap, "_trackers");
-  var _reset = dart.privateName(multitap, "_reset");
-  var _trackTap = dart.privateName(multitap, "_trackTap");
-  var _stopDoubleTapTimer = dart.privateName(multitap, "_stopDoubleTapTimer");
-  var _handleEvent = dart.privateName(multitap, "_handleEvent");
-  var _registerFirstTap = dart.privateName(multitap, "_registerFirstTap");
-  var _registerSecondTap = dart.privateName(multitap, "_registerSecondTap");
-  var _reject = dart.privateName(multitap, "_reject");
-  var _freezeTracker = dart.privateName(multitap, "_freezeTracker");
-  var _checkCancel = dart.privateName(multitap, "_checkCancel");
-  var _clearTrackers = dart.privateName(multitap, "_clearTrackers");
-  var _startDoubleTapTimer = dart.privateName(multitap, "_startDoubleTapTimer");
-  var _checkUp = dart.privateName(multitap, "_checkUp");
-  multitap.DoubleTapGestureRecognizer = class DoubleTapGestureRecognizer extends recognizer.GestureRecognizer {
-    get onDoubleTapDown() {
-      return this[onDoubleTapDown];
+  dart.setLibraryUri(sliver_grid.SliverGridGeometry, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridGeometry, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridGeometry.__proto__),
+    scrollOffset: dart.finalFieldType(core.double),
+    crossAxisOffset: dart.finalFieldType(core.double),
+    mainAxisExtent: dart.finalFieldType(core.double),
+    crossAxisExtent: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(sliver_grid.SliverGridGeometry, ['toString']);
+  sliver_grid.SliverGridLayout = class SliverGridLayout extends core.Object {};
+  (sliver_grid.SliverGridLayout.new = function() {
+    ;
+  }).prototype = sliver_grid.SliverGridLayout.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridLayout);
+  dart.addTypeCaches(sliver_grid.SliverGridLayout);
+  dart.setLibraryUri(sliver_grid.SliverGridLayout, I[0]);
+  var crossAxisCount$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.crossAxisCount");
+  var mainAxisStride$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.mainAxisStride");
+  var crossAxisStride$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.crossAxisStride");
+  var childMainAxisExtent$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.childMainAxisExtent");
+  var childCrossAxisExtent$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.childCrossAxisExtent");
+  var reverseCrossAxis$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.reverseCrossAxis");
+  var _getOffsetFromStartInCrossAxis = dart.privateName(sliver_grid, "_getOffsetFromStartInCrossAxis");
+  sliver_grid.SliverGridRegularTileLayout = class SliverGridRegularTileLayout extends sliver_grid.SliverGridLayout {
+    get crossAxisCount() {
+      return this[crossAxisCount$];
     }
-    set onDoubleTapDown(value) {
-      this[onDoubleTapDown] = value;
+    set crossAxisCount(value) {
+      super.crossAxisCount = value;
     }
-    get onDoubleTap() {
-      return this[onDoubleTap];
+    get mainAxisStride() {
+      return this[mainAxisStride$];
     }
-    set onDoubleTap(value) {
-      this[onDoubleTap] = value;
+    set mainAxisStride(value) {
+      super.mainAxisStride = value;
     }
-    get onDoubleTapCancel() {
-      return this[onDoubleTapCancel];
+    get crossAxisStride() {
+      return this[crossAxisStride$];
     }
-    set onDoubleTapCancel(value) {
-      this[onDoubleTapCancel] = value;
+    set crossAxisStride(value) {
+      super.crossAxisStride = value;
     }
-    isPointerAllowed(event) {
-      if (this[_firstTap] == null) {
-        switch (event.buttons) {
-          case 1:
-          {
-            if (this.onDoubleTapDown == null && this.onDoubleTap == null && this.onDoubleTapCancel == null) return false;
+    get childMainAxisExtent() {
+      return this[childMainAxisExtent$];
+    }
+    set childMainAxisExtent(value) {
+      super.childMainAxisExtent = value;
+    }
+    get childCrossAxisExtent() {
+      return this[childCrossAxisExtent$];
+    }
+    set childCrossAxisExtent(value) {
+      super.childCrossAxisExtent = value;
+    }
+    get reverseCrossAxis() {
+      return this[reverseCrossAxis$];
+    }
+    set reverseCrossAxis(value) {
+      super.reverseCrossAxis = value;
+    }
+    getMinChildIndexForScrollOffset(scrollOffset) {
+      return this.mainAxisStride > 1e-10 ? this.crossAxisCount * (scrollOffset / this.mainAxisStride)[$truncate]() : 0;
+    }
+    getMaxChildIndexForScrollOffset(scrollOffset) {
+      if (this.mainAxisStride > 0.0) {
+        let mainAxisCount = (scrollOffset / this.mainAxisStride)[$ceil]();
+        return math.max(core.int, 0, this.crossAxisCount * mainAxisCount - 1);
+      }
+      return 0;
+    }
+    [_getOffsetFromStartInCrossAxis](crossAxisStart) {
+      if (this.reverseCrossAxis) return this.crossAxisCount * this.crossAxisStride - crossAxisStart - this.childCrossAxisExtent - (this.crossAxisStride - this.childCrossAxisExtent);
+      return crossAxisStart;
+    }
+    getGeometryForChildIndex(index) {
+      let crossAxisStart = index[$modulo](this.crossAxisCount) * this.crossAxisStride;
+      return new sliver_grid.SliverGridGeometry.new({scrollOffset: (index / this.crossAxisCount)[$truncate]() * this.mainAxisStride, crossAxisOffset: this[_getOffsetFromStartInCrossAxis](crossAxisStart), mainAxisExtent: this.childMainAxisExtent, crossAxisExtent: this.childCrossAxisExtent});
+    }
+    computeMaxScrollOffset(childCount) {
+      if (!(childCount !== null)) dart.assertFailed(null, I[1], 228, 12, "childCount != null");
+      let mainAxisCount = ((childCount - 1) / this.crossAxisCount)[$truncate]() + 1;
+      let mainAxisSpacing = this.mainAxisStride - this.childMainAxisExtent;
+      return this.mainAxisStride * mainAxisCount - mainAxisSpacing;
+    }
+  };
+  (sliver_grid.SliverGridRegularTileLayout.new = function(opts) {
+    let crossAxisCount = opts && 'crossAxisCount' in opts ? opts.crossAxisCount : null;
+    let mainAxisStride = opts && 'mainAxisStride' in opts ? opts.mainAxisStride : null;
+    let crossAxisStride = opts && 'crossAxisStride' in opts ? opts.crossAxisStride : null;
+    let childMainAxisExtent = opts && 'childMainAxisExtent' in opts ? opts.childMainAxisExtent : null;
+    let childCrossAxisExtent = opts && 'childCrossAxisExtent' in opts ? opts.childCrossAxisExtent : null;
+    let reverseCrossAxis = opts && 'reverseCrossAxis' in opts ? opts.reverseCrossAxis : null;
+    this[crossAxisCount$] = crossAxisCount;
+    this[mainAxisStride$] = mainAxisStride;
+    this[crossAxisStride$] = crossAxisStride;
+    this[childMainAxisExtent$] = childMainAxisExtent;
+    this[childCrossAxisExtent$] = childCrossAxisExtent;
+    this[reverseCrossAxis$] = reverseCrossAxis;
+    if (!(crossAxisCount !== null && crossAxisCount > 0)) dart.assertFailed(null, I[1], 158, 15, "crossAxisCount != null && crossAxisCount > 0");
+    if (!(mainAxisStride !== null && mainAxisStride >= 0)) dart.assertFailed(null, I[1], 159, 15, "mainAxisStride != null && mainAxisStride >= 0");
+    if (!(crossAxisStride !== null && crossAxisStride >= 0)) dart.assertFailed(null, I[1], 160, 15, "crossAxisStride != null && crossAxisStride >= 0");
+    if (!(childMainAxisExtent !== null && childMainAxisExtent >= 0)) dart.assertFailed(null, I[1], 161, 15, "childMainAxisExtent != null && childMainAxisExtent >= 0");
+    if (!(childCrossAxisExtent !== null && childCrossAxisExtent >= 0)) dart.assertFailed(null, I[1], 162, 15, "childCrossAxisExtent != null && childCrossAxisExtent >= 0");
+    if (!(reverseCrossAxis !== null)) dart.assertFailed(null, I[1], 163, 15, "reverseCrossAxis != null");
+    sliver_grid.SliverGridRegularTileLayout.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridRegularTileLayout.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridRegularTileLayout);
+  dart.addTypeCaches(sliver_grid.SliverGridRegularTileLayout);
+  dart.setMethodSignature(sliver_grid.SliverGridRegularTileLayout, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridRegularTileLayout.__proto__),
+    getMinChildIndexForScrollOffset: dart.fnType(core.int, [core.double]),
+    getMaxChildIndexForScrollOffset: dart.fnType(core.int, [core.double]),
+    [_getOffsetFromStartInCrossAxis]: dart.fnType(core.double, [core.double]),
+    getGeometryForChildIndex: dart.fnType(sliver_grid.SliverGridGeometry, [core.int]),
+    computeMaxScrollOffset: dart.fnType(core.double, [core.int])
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridRegularTileLayout, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridRegularTileLayout, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridRegularTileLayout.__proto__),
+    crossAxisCount: dart.finalFieldType(core.int),
+    mainAxisStride: dart.finalFieldType(core.double),
+    crossAxisStride: dart.finalFieldType(core.double),
+    childMainAxisExtent: dart.finalFieldType(core.double),
+    childCrossAxisExtent: dart.finalFieldType(core.double),
+    reverseCrossAxis: dart.finalFieldType(core.bool)
+  }));
+  sliver_grid.SliverGridDelegate = class SliverGridDelegate extends core.Object {};
+  (sliver_grid.SliverGridDelegate.new = function() {
+    ;
+  }).prototype = sliver_grid.SliverGridDelegate.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridDelegate);
+  dart.addTypeCaches(sliver_grid.SliverGridDelegate);
+  dart.setLibraryUri(sliver_grid.SliverGridDelegate, I[0]);
+  var crossAxisCount$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.crossAxisCount");
+  var mainAxisSpacing$ = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.mainAxisSpacing");
+  var crossAxisSpacing$ = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.crossAxisSpacing");
+  var childAspectRatio$ = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.childAspectRatio");
+  var mainAxisExtent$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.mainAxisExtent");
+  var _debugAssertIsValid = dart.privateName(sliver_grid, "_debugAssertIsValid");
+  sliver_grid.SliverGridDelegateWithFixedCrossAxisCount = class SliverGridDelegateWithFixedCrossAxisCount extends sliver_grid.SliverGridDelegate {
+    get crossAxisCount() {
+      return this[crossAxisCount$0];
+    }
+    set crossAxisCount(value) {
+      super.crossAxisCount = value;
+    }
+    get mainAxisSpacing() {
+      return this[mainAxisSpacing$];
+    }
+    set mainAxisSpacing(value) {
+      super.mainAxisSpacing = value;
+    }
+    get crossAxisSpacing() {
+      return this[crossAxisSpacing$];
+    }
+    set crossAxisSpacing(value) {
+      super.crossAxisSpacing = value;
+    }
+    get childAspectRatio() {
+      return this[childAspectRatio$];
+    }
+    set childAspectRatio(value) {
+      super.childAspectRatio = value;
+    }
+    get mainAxisExtent() {
+      return this[mainAxisExtent$0];
+    }
+    set mainAxisExtent(value) {
+      super.mainAxisExtent = value;
+    }
+    [_debugAssertIsValid]() {
+      if (!(this.crossAxisCount > 0)) dart.assertFailed(null, I[1], 373, 12, "crossAxisCount > 0");
+      if (!(this.mainAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 374, 12, "mainAxisSpacing >= 0.0");
+      if (!(this.crossAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 375, 12, "crossAxisSpacing >= 0.0");
+      if (!(this.childAspectRatio > 0.0)) dart.assertFailed(null, I[1], 376, 12, "childAspectRatio > 0.0");
+      return true;
+    }
+    getLayout(constraints) {
+      let t0;
+      if (!this[_debugAssertIsValid]()) dart.assertFailed(null, I[1], 382, 12, "_debugAssertIsValid()");
+      let usableCrossAxisExtent = math.max(core.double, 0.0, constraints.crossAxisExtent - this.crossAxisSpacing * (this.crossAxisCount - 1));
+      let childCrossAxisExtent = usableCrossAxisExtent / this.crossAxisCount;
+      let childMainAxisExtent = (t0 = this.mainAxisExtent, t0 == null ? childCrossAxisExtent / this.childAspectRatio : t0);
+      return new sliver_grid.SliverGridRegularTileLayout.new({crossAxisCount: this.crossAxisCount, mainAxisStride: childMainAxisExtent + this.mainAxisSpacing, crossAxisStride: childCrossAxisExtent + this.crossAxisSpacing, childMainAxisExtent: childMainAxisExtent, childCrossAxisExtent: childCrossAxisExtent, reverseCrossAxis: basic_types.axisDirectionIsReversed(constraints.crossAxisDirection)});
+    }
+    shouldRelayout(oldDelegate) {
+      sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.as(oldDelegate);
+      return oldDelegate.crossAxisCount !== this.crossAxisCount || oldDelegate.mainAxisSpacing !== this.mainAxisSpacing || oldDelegate.crossAxisSpacing !== this.crossAxisSpacing || oldDelegate.childAspectRatio !== this.childAspectRatio || oldDelegate.mainAxisExtent != this.mainAxisExtent;
+    }
+  };
+  (sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.new = function(opts) {
+    let crossAxisCount = opts && 'crossAxisCount' in opts ? opts.crossAxisCount : null;
+    let mainAxisSpacing = opts && 'mainAxisSpacing' in opts ? opts.mainAxisSpacing : 0;
+    let crossAxisSpacing = opts && 'crossAxisSpacing' in opts ? opts.crossAxisSpacing : 0;
+    let childAspectRatio = opts && 'childAspectRatio' in opts ? opts.childAspectRatio : 1;
+    let mainAxisExtent = opts && 'mainAxisExtent' in opts ? opts.mainAxisExtent : null;
+    this[crossAxisCount$0] = crossAxisCount;
+    this[mainAxisSpacing$] = mainAxisSpacing;
+    this[crossAxisSpacing$] = crossAxisSpacing;
+    this[childAspectRatio$] = childAspectRatio;
+    this[mainAxisExtent$0] = mainAxisExtent;
+    if (!(crossAxisCount !== null && crossAxisCount > 0)) dart.assertFailed(null, I[1], 349, 15, "crossAxisCount != null && crossAxisCount > 0");
+    if (!(mainAxisSpacing !== null && mainAxisSpacing >= 0)) dart.assertFailed(null, I[1], 350, 15, "mainAxisSpacing != null && mainAxisSpacing >= 0");
+    if (!(crossAxisSpacing !== null && crossAxisSpacing >= 0)) dart.assertFailed(null, I[1], 351, 15, "crossAxisSpacing != null && crossAxisSpacing >= 0");
+    if (!(childAspectRatio !== null && childAspectRatio > 0)) dart.assertFailed(null, I[1], 352, 15, "childAspectRatio != null && childAspectRatio > 0");
+    sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount);
+  dart.addTypeCaches(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount);
+  dart.setMethodSignature(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.__proto__),
+    [_debugAssertIsValid]: dart.fnType(core.bool, []),
+    getLayout: dart.fnType(sliver_grid.SliverGridLayout, [sliver.SliverConstraints]),
+    shouldRelayout: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.__proto__),
+    crossAxisCount: dart.finalFieldType(core.int),
+    mainAxisSpacing: dart.finalFieldType(core.double),
+    crossAxisSpacing: dart.finalFieldType(core.double),
+    childAspectRatio: dart.finalFieldType(core.double),
+    mainAxisExtent: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  var maxCrossAxisExtent$ = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.maxCrossAxisExtent");
+  var mainAxisSpacing$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.mainAxisSpacing");
+  var crossAxisSpacing$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.crossAxisSpacing");
+  var childAspectRatio$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.childAspectRatio");
+  var mainAxisExtent$1 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.mainAxisExtent");
+  sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent = class SliverGridDelegateWithMaxCrossAxisExtent extends sliver_grid.SliverGridDelegate {
+    get maxCrossAxisExtent() {
+      return this[maxCrossAxisExtent$];
+    }
+    set maxCrossAxisExtent(value) {
+      super.maxCrossAxisExtent = value;
+    }
+    get mainAxisSpacing() {
+      return this[mainAxisSpacing$0];
+    }
+    set mainAxisSpacing(value) {
+      super.mainAxisSpacing = value;
+    }
+    get crossAxisSpacing() {
+      return this[crossAxisSpacing$0];
+    }
+    set crossAxisSpacing(value) {
+      super.crossAxisSpacing = value;
+    }
+    get childAspectRatio() {
+      return this[childAspectRatio$0];
+    }
+    set childAspectRatio(value) {
+      super.childAspectRatio = value;
+    }
+    get mainAxisExtent() {
+      return this[mainAxisExtent$1];
+    }
+    set mainAxisExtent(value) {
+      super.mainAxisExtent = value;
+    }
+    [_debugAssertIsValid](crossAxisExtent) {
+      if (!(crossAxisExtent > 0.0)) dart.assertFailed(null, I[1], 482, 12, "crossAxisExtent > 0.0");
+      if (!(this.maxCrossAxisExtent > 0.0)) dart.assertFailed(null, I[1], 483, 12, "maxCrossAxisExtent > 0.0");
+      if (!(this.mainAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 484, 12, "mainAxisSpacing >= 0.0");
+      if (!(this.crossAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 485, 12, "crossAxisSpacing >= 0.0");
+      if (!(this.childAspectRatio > 0.0)) dart.assertFailed(null, I[1], 486, 12, "childAspectRatio > 0.0");
+      return true;
+    }
+    getLayout(constraints) {
+      let t0;
+      if (!this[_debugAssertIsValid](constraints.crossAxisExtent)) dart.assertFailed(null, I[1], 492, 12, "_debugAssertIsValid(constraints.crossAxisExtent)");
+      let crossAxisCount = (constraints.crossAxisExtent / (this.maxCrossAxisExtent + this.crossAxisSpacing))[$ceil]();
+      let usableCrossAxisExtent = math.max(core.double, 0.0, constraints.crossAxisExtent - this.crossAxisSpacing * (crossAxisCount - 1));
+      let childCrossAxisExtent = usableCrossAxisExtent / crossAxisCount;
+      let childMainAxisExtent = (t0 = this.mainAxisExtent, t0 == null ? childCrossAxisExtent / this.childAspectRatio : t0);
+      return new sliver_grid.SliverGridRegularTileLayout.new({crossAxisCount: crossAxisCount, mainAxisStride: childMainAxisExtent + this.mainAxisSpacing, crossAxisStride: childCrossAxisExtent + this.crossAxisSpacing, childMainAxisExtent: childMainAxisExtent, childCrossAxisExtent: childCrossAxisExtent, reverseCrossAxis: basic_types.axisDirectionIsReversed(constraints.crossAxisDirection)});
+    }
+    shouldRelayout(oldDelegate) {
+      sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.as(oldDelegate);
+      return oldDelegate.maxCrossAxisExtent !== this.maxCrossAxisExtent || oldDelegate.mainAxisSpacing !== this.mainAxisSpacing || oldDelegate.crossAxisSpacing !== this.crossAxisSpacing || oldDelegate.childAspectRatio !== this.childAspectRatio || oldDelegate.mainAxisExtent != this.mainAxisExtent;
+    }
+  };
+  (sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.new = function(opts) {
+    let maxCrossAxisExtent = opts && 'maxCrossAxisExtent' in opts ? opts.maxCrossAxisExtent : null;
+    let mainAxisSpacing = opts && 'mainAxisSpacing' in opts ? opts.mainAxisSpacing : 0;
+    let crossAxisSpacing = opts && 'crossAxisSpacing' in opts ? opts.crossAxisSpacing : 0;
+    let childAspectRatio = opts && 'childAspectRatio' in opts ? opts.childAspectRatio : 1;
+    let mainAxisExtent = opts && 'mainAxisExtent' in opts ? opts.mainAxisExtent : null;
+    this[maxCrossAxisExtent$] = maxCrossAxisExtent;
+    this[mainAxisSpacing$0] = mainAxisSpacing;
+    this[crossAxisSpacing$0] = crossAxisSpacing;
+    this[childAspectRatio$0] = childAspectRatio;
+    this[mainAxisExtent$1] = mainAxisExtent;
+    if (!(maxCrossAxisExtent !== null && maxCrossAxisExtent > 0)) dart.assertFailed(null, I[1], 448, 15, "maxCrossAxisExtent != null && maxCrossAxisExtent > 0");
+    if (!(mainAxisSpacing !== null && mainAxisSpacing >= 0)) dart.assertFailed(null, I[1], 449, 15, "mainAxisSpacing != null && mainAxisSpacing >= 0");
+    if (!(crossAxisSpacing !== null && crossAxisSpacing >= 0)) dart.assertFailed(null, I[1], 450, 15, "crossAxisSpacing != null && crossAxisSpacing >= 0");
+    if (!(childAspectRatio !== null && childAspectRatio > 0)) dart.assertFailed(null, I[1], 451, 15, "childAspectRatio != null && childAspectRatio > 0");
+    sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent);
+  dart.addTypeCaches(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent);
+  dart.setMethodSignature(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.__proto__),
+    [_debugAssertIsValid]: dart.fnType(core.bool, [core.double]),
+    getLayout: dart.fnType(sliver_grid.SliverGridLayout, [sliver.SliverConstraints]),
+    shouldRelayout: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.__proto__),
+    maxCrossAxisExtent: dart.finalFieldType(core.double),
+    mainAxisSpacing: dart.finalFieldType(core.double),
+    crossAxisSpacing: dart.finalFieldType(core.double),
+    childAspectRatio: dart.finalFieldType(core.double),
+    mainAxisExtent: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  var crossAxisOffset = dart.privateName(sliver_grid, "SliverGridParentData.crossAxisOffset");
+  sliver_grid.SliverGridParentData = class SliverGridParentData extends sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData {
+    get crossAxisOffset() {
+      return this[crossAxisOffset];
+    }
+    set crossAxisOffset(value) {
+      this[crossAxisOffset] = value;
+    }
+    toString() {
+      return "crossAxisOffset=" + dart.str(this.crossAxisOffset) + "; " + super.toString();
+    }
+  };
+  (sliver_grid.SliverGridParentData.new = function() {
+    this[crossAxisOffset] = null;
+    sliver_grid.SliverGridParentData.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridParentData.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridParentData);
+  dart.addTypeCaches(sliver_grid.SliverGridParentData);
+  dart.setLibraryUri(sliver_grid.SliverGridParentData, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridParentData, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridParentData.__proto__),
+    crossAxisOffset: dart.fieldType(dart.nullable(core.double))
+  }));
+  dart.defineExtensionMethods(sliver_grid.SliverGridParentData, ['toString']);
+  var _gridDelegate = dart.privateName(sliver_grid, "_gridDelegate");
+  sliver_grid.RenderSliverGrid = class RenderSliverGrid extends sliver_multi_box_adaptor.RenderSliverMultiBoxAdaptor {
+    setupParentData(child) {
+      object.RenderObject.as(child);
+      if (!sliver_grid.SliverGridParentData.is(child.parentData)) child.parentData = new sliver_grid.SliverGridParentData.new();
+    }
+    get gridDelegate() {
+      return this[_gridDelegate];
+    }
+    set gridDelegate(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 568, 12, "value != null");
+      if (this[_gridDelegate][$_equals](value)) return;
+      if (!value[$runtimeType]._equals(this[_gridDelegate][$runtimeType]) || value.shouldRelayout(this[_gridDelegate])) this.markNeedsLayout();
+      this[_gridDelegate] = value;
+    }
+    childCrossAxisPosition(child) {
+      box.RenderBox.as(child);
+      let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(child.parentData));
+      return dart.nullCheck(childParentData.crossAxisOffset);
+    }
+    performLayout() {
+      let constraints = this.constraints;
+      this.childManager.didStartLayout();
+      this.childManager.setDidUnderflow(false);
+      let scrollOffset = constraints.scrollOffset + constraints.cacheOrigin;
+      if (!(scrollOffset >= 0.0)) dart.assertFailed(null, I[1], 590, 12, "scrollOffset >= 0.0");
+      let remainingExtent = constraints.remainingCacheExtent;
+      if (!(remainingExtent >= 0.0)) dart.assertFailed(null, I[1], 592, 12, "remainingExtent >= 0.0");
+      let targetEndScrollOffset = scrollOffset + remainingExtent;
+      let layout = this[_gridDelegate].getLayout(constraints);
+      let firstIndex = layout.getMinChildIndexForScrollOffset(scrollOffset);
+      let targetLastIndex = targetEndScrollOffset[$isFinite] ? layout.getMaxChildIndexForScrollOffset(targetEndScrollOffset) : null;
+      if (this.firstChild != null) {
+        let oldFirstIndex = this.indexOf(dart.nullCheck(this.firstChild));
+        let oldLastIndex = this.indexOf(dart.nullCheck(this.lastChild));
+        let leadingGarbage = (firstIndex - oldFirstIndex)[$clamp](0, this.childCount);
+        let trailingGarbage = targetLastIndex == null ? 0 : (oldLastIndex - dart.notNull(targetLastIndex))[$clamp](0, this.childCount);
+        this.collectGarbage(leadingGarbage, trailingGarbage);
+      } else {
+        this.collectGarbage(0, 0);
+      }
+      let firstChildGridGeometry = layout.getGeometryForChildIndex(firstIndex);
+      let leadingScrollOffset = firstChildGridGeometry.scrollOffset;
+      let trailingScrollOffset = firstChildGridGeometry.trailingScrollOffset;
+      if (this.firstChild == null) {
+        if (!this.addInitialChild({index: firstIndex, layoutOffset: firstChildGridGeometry.scrollOffset})) {
+          let max = layout.computeMaxScrollOffset(this.childManager.childCount);
+          this.geometry = new sliver.SliverGeometry.new({scrollExtent: max, maxPaintExtent: max});
+          this.childManager.didFinishLayout();
+          return;
+        }
+      }
+      let trailingChildWithLayout = null;
+      for (let index = this.indexOf(dart.nullCheck(this.firstChild)) - 1; index >= firstIndex; index = index - 1) {
+        let gridGeometry = layout.getGeometryForChildIndex(index);
+        let child = dart.nullCheck(this.insertAndLayoutLeadingChild(gridGeometry.getBoxConstraints(constraints)));
+        let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(child.parentData));
+        childParentData.layoutOffset = gridGeometry.scrollOffset;
+        childParentData.crossAxisOffset = gridGeometry.crossAxisOffset;
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[1], 640, 14, "childParentData.index == index");
+        trailingChildWithLayout == null ? trailingChildWithLayout = child : null;
+        trailingScrollOffset = math.max(core.double, trailingScrollOffset, gridGeometry.trailingScrollOffset);
+      }
+      if (trailingChildWithLayout == null) {
+        dart.nullCheck(this.firstChild).layout(firstChildGridGeometry.getBoxConstraints(constraints));
+        let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
+        childParentData.layoutOffset = firstChildGridGeometry.scrollOffset;
+        childParentData.crossAxisOffset = firstChildGridGeometry.crossAxisOffset;
+        trailingChildWithLayout = this.firstChild;
+      }
+      for (let index = this.indexOf(dart.nullCheck(trailingChildWithLayout)) + 1; targetLastIndex == null || index <= dart.notNull(targetLastIndex); index = index + 1) {
+        let gridGeometry = layout.getGeometryForChildIndex(index);
+        let childConstraints = gridGeometry.getBoxConstraints(constraints);
+        let child = this.childAfter(dart.nullCheck(trailingChildWithLayout));
+        if (child == null || this.indexOf(child) !== index) {
+          child = this.insertAndLayoutChild(childConstraints, {after: trailingChildWithLayout});
+          if (child == null) {
             break;
           }
-          default:
-          {
-            return false;
-          }
-        }
-      }
-      return super.isPointerAllowed(event);
-    }
-    addAllowedPointer(event) {
-      if (this[_firstTap] != null) {
-        if (!dart.nullCheck(this[_firstTap]).isWithinGlobalTolerance(event, 100)) {
-          return;
-        } else if (!dart.nullCheck(this[_firstTap]).hasElapsedMinTime() || !dart.nullCheck(this[_firstTap]).hasSameButton(event)) {
-          this[_reset]();
-          return this[_trackTap](event);
-        } else if (this.onDoubleTapDown != null) {
-          let details = new tap.TapDownDetails.new({globalPosition: event.position, localPosition: event.localPosition, kind: this.getKindForPointer(event.pointer)});
-          this.invokeCallback(dart.void, "onDoubleTapDown", dart.fn(() => dart.nullCheck(this.onDoubleTapDown)(details), T.VoidTovoid()));
-        }
-      }
-      this[_trackTap](event);
-    }
-    [_trackTap](event) {
-      this[_stopDoubleTapTimer]();
-      let tracker = new multitap._TapTracker.new({event: event, entry: dart.nullCheck(binding.GestureBinding.instance).gestureArena.add(event.pointer, this), doubleTapMinTime: constants.kDoubleTapMinTime});
-      this[_trackers][$_set](event.pointer, tracker);
-      tracker.startTrackingPointer(dart.bind(this, _handleEvent), event.transform);
-    }
-    [_handleEvent](event) {
-      let tracker = dart.nullCheck(this[_trackers][$_get](event.pointer));
-      if (events.PointerUpEvent.is(event)) {
-        if (this[_firstTap] == null)
-          this[_registerFirstTap](tracker);
-        else
-          this[_registerSecondTap](tracker);
-      } else if (events.PointerMoveEvent.is(event)) {
-        if (!tracker.isWithinGlobalTolerance(event, 18)) this[_reject](tracker);
-      } else if (events.PointerCancelEvent.is(event)) {
-        this[_reject](tracker);
-      }
-    }
-    acceptGesture(pointer) {
-    }
-    rejectGesture(pointer) {
-      let tracker = this[_trackers][$_get](pointer);
-      if (tracker == null && this[_firstTap] != null && dart.nullCheck(this[_firstTap]).pointer === pointer) tracker = this[_firstTap];
-      if (tracker != null) this[_reject](tracker);
-    }
-    [_reject](tracker) {
-      this[_trackers][$remove](tracker.pointer);
-      tracker.entry.resolve(arena.GestureDisposition.rejected);
-      this[_freezeTracker](tracker);
-      if (this[_firstTap] != null) {
-        if (tracker[$_equals](this[_firstTap])) {
-          this[_reset]();
         } else {
-          this[_checkCancel]();
-          if (this[_trackers][$isEmpty]) this[_reset]();
+          child.layout(childConstraints);
         }
+        trailingChildWithLayout = child;
+        if (!(child != null)) dart.assertFailed(null, I[1], 667, 14, "child != null");
+        let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(child.parentData));
+        childParentData.layoutOffset = gridGeometry.scrollOffset;
+        childParentData.crossAxisOffset = gridGeometry.crossAxisOffset;
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[1], 671, 14, "childParentData.index == index");
+        trailingScrollOffset = math.max(core.double, trailingScrollOffset, gridGeometry.trailingScrollOffset);
       }
-    }
-    dispose() {
-      this[_reset]();
-      super.dispose();
-    }
-    [_reset]() {
-      this[_stopDoubleTapTimer]();
-      if (this[_firstTap] != null) {
-        if (this[_trackers][$isNotEmpty]) this[_checkCancel]();
-        let tracker = dart.nullCheck(this[_firstTap]);
-        this[_firstTap] = null;
-        this[_reject](tracker);
-        dart.nullCheck(binding.GestureBinding.instance).gestureArena.release(tracker.pointer);
-      }
-      this[_clearTrackers]();
-    }
-    [_registerFirstTap](tracker) {
-      this[_startDoubleTapTimer]();
-      dart.nullCheck(binding.GestureBinding.instance).gestureArena.hold(tracker.pointer);
-      this[_freezeTracker](tracker);
-      this[_trackers][$remove](tracker.pointer);
-      this[_clearTrackers]();
-      this[_firstTap] = tracker;
-    }
-    [_registerSecondTap](tracker) {
-      dart.nullCheck(this[_firstTap]).entry.resolve(arena.GestureDisposition.accepted);
-      tracker.entry.resolve(arena.GestureDisposition.accepted);
-      this[_freezeTracker](tracker);
-      this[_trackers][$remove](tracker.pointer);
-      this[_checkUp](tracker.initialButtons);
-      this[_reset]();
-    }
-    [_clearTrackers]() {
-      this[_trackers][$values][$toList]()[$forEach](dart.bind(this, _reject));
-      if (!this[_trackers][$isEmpty]) dart.assertFailed(null, I[0], 332, 12, "_trackers.isEmpty");
-    }
-    [_freezeTracker](tracker) {
-      tracker.stopTrackingPointer(dart.bind(this, _handleEvent));
-    }
-    [_startDoubleTapTimer]() {
-      this[_doubleTapTimer] == null ? this[_doubleTapTimer] = async.Timer.new(constants.kDoubleTapTimeout, dart.bind(this, _reset)) : null;
-    }
-    [_stopDoubleTapTimer]() {
-      if (this[_doubleTapTimer] != null) {
-        dart.nullCheck(this[_doubleTapTimer]).cancel();
-        this[_doubleTapTimer] = null;
-      }
-    }
-    [_checkUp](buttons) {
-      if (!(buttons === 1)) dart.assertFailed(null, I[0], 351, 12, "buttons == kPrimaryButton");
-      if (this.onDoubleTap != null) this.invokeCallback(dart.void, "onDoubleTap", dart.nullCheck(this.onDoubleTap));
-    }
-    [_checkCancel]() {
-      if (this.onDoubleTapCancel != null) this.invokeCallback(dart.void, "onDoubleTapCancel", dart.nullCheck(this.onDoubleTapCancel));
-    }
-    get debugDescription() {
-      return "double tap";
+      let lastIndex = this.indexOf(dart.nullCheck(this.lastChild));
+      if (!this.debugAssertChildListIsNonEmptyAndContiguous()) dart.assertFailed(null, I[1], 677, 12, "debugAssertChildListIsNonEmptyAndContiguous()");
+      if (!(this.indexOf(dart.nullCheck(this.firstChild)) === firstIndex)) dart.assertFailed(null, I[1], 678, 12, "indexOf(firstChild!) == firstIndex");
+      if (!(targetLastIndex == null || lastIndex <= dart.notNull(targetLastIndex))) dart.assertFailed(null, I[1], 679, 12, "targetLastIndex == null || lastIndex <= targetLastIndex");
+      let estimatedTotalExtent = this.childManager.estimateMaxScrollOffset(constraints, {firstIndex: firstIndex, lastIndex: lastIndex, leadingScrollOffset: leadingScrollOffset, trailingScrollOffset: trailingScrollOffset});
+      let paintExtent = this.calculatePaintOffset(constraints, {from: math.min(core.double, constraints.scrollOffset, leadingScrollOffset), to: trailingScrollOffset});
+      let cacheExtent = this.calculateCacheOffset(constraints, {from: leadingScrollOffset, to: trailingScrollOffset});
+      this.geometry = new sliver.SliverGeometry.new({scrollExtent: estimatedTotalExtent, paintExtent: paintExtent, maxPaintExtent: estimatedTotalExtent, cacheExtent: cacheExtent, hasVisualOverflow: true});
+      if (estimatedTotalExtent === trailingScrollOffset) this.childManager.setDidUnderflow(true);
+      this.childManager.didFinishLayout();
     }
   };
-  (multitap.DoubleTapGestureRecognizer.new = function(opts) {
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[onDoubleTapDown] = null;
-    this[onDoubleTap] = null;
-    this[onDoubleTapCancel] = null;
-    this[_doubleTapTimer] = null;
-    this[_firstTap] = null;
-    this[_trackers] = new (T.IdentityMapOfint$_TapTracker()).new();
-    multitap.DoubleTapGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
+  (sliver_grid.RenderSliverGrid.new = function(opts) {
+    let childManager = opts && 'childManager' in opts ? opts.childManager : null;
+    let gridDelegate = opts && 'gridDelegate' in opts ? opts.gridDelegate : null;
+    if (!(gridDelegate !== null)) dart.assertFailed(null, I[1], 554, 15, "gridDelegate != null");
+    this[_gridDelegate] = gridDelegate;
+    sliver_grid.RenderSliverGrid.__proto__.new.call(this, {childManager: childManager});
     ;
-  }).prototype = multitap.DoubleTapGestureRecognizer.prototype;
-  dart.addTypeTests(multitap.DoubleTapGestureRecognizer);
-  dart.addTypeCaches(multitap.DoubleTapGestureRecognizer);
-  dart.setMethodSignature(multitap.DoubleTapGestureRecognizer, () => ({
-    __proto__: dart.getMethods(multitap.DoubleTapGestureRecognizer.__proto__),
-    [_trackTap]: dart.fnType(dart.void, [events.PointerDownEvent]),
-    [_handleEvent]: dart.fnType(dart.void, [events.PointerEvent]),
-    acceptGesture: dart.fnType(dart.void, [core.int]),
-    rejectGesture: dart.fnType(dart.void, [core.int]),
-    [_reject]: dart.fnType(dart.void, [multitap._TapTracker]),
-    [_reset]: dart.fnType(dart.void, []),
-    [_registerFirstTap]: dart.fnType(dart.void, [multitap._TapTracker]),
-    [_registerSecondTap]: dart.fnType(dart.void, [multitap._TapTracker]),
-    [_clearTrackers]: dart.fnType(dart.void, []),
-    [_freezeTracker]: dart.fnType(dart.void, [multitap._TapTracker]),
-    [_startDoubleTapTimer]: dart.fnType(dart.void, []),
-    [_stopDoubleTapTimer]: dart.fnType(dart.void, []),
-    [_checkUp]: dart.fnType(dart.void, [core.int]),
-    [_checkCancel]: dart.fnType(dart.void, [])
+  }).prototype = sliver_grid.RenderSliverGrid.prototype;
+  dart.addTypeTests(sliver_grid.RenderSliverGrid);
+  dart.addTypeCaches(sliver_grid.RenderSliverGrid);
+  dart.setMethodSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getMethods(sliver_grid.RenderSliverGrid.__proto__),
+    performLayout: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(multitap.DoubleTapGestureRecognizer, () => ({
-    __proto__: dart.getGetters(multitap.DoubleTapGestureRecognizer.__proto__),
-    debugDescription: core.String
+  dart.setGetterSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getGetters(sliver_grid.RenderSliverGrid.__proto__),
+    gridDelegate: sliver_grid.SliverGridDelegate
   }));
-  dart.setLibraryUri(multitap.DoubleTapGestureRecognizer, I[1]);
-  dart.setFieldSignature(multitap.DoubleTapGestureRecognizer, () => ({
-    __proto__: dart.getFields(multitap.DoubleTapGestureRecognizer.__proto__),
-    onDoubleTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
-    onDoubleTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    onDoubleTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
-    [_doubleTapTimer]: dart.fieldType(dart.nullable(async.Timer)),
-    [_firstTap]: dart.fieldType(dart.nullable(multitap._TapTracker)),
-    [_trackers]: dart.finalFieldType(core.Map$(core.int, multitap._TapTracker))
+  dart.setSetterSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getSetters(sliver_grid.RenderSliverGrid.__proto__),
+    gridDelegate: sliver_grid.SliverGridDelegate
   }));
-  var _wonArena = dart.privateName(multitap, "_wonArena");
-  var _timer = dart.privateName(multitap, "_timer");
-  var _finalPosition = dart.privateName(multitap, "_finalPosition");
-  var _lastPosition = dart.privateName(multitap, "_lastPosition");
-  var _dispatchLongTap = dart.privateName(multitap, "_dispatchLongTap");
-  var _check = dart.privateName(multitap, "_check");
-  var _dispatchCancel = dart.privateName(multitap, "_dispatchCancel");
-  var _dispatchTap = dart.privateName(multitap, "_dispatchTap");
-  multitap._TapGesture = class _TapGesture extends multitap._TapTracker {
-    handleEvent(event) {
-      if (!(event.pointer === this.pointer)) dart.assertFailed(null, I[0], 398, 12, "event.pointer == pointer");
-      if (events.PointerMoveEvent.is(event)) {
-        if (!this.isWithinGlobalTolerance(event, events.computeHitSlop(event.kind)))
-          this.cancel();
-        else
-          this[_lastPosition] = recognizer.OffsetPair.fromEventPosition(event);
-      } else if (events.PointerCancelEvent.is(event)) {
-        this.cancel();
-      } else if (events.PointerUpEvent.is(event)) {
-        this.stopTrackingPointer(dart.bind(this, 'handleEvent'));
-        this[_finalPosition] = recognizer.OffsetPair.fromEventPosition(event);
-        this[_check]();
-      }
-    }
-    stopTrackingPointer(route) {
-      let t0;
-      t0 = this[_timer];
-      t0 == null ? null : t0.cancel();
-      this[_timer] = null;
-      super.stopTrackingPointer(route);
-    }
-    accept() {
-      this[_wonArena] = true;
-      this[_check]();
-    }
-    reject() {
-      this.stopTrackingPointer(dart.bind(this, 'handleEvent'));
-      this.gestureRecognizer[_dispatchCancel](this.pointer);
-    }
-    cancel() {
-      if (this[_wonArena])
-        this.reject();
-      else
-        this.entry.resolve(arena.GestureDisposition.rejected);
-    }
-    [_check]() {
-      if (this[_wonArena] && this[_finalPosition] != null) this.gestureRecognizer[_dispatchTap](this.pointer, dart.nullCheck(this[_finalPosition]));
-    }
-  };
-  (multitap._TapGesture.new = function(opts) {
-    let gestureRecognizer = opts && 'gestureRecognizer' in opts ? opts.gestureRecognizer : null;
-    let event = opts && 'event' in opts ? opts.event : null;
-    let longTapDelay = opts && 'longTapDelay' in opts ? opts.longTapDelay : null;
-    this[_wonArena] = false;
-    this[_timer] = null;
-    this[_finalPosition] = null;
-    this.gestureRecognizer = gestureRecognizer;
-    this[_lastPosition] = recognizer.OffsetPair.fromEventPosition(event);
-    multitap._TapGesture.__proto__.new.call(this, {event: events.PointerDownEvent.as(event), entry: dart.nullCheck(binding.GestureBinding.instance).gestureArena.add(event.pointer, gestureRecognizer), doubleTapMinTime: constants.kDoubleTapMinTime});
-    this.startTrackingPointer(dart.bind(this, 'handleEvent'), event.transform);
-    if (longTapDelay['>'](core.Duration.zero)) {
-      this[_timer] = async.Timer.new(longTapDelay, dart.fn(() => {
-        this[_timer] = null;
-        this.gestureRecognizer[_dispatchLongTap](event.pointer, this[_lastPosition]);
-      }, T.VoidTovoid()));
-    }
-  }).prototype = multitap._TapGesture.prototype;
-  dart.addTypeTests(multitap._TapGesture);
-  dart.addTypeCaches(multitap._TapGesture);
-  dart.setMethodSignature(multitap._TapGesture, () => ({
-    __proto__: dart.getMethods(multitap._TapGesture.__proto__),
-    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
-    accept: dart.fnType(dart.void, []),
-    reject: dart.fnType(dart.void, []),
-    cancel: dart.fnType(dart.void, []),
-    [_check]: dart.fnType(dart.void, [])
+  dart.setLibraryUri(sliver_grid.RenderSliverGrid, I[0]);
+  dart.setFieldSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getFields(sliver_grid.RenderSliverGrid.__proto__),
+    [_gridDelegate]: dart.fieldType(sliver_grid.SliverGridDelegate)
   }));
-  dart.setLibraryUri(multitap._TapGesture, I[1]);
-  dart.setFieldSignature(multitap._TapGesture, () => ({
-    __proto__: dart.getFields(multitap._TapGesture.__proto__),
-    gestureRecognizer: dart.finalFieldType(multitap.MultiTapGestureRecognizer),
-    [_wonArena]: dart.fieldType(core.bool),
-    [_timer]: dart.fieldType(dart.nullable(async.Timer)),
-    [_lastPosition]: dart.fieldType(recognizer.OffsetPair),
-    [_finalPosition]: dart.fieldType(dart.nullable(recognizer.OffsetPair))
-  }));
-  var onTapDown = dart.privateName(multitap, "MultiTapGestureRecognizer.onTapDown");
-  var onTapUp = dart.privateName(multitap, "MultiTapGestureRecognizer.onTapUp");
-  var onTap = dart.privateName(multitap, "MultiTapGestureRecognizer.onTap");
-  var onTapCancel = dart.privateName(multitap, "MultiTapGestureRecognizer.onTapCancel");
-  var longTapDelay$ = dart.privateName(multitap, "MultiTapGestureRecognizer.longTapDelay");
-  var onLongTapDown = dart.privateName(multitap, "MultiTapGestureRecognizer.onLongTapDown");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var _gestureMap = dart.privateName(multitap, "_gestureMap");
-  multitap.MultiTapGestureRecognizer = class MultiTapGestureRecognizer extends recognizer.GestureRecognizer {
-    get onTapDown() {
-      return this[onTapDown];
-    }
-    set onTapDown(value) {
-      this[onTapDown] = value;
-    }
-    get onTapUp() {
-      return this[onTapUp];
-    }
-    set onTapUp(value) {
-      this[onTapUp] = value;
-    }
-    get onTap() {
-      return this[onTap];
-    }
-    set onTap(value) {
-      this[onTap] = value;
-    }
-    get onTapCancel() {
-      return this[onTapCancel];
-    }
-    set onTapCancel(value) {
-      this[onTapCancel] = value;
-    }
-    get longTapDelay() {
-      return this[longTapDelay$];
-    }
-    set longTapDelay(value) {
-      this[longTapDelay$] = value;
-    }
-    get onLongTapDown() {
-      return this[onLongTapDown];
-    }
-    set onLongTapDown(value) {
-      this[onLongTapDown] = value;
-    }
-    addAllowedPointer(event) {
-      if (!!this[_gestureMap][$containsKey](event.pointer)) dart.assertFailed(null, I[0], 491, 12, "!_gestureMap.containsKey(event.pointer)");
-      this[_gestureMap][$_set](event.pointer, new multitap._TapGesture.new({gestureRecognizer: this, event: event, longTapDelay: this.longTapDelay}));
-      if (this.onTapDown != null) this.invokeCallback(dart.void, "onTapDown", dart.fn(() => {
-        dart.nullCheck(this.onTapDown)(event.pointer, new tap.TapDownDetails.new({globalPosition: event.position, localPosition: event.localPosition, kind: event.kind}));
-      }, T.VoidTovoid()));
-    }
-    acceptGesture(pointer) {
-      if (!this[_gestureMap][$containsKey](pointer)) dart.assertFailed(null, I[0], 509, 12, "_gestureMap.containsKey(pointer)");
-      dart.nullCheck(this[_gestureMap][$_get](pointer)).accept();
-    }
-    rejectGesture(pointer) {
-      if (!this[_gestureMap][$containsKey](pointer)) dart.assertFailed(null, I[0], 515, 12, "_gestureMap.containsKey(pointer)");
-      dart.nullCheck(this[_gestureMap][$_get](pointer)).reject();
-      if (!!this[_gestureMap][$containsKey](pointer)) dart.assertFailed(null, I[0], 517, 12, "!_gestureMap.containsKey(pointer)");
-    }
-    [_dispatchCancel](pointer) {
-      if (!this[_gestureMap][$containsKey](pointer)) dart.assertFailed(null, I[0], 521, 12, "_gestureMap.containsKey(pointer)");
-      this[_gestureMap][$remove](pointer);
-      if (this.onTapCancel != null) this.invokeCallback(dart.void, "onTapCancel", dart.fn(() => dart.nullCheck(this.onTapCancel)(pointer), T.VoidTovoid()));
-    }
-    [_dispatchTap](pointer, position) {
-      if (!this[_gestureMap][$containsKey](pointer)) dart.assertFailed(null, I[0], 528, 12, "_gestureMap.containsKey(pointer)");
-      this[_gestureMap][$remove](pointer);
-      if (this.onTapUp != null) this.invokeCallback(dart.void, "onTapUp", dart.fn(() => {
-        dart.nullCheck(this.onTapUp)(pointer, new tap.TapUpDetails.new({kind: this.getKindForPointer(pointer), localPosition: position.local, globalPosition: position.global}));
-      }, T.VoidTovoid()));
-      if (this.onTap != null) this.invokeCallback(dart.void, "onTap", dart.fn(() => dart.nullCheck(this.onTap)(pointer), T.VoidTovoid()));
-    }
-    [_dispatchLongTap](pointer, lastPosition) {
-      if (!this[_gestureMap][$containsKey](pointer)) dart.assertFailed(null, I[0], 543, 12, "_gestureMap.containsKey(pointer)");
-      if (this.onLongTapDown != null) this.invokeCallback(dart.void, "onLongTapDown", dart.fn(() => {
-        dart.nullCheck(this.onLongTapDown)(pointer, new tap.TapDownDetails.new({globalPosition: lastPosition.global, localPosition: lastPosition.local, kind: this.getKindForPointer(pointer)}));
-      }, T.VoidTovoid()));
-    }
-    dispose() {
-      let localGestures = T.ListOf_TapGesture().from(this[_gestureMap][$values]);
-      for (let gesture of localGestures)
-        gesture.cancel();
-      if (!this[_gestureMap][$isEmpty]) dart.assertFailed(null, I[0], 563, 12, "_gestureMap.isEmpty");
-      super.dispose();
-    }
-    get debugDescription() {
-      return "multitap";
-    }
-  };
-  (multitap.MultiTapGestureRecognizer.new = function(opts) {
-    let longTapDelay = opts && 'longTapDelay' in opts ? opts.longTapDelay : C[0] || CT.C0;
-    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    this[onTapDown] = null;
-    this[onTapUp] = null;
-    this[onTap] = null;
-    this[onTapCancel] = null;
-    this[onLongTapDown] = null;
-    this[_gestureMap] = new (T.IdentityMapOfint$_TapGesture()).new();
-    this[longTapDelay$] = longTapDelay;
-    multitap.MultiTapGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
-    ;
-  }).prototype = multitap.MultiTapGestureRecognizer.prototype;
-  dart.addTypeTests(multitap.MultiTapGestureRecognizer);
-  dart.addTypeCaches(multitap.MultiTapGestureRecognizer);
-  dart.setMethodSignature(multitap.MultiTapGestureRecognizer, () => ({
-    __proto__: dart.getMethods(multitap.MultiTapGestureRecognizer.__proto__),
-    addAllowedPointer: dart.fnType(dart.void, [events.PointerEvent]),
-    acceptGesture: dart.fnType(dart.void, [core.int]),
-    rejectGesture: dart.fnType(dart.void, [core.int]),
-    [_dispatchCancel]: dart.fnType(dart.void, [core.int]),
-    [_dispatchTap]: dart.fnType(dart.void, [core.int, recognizer.OffsetPair]),
-    [_dispatchLongTap]: dart.fnType(dart.void, [core.int, recognizer.OffsetPair])
-  }));
-  dart.setGetterSignature(multitap.MultiTapGestureRecognizer, () => ({
-    __proto__: dart.getGetters(multitap.MultiTapGestureRecognizer.__proto__),
-    debugDescription: core.String
-  }));
-  dart.setLibraryUri(multitap.MultiTapGestureRecognizer, I[1]);
-  dart.setFieldSignature(multitap.MultiTapGestureRecognizer, () => ({
-    __proto__: dart.getFields(multitap.MultiTapGestureRecognizer.__proto__),
-    onTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [core.int, tap.TapDownDetails]))),
-    onTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [core.int, tap.TapUpDetails]))),
-    onTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
-    onTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
-    longTapDelay: dart.fieldType(core.Duration),
-    onLongTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [core.int, tap.TapDownDetails]))),
-    [_gestureMap]: dart.finalFieldType(core.Map$(core.int, multitap._TapGesture))
-  }));
-  dart.trackLibraries("packages/flutter/src/gestures/multitap.dart", {
-    "package:flutter/src/gestures/multitap.dart": multitap
+  dart.trackLibraries("packages/flutter/src/rendering/sliver_grid.dart", {
+    "package:flutter/src/rendering/sliver_grid.dart": sliver_grid
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["multitap.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/gestures/multitap.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["sliver_grid.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/flutter/src/rendering/sliver_grid.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__multitap: multitap
+    src__rendering__sliver_grid: sliver_grid
   };
 }));
 
-//# sourceMappingURL=multitap.dart.lib.js.map
+//# sourceMappingURL=sliver_grid.dart.lib.js.map
